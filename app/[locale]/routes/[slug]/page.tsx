@@ -6,6 +6,7 @@ import { getPOIsForRoute } from '@/lib/data/pois'
 import { AppStoreBadge } from '@/components/AppStoreBadge'
 import { JsonLd } from '@/components/JsonLd'
 import { getDict, localePath, pick, LOCALIZED, ALL_LOCALES, BASE_URL, type Locale } from '@/lib/i18n'
+import { getAccessInfo } from '@/lib/route-access'
 
 export function generateStaticParams() {
   const params: { locale: string; slug: string }[] = []
@@ -157,6 +158,34 @@ export default async function LocaleRouteDetailPage({ params }: { params: Promis
           <p className="text-green-100 mb-6">{dict.route.ctaDesc}</p>
           <AppStoreBadge className="mx-auto bg-white text-forest hover:bg-green-50" />
         </section>
+
+        {(() => {
+          const access = getAccessInfo(route.system, l)
+          return (
+            <section className="mb-10">
+              <h2 className="text-2xl font-bold text-ink mb-6">{access.heading}</h2>
+              <p className="text-sm text-stone-500 mb-6">
+                <a href={access.officialMap.url} target="_blank" rel="noopener noreferrer" className="text-forest hover:underline">
+                  📍 {access.officialMap.label} →
+                </a>
+              </p>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="bg-white rounded-xl p-5 border border-stone-200">
+                  <h3 className="font-semibold text-forest mb-3">{access.gettingThere.title}</h3>
+                  <ul className="space-y-2 text-sm text-stone-600 leading-relaxed list-disc list-inside">
+                    {access.gettingThere.items.map((item, i) => <li key={i}>{item}</li>)}
+                  </ul>
+                </div>
+                <div className="bg-white rounded-xl p-5 border border-stone-200">
+                  <h3 className="font-semibold text-forest mb-3">🚌 {access.localTransport.title}</h3>
+                  <ul className="space-y-2 text-sm text-stone-600 leading-relaxed list-disc list-inside">
+                    {access.localTransport.items.map((item, i) => <li key={i}>{item}</li>)}
+                  </ul>
+                </div>
+              </div>
+            </section>
+          )
+        })()}
 
         {official ? (
           <p className="text-sm text-stone-400 mb-10">

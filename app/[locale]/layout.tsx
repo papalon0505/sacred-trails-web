@@ -35,6 +35,7 @@ export default async function LocaleLayout({
           <nav className="flex items-center gap-6 text-sm font-medium text-stone-600">
             <a href={localePath(l, '/routes')} className="hover:text-forest transition-colors">{dict.nav.routes}</a>
             <a href={localePath(l, '/guide')} className="hover:text-forest transition-colors">{dict.nav.guide}</a>
+            <a href={localePath(l, '/dual-pilgrim')} className="hover:text-forest transition-colors">Dual Pilgrim</a>
             <div className="flex gap-2 text-xs text-stone-400">
               {LANG_SWITCHER.map(s => (
                 <a key={s.locale} href={s.href} className={s.locale === l ? 'text-forest font-semibold' : 'hover:text-forest'}>

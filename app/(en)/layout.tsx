@@ -10,6 +10,7 @@ export default function EnLayout({ children }: { children: React.ReactNode }) {
           <nav className="flex items-center gap-6 text-sm font-medium text-stone-600">
             <a href="/routes" className="hover:text-forest transition-colors">Routes</a>
             <a href="/guide" className="hover:text-forest transition-colors">Guide</a>
+            <a href="/dual-pilgrim" className="hover:text-forest transition-colors">Dual Pilgrim</a>
             <div className="flex gap-2 text-xs text-stone-400">
               <span className="text-forest font-semibold">EN</span>
               <a href="/ja" className="hover:text-forest">日本語</a>
