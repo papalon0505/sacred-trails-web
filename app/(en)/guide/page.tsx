@@ -3,7 +3,15 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Pilgrimage Route Guides — Camino de Santiago, Kumano Kodo, Shikoku Henro',
   description: "Complete guides for the world's most famous pilgrimage routes. Planning, distances, difficulty, best season, and more.",
-  alternates: { canonical: 'https://sacredtrails.evelyn-ai.com/guide' },
+  alternates: {
+    canonical: 'https://sacredtrails.evelyn-ai.com/guide',
+    languages: {
+      'en': 'https://sacredtrails.evelyn-ai.com/guide',
+      'ja': 'https://sacredtrails.evelyn-ai.com/ja/guide',
+      'zh-TW': 'https://sacredtrails.evelyn-ai.com/zh-TW/guide',
+      'es': 'https://sacredtrails.evelyn-ai.com/es/guide',
+    },
+  },
 }
 
 const GUIDES = [

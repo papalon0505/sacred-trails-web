@@ -5,7 +5,15 @@ import { RouteCard } from '@/components/RouteCard'
 export const metadata: Metadata = {
   title: 'All 18 Pilgrimage Routes — Camino, Kumano Kodo & Shikoku Henro',
   description: 'Browse all 18 sacred pilgrimage routes in Sacred Trails: 12 Camino de Santiago routes, 4 Kumano Kodo routes, Shikoku Henro, and Saigoku 33 Kannon Pilgrimage.',
-  alternates: { canonical: 'https://sacredtrails.evelyn-ai.com/routes' },
+  alternates: {
+    canonical: 'https://sacredtrails.evelyn-ai.com/routes',
+    languages: {
+      'en': 'https://sacredtrails.evelyn-ai.com/routes',
+      'ja': 'https://sacredtrails.evelyn-ai.com/ja/routes',
+      'zh-TW': 'https://sacredtrails.evelyn-ai.com/zh-TW/routes',
+      'es': 'https://sacredtrails.evelyn-ai.com/es/routes',
+    },
+  },
 }
 
 const SYSTEM_GROUPS = [

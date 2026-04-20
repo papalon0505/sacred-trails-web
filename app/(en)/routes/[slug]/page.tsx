@@ -26,7 +26,15 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title,
     description: route.description.en?.slice(0, 155) ?? `Complete guide to the ${name}: distance, stages, waypoints, and practical info.`,
-    alternates: { canonical: `https://sacredtrails.evelyn-ai.com/routes/${slug}` },
+    alternates: {
+      canonical: `https://sacredtrails.evelyn-ai.com/routes/${slug}`,
+      languages: {
+        'en': `https://sacredtrails.evelyn-ai.com/routes/${slug}`,
+        'ja': `https://sacredtrails.evelyn-ai.com/ja/routes/${slug}`,
+        'zh-TW': `https://sacredtrails.evelyn-ai.com/zh-TW/routes/${slug}`,
+        'es': `https://sacredtrails.evelyn-ai.com/es/routes/${slug}`,
+      },
+    },
   }
 }
 

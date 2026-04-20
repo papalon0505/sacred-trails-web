@@ -8,7 +8,15 @@ import { JsonLd } from '@/components/JsonLd'
 export const metadata: Metadata = {
   title: 'Sacred Trails — Camino de Santiago, Kumano Kodo & Shikoku Henro Offline Guide App',
   description: 'Complete offline guide for 18 sacred pilgrimage trails. Camino de Santiago, Kumano Kodo, Shikoku Henro. Stage navigation, 10 languages, no internet required.',
-  alternates: { canonical: 'https://sacredtrails.evelyn-ai.com' },
+  alternates: {
+    canonical: 'https://sacredtrails.evelyn-ai.com',
+    languages: {
+      'en': 'https://sacredtrails.evelyn-ai.com',
+      'ja': 'https://sacredtrails.evelyn-ai.com/ja',
+      'zh-TW': 'https://sacredtrails.evelyn-ai.com/zh-TW',
+      'es': 'https://sacredtrails.evelyn-ai.com/es',
+    },
+  },
 }
 
 const FAQ = [
