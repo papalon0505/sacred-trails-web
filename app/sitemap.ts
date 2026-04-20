@@ -19,6 +19,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   entries.push(...localizedEntry('/routes', 0.9, 'monthly'))
   entries.push(...localizedEntry('/guide', 0.8, 'monthly'))
   entries.push(...localizedEntry('/dual-pilgrim', 0.9, 'monthly'))
+  entries.push(...localizedEntry('/legal', 0.3, 'monthly'))
+  entries.push({ url: `${BASE_URL}/privacy`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.3 })
   for (const g of GUIDE_SLUGS) entries.push(...localizedEntry(`/guide/${g}`, 0.9, 'monthly'))
   for (const r of routes) entries.push(...localizedEntry(`/routes/${r.slug}`, 0.8, 'monthly'))
   return entries

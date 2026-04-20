@@ -62,8 +62,8 @@ const en: DualPilgrimContent = {
     'Your name is added to the Dual Pilgrim wall of recognition and international registry.',
   ],
   registerLocations: [
-    { name: 'Tanabe City Kumano Tourism Bureau', address: 'Minato 1-20, Tanabe, Wakayama — beside Kii-Tanabe Station' },
-    { name: 'Kumano Hongu Heritage Center', address: 'Hongu-cho, Tanabe, Wakayama — near Kumano Hongu Taisha' },
+    { name: 'Tanabe City Kumano Tourism Bureau', address: 'Beside Kii-Tanabe Station, Wakayama Prefecture — see tb-kumano.jp for directions.' },
+    { name: 'Kumano Hongu Heritage Center', address: 'Adjacent to Kumano Hongu Taisha, Hongu-cho, Tanabe — see map on tb-kumano.jp.' },
   ],
   faq: [
     { q: 'Do I have to walk both routes in the same trip?', a: 'No. There is no time limit. Many pilgrims complete the Camino years before or after Kumano. Keep your Compostela and Kumano stamps safe — they are valid indefinitely.' },
@@ -117,8 +117,8 @@ const ja: DualPilgrimContent = {
     '名前はデュアル巡礼者の記録壁および国際レジストリに登録されます。',
   ],
   registerLocations: [
-    { name: '田辺市熊野ツーリズムビューロー', address: '和歌山県田辺市湊1-20 — 紀伊田辺駅隣接' },
-    { name: '熊野本宮館', address: '和歌山県田辺市本宮町 — 熊野本宮大社の近く' },
+    { name: '田辺市熊野ツーリズムビューロー', address: '和歌山県 紀伊田辺駅前 — 詳細は tb-kumano.jp を参照。' },
+    { name: '熊野本宮館', address: '和歌山県田辺市本宮町・熊野本宮大社隣接 — 案内図は tb-kumano.jp を参照。' },
   ],
   faq: [
     { q: '両方を同じ旅で歩く必要がある？', a: 'いいえ。期限はありません。カミーノを何年も前または後に歩いた方も多くいます。コンポステーラと熊野のスタンプは無期限有効です。' },
@@ -172,8 +172,8 @@ const zhTW: DualPilgrimContent = {
     '姓名會登記在雙朝聖者紀念牆和國際名冊上。',
   ],
   registerLocations: [
-    { name: '田邊市熊野觀光局', address: '和歌山縣田邊市湊 1-20（紀伊田邊車站旁）' },
-    { name: '熊野本宮館', address: '和歌山縣田邊市本宮町（熊野本宮大社附近）' },
+    { name: '田邊市熊野觀光局', address: '和歌山縣 紀伊田邊車站旁（詳細地址請見 tb-kumano.jp）。' },
+    { name: '熊野本宮館', address: '和歌山縣田邊市本宮町（熊野本宮大社旁，地圖請見 tb-kumano.jp）。' },
   ],
   faq: [
     { q: '兩條路線要同一趟旅行內走完嗎？', a: '不用。沒有時間限制。很多朝聖者 Camino 和熊野之間相隔好幾年。Compostela 和熊野印章都永久有效。' },
@@ -227,8 +227,8 @@ const es: DualPilgrimContent = {
     'Tu nombre se añade al muro Dual Pilgrim y al registro internacional.',
   ],
   registerLocations: [
-    { name: 'Oficina de Turismo de Kumano, Tanabe', address: 'Minato 1-20, Tanabe, Wakayama — junto a la estación de Kii-Tanabe' },
-    { name: 'Centro Patrimonial de Kumano Hongu', address: 'Hongu-cho, Tanabe, Wakayama — cerca de Kumano Hongu Taisha' },
+    { name: 'Oficina de Turismo de Kumano, Tanabe', address: 'Junto a la estación de Kii-Tanabe, prefectura de Wakayama — ver indicaciones en tb-kumano.jp.' },
+    { name: 'Centro Patrimonial de Kumano Hongu', address: 'Junto a Kumano Hongu Taisha, Hongu-cho, Tanabe — plano en tb-kumano.jp.' },
   ],
   faq: [
     { q: '¿Tengo que caminar ambas rutas en el mismo viaje?', a: 'No. No hay límite de tiempo. Muchos peregrinos completan el Camino años antes o después del Kumano. Guarda bien tu Compostela y los sellos de Kumano — valen indefinidamente.' },

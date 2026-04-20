@@ -29,7 +29,7 @@ export function pick<T extends Record<string, string | undefined>>(map: T, local
 
 export interface Dict {
   nav: { routes: string; guide: string }
-  footer: { rights: string; privacy: string; allRoutes: string }
+  footer: { rights: string; privacy: string; allRoutes: string; legal: string; credits: string }
   home: {
     eyebrow: string
     heroTitle: string
@@ -78,7 +78,7 @@ export interface Dict {
 
 const en: Dict = {
   nav: { routes: 'Routes', guide: 'Guide' },
-  footer: { rights: '© 2026 Sacred Trails. All rights reserved.', privacy: 'Privacy Policy', allRoutes: 'All Routes' },
+  footer: { rights: '© 2026 Sacred Trails. All rights reserved.', privacy: 'Privacy Policy', allRoutes: 'All Routes', legal: 'Legal Notice', credits: 'Route content authored by the Sacred Trails team with AI assistance.' },
   home: {
     eyebrow: '18 Pilgrimage Routes',
     heroTitle: "Your Offline Guide to the World's Sacred Trails",
@@ -151,7 +151,7 @@ const en: Dict = {
 
 const ja: Dict = {
   nav: { routes: 'ルート一覧', guide: 'ガイド' },
-  footer: { rights: '© 2026 Sacred Trails. All rights reserved.', privacy: 'プライバシーポリシー', allRoutes: '全ルート' },
+  footer: { rights: '© 2026 Sacred Trails. All rights reserved.', privacy: 'プライバシーポリシー', allRoutes: '全ルート', legal: '法的告知', credits: '路線コンテンツはSacred TrailsチームがAI支援のもとで執筆。' },
   home: {
     eyebrow: '18の巡礼ルート',
     heroTitle: 'オフラインで歩ける世界の聖なる巡礼ガイド',
@@ -224,7 +224,7 @@ const ja: Dict = {
 
 const zhTW: Dict = {
   nav: { routes: '路線', guide: '攻略' },
-  footer: { rights: '© 2026 Sacred Trails. 保留所有權利。', privacy: '隱私權政策', allRoutes: '全部路線' },
+  footer: { rights: '© 2026 Sacred Trails. 保留所有權利。', privacy: '隱私權政策', allRoutes: '全部路線', legal: '法律聲明', credits: '路線內容由 Sacred Trails 團隊在 AI 協助下撰寫。' },
   home: {
     eyebrow: '18 條朝聖之路',
     heroTitle: '離線也能走遍全世界的聖地朝聖路',
@@ -297,7 +297,7 @@ const zhTW: Dict = {
 
 const es: Dict = {
   nav: { routes: 'Rutas', guide: 'Guía' },
-  footer: { rights: '© 2026 Sacred Trails. Todos los derechos reservados.', privacy: 'Política de privacidad', allRoutes: 'Todas las rutas' },
+  footer: { rights: '© 2026 Sacred Trails. Todos los derechos reservados.', privacy: 'Política de privacidad', allRoutes: 'Todas las rutas', legal: 'Aviso legal', credits: 'Contenido de rutas redactado por el equipo de Sacred Trails con asistencia de IA.' },
   home: {
     eyebrow: '18 Rutas de Peregrinación',
     heroTitle: 'Tu guía offline para las rutas sagradas del mundo',

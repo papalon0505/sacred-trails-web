@@ -22,12 +22,16 @@ export default function EnLayout({ children }: { children: React.ReactNode }) {
       </header>
       <main>{children}</main>
       <footer className="bg-stone-800 text-stone-300 py-10 mt-20">
-        <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
-          <p>© 2026 Sacred Trails. All rights reserved.</p>
-          <div className="flex gap-6">
-            <a href="/privacy" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="/routes" className="hover:text-white transition-colors">All Routes</a>
+        <div className="max-w-6xl mx-auto px-4 flex flex-col gap-4 text-sm">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p>© 2026 Sacred Trails. All rights reserved.</p>
+            <div className="flex gap-6">
+              <a href="/privacy" className="hover:text-white transition-colors">Privacy Policy</a>
+              <a href="/legal" className="hover:text-white transition-colors">Legal Notice</a>
+              <a href="/routes" className="hover:text-white transition-colors">All Routes</a>
+            </div>
           </div>
+          <p className="text-xs text-stone-500 text-center md:text-left">Route content authored by the Sacred Trails team with AI assistance.</p>
         </div>
       </footer>
     </div>

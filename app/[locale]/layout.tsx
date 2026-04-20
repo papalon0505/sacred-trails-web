@@ -48,12 +48,16 @@ export default async function LocaleLayout({
       </header>
       <main>{children}</main>
       <footer className="bg-stone-800 text-stone-300 py-10 mt-20">
-        <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
-          <p>{dict.footer.rights}</p>
-          <div className="flex gap-6">
-            <a href="/privacy" className="hover:text-white transition-colors">{dict.footer.privacy}</a>
-            <a href={localePath(l, '/routes')} className="hover:text-white transition-colors">{dict.footer.allRoutes}</a>
+        <div className="max-w-6xl mx-auto px-4 flex flex-col gap-4 text-sm">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p>{dict.footer.rights}</p>
+            <div className="flex gap-6">
+              <a href="/privacy" className="hover:text-white transition-colors">{dict.footer.privacy}</a>
+              <a href={localePath(l, '/legal')} className="hover:text-white transition-colors">{dict.footer.legal}</a>
+              <a href={localePath(l, '/routes')} className="hover:text-white transition-colors">{dict.footer.allRoutes}</a>
+            </div>
           </div>
+          <p className="text-xs text-stone-500 text-center md:text-left">{dict.footer.credits}</p>
         </div>
       </footer>
     </div>

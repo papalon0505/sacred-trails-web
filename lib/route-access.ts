@@ -28,7 +28,7 @@ const camino: Record<Locale, AccessInfo> = {
       items: [
         'ALSA long-distance buses connect most stage towns (alsa.com).',
         'RENFE regional trains cover major Camino cities — useful for skipping sections or emergencies.',
-        'Jacotrans and Pilbeo luggage-transfer services operate on most Spanish routes (€5–7/day/bag).',
+        'Jacotrans and Correos Paq Mochila offer pilgrim luggage-transfer between stage towns on most Spanish routes — check current rates at jacotrans.com or paqmochila.com.',
         'Taxis are reliable in villages but expensive (€1.20/km); use them only for emergencies or injury.',
       ],
     },
@@ -51,7 +51,7 @@ const camino: Record<Locale, AccessInfo> = {
       items: [
         'ALSA長距離バスがほぼ全てのステージ都市を結ぶ（alsa.com）。',
         'RENFE地方鉄道が主要カミーノ都市をカバー — 区間スキップや緊急時に便利。',
-        'JacotransとPilbeoの荷物配送サービスがスペイン国内ほぼ全ルートで利用可能（1袋€5〜7/日）。',
+        'JacotransとCorreos「Paq Mochila」が巡礼者の荷物をステージ間で配送（料金は jacotrans.com / paqmochila.com にて確認）。',
         'タクシーは村部でも比較的信頼できるが高額（€1.20/km）。緊急時や怪我の時のみ推奨。',
       ],
     },
@@ -74,7 +74,7 @@ const camino: Record<Locale, AccessInfo> = {
       items: [
         'ALSA 長途巴士連接絕大多數路段城鎮（alsa.com）。',
         'RENFE 地區火車涵蓋主要 Camino 城市 — 跳過路段或緊急狀況時有用。',
-        'Jacotrans 和 Pilbeo 行李運送服務遍布西班牙多數路線（每袋每日約 5–7 歐元）。',
+        'Jacotrans 和 Correos Paq Mochila 提供朝聖者行李路段配送，遍及西班牙多數路線（費率請至 jacotrans.com / paqmochila.com 確認）。',
         '村鎮計程車可靠但昂貴（每公里 1.20 歐元），建議僅在緊急或受傷時使用。',
       ],
     },
@@ -97,7 +97,7 @@ const camino: Record<Locale, AccessInfo> = {
       items: [
         'Autobuses ALSA conectan la mayoría de pueblos-etapa (alsa.com).',
         'Trenes regionales RENFE cubren las principales ciudades del Camino — útiles para saltar tramos o emergencias.',
-        'Jacotrans y Pilbeo transportan mochilas en casi todas las rutas españolas (5–7€/día/bolsa).',
+        'Jacotrans y Correos Paq Mochila transportan mochilas de peregrinos entre etapas en la mayoría de rutas (consulta tarifas en jacotrans.com / paqmochila.com).',
         'Los taxis son fiables en los pueblos pero caros (1,20€/km); úsalos solo en emergencias o lesión.',
       ],
     },
@@ -122,7 +122,7 @@ const kumano: Record<Locale, AccessInfo> = {
       items: [
         'Ryujin Bus (Tanabe → Takijiri → Kumano Hongu Taisha): Central access bus for Nakahechi, ~5 round-trips daily.',
         'Kumano-gawa Boat (Hongu → Shingu / Hayatama Taisha): Traditional 90-min river-boat ride, counts toward Dual Pilgrim route. Reservation required.',
-        'Kumano Kotsu Bus connects Nachi, Katsuura, Shingu, and Hongu (routes K11, K21, K31). Buy Kumano Kodo Bus Pass (2 or 3 day) for unlimited rides.',
+        'Kumano Kotsu operates bus lines connecting Nachi, Katsuura, Shingu, and Hongu. A multi-day Kumano Kodo bus pass is usually available — check current routes and pricing at kumanokotsu.co.jp.',
         'Taxis available at Kii-Tanabe, Shingu, Kii-Katsuura stations — useful for skipping non-trail road sections.',
       ],
     },
@@ -144,7 +144,7 @@ const kumano: Record<Locale, AccessInfo> = {
       items: [
         '龍神バス（田辺 → 滝尻 → 熊野本宮大社）：中辺路のメインアクセス、1日約5往復。',
         '熊野川舟下り（本宮 → 新宮・速玉大社）：伝統的な川舟で90分の道程。デュアル巡礼者ルートとしても認定。要予約。',
-        '熊野交通バスが那智・勝浦・新宮・本宮を結ぶ（K11・K21・K31系統）。熊野古道バスパス（2日・3日券）で乗り降り自由。',
+        '熊野交通バスが那智・勝浦・新宮・本宮を結ぶ路線を運行。熊野古道バスパスも利用可能（最新の系統・料金は kumanokotsu.co.jp 参照）。',
         '紀伊田辺・新宮・紀伊勝浦駅でタクシー利用可 — 車道部分のスキップに便利。',
       ],
     },
@@ -166,7 +166,7 @@ const kumano: Record<Locale, AccessInfo> = {
       items: [
         '龍神巴士（田邊 → 瀧尻 → 熊野本宮大社）：中邊路主要交通方式，每日約 5 個往返班次。',
         '熊野川川舟（本宮 → 新宮・速玉大社）：傳統 90 分鐘川舟遊。亦為雙朝聖者認定路段。需預約。',
-        '熊野交通巴士連接那智・勝浦・新宮・本宮（K11、K21、K31 路線）。可購買熊野古道巴士券（2 日・3 日券）無限次搭乘。',
+        '熊野交通營運連接那智・勝浦・新宮・本宮的巴士路線，通常有熊野古道多日巴士券可購買（最新路線與票價請至 kumanokotsu.co.jp 確認）。',
         '紀伊田邊・新宮・紀伊勝浦站可搭計程車 — 跳過車道路段時方便。',
       ],
     },
@@ -188,7 +188,7 @@ const kumano: Record<Locale, AccessInfo> = {
       items: [
         'Autobús Ryujin (Tanabe → Takijiri → Kumano Hongu Taisha): acceso principal para el Nakahechi, ~5 ida y vuelta al día.',
         'Barco del río Kumano (Hongu → Shingu / Hayatama Taisha): paseo tradicional de 90 minutos, válido para la ruta Dual Pilgrim. Reserva obligatoria.',
-        'Autobús Kumano Kotsu conecta Nachi, Katsuura, Shingu y Hongu (líneas K11, K21, K31). Compra el Kumano Kodo Bus Pass (2 o 3 días) para viajes ilimitados.',
+        'Kumano Kotsu opera líneas de autobús que conectan Nachi, Katsuura, Shingu y Hongu. Suele haber un bono Kumano Kodo de varios días disponible — consulta rutas y precios actualizados en kumanokotsu.co.jp.',
         'Taxis disponibles en las estaciones Kii-Tanabe, Shingu y Kii-Katsuura — útiles para saltar tramos de carretera.',
       ],
     },
