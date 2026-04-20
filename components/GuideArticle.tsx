@@ -1,20 +1,15 @@
 import { AppStoreBadge } from '@/components/AppStoreBadge'
 import { JsonLd } from '@/components/JsonLd'
-import { RouteCard } from '@/components/RouteCard'
 import { getDict, localePath, type Locale } from '@/lib/i18n'
 import type { GuideContent } from '@/lib/guide-content'
-import type { RouteData } from '@/lib/data/routes'
 
 export function GuideArticle({
   locale,
   content,
-  slug,
-  featuredRoutes = [],
 }: {
   locale: Locale
   content: GuideContent
-  slug: string
-  featuredRoutes?: RouteData[]
+  slug?: string
 }) {
   const dict = getDict(locale)
 
@@ -40,7 +35,7 @@ export function GuideArticle({
     <>
       <JsonLd data={faqLd} />
       <JsonLd data={articleLd} />
-      <article className="max-w-4xl mx-auto px-4 py-12">
+      <article className="max-w-3xl mx-auto px-4 py-12">
         <nav className="text-sm text-stone-400 mb-6">
           <a href={localePath(locale, '/')} className="hover:text-forest">{dict.route.breadcrumbHome}</a>{' / '}
           <a href={localePath(locale, '/guide')} className="hover:text-forest">{dict.nav.guide}</a>{' / '}
@@ -55,14 +50,6 @@ export function GuideArticle({
             <p key={i} className="text-stone-600 leading-relaxed">{para}</p>
           ))}
         </section>
-
-        {featuredRoutes.length > 0 ? (
-          <section className="mb-10">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              {featuredRoutes.map(r => <RouteCard key={r.slug} route={r} locale={locale} />)}
-            </div>
-          </section>
-        ) : null}
 
         <section className="mb-10">
           <h2 className="text-2xl font-bold text-ink mb-6">{dict.home.faqTitle}</h2>

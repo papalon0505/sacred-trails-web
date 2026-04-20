@@ -1,12 +1,8 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { routes, getRouteBySlug } from '@/lib/data/routes'
-import { getStampWaypointsForRoute } from '@/lib/data/waypoints'
-import { getPOIsForRoute } from '@/lib/data/pois'
 import { AppStoreBadge } from '@/components/AppStoreBadge'
-import { WaypointCard } from '@/components/WaypointCard'
 import { JsonLd } from '@/components/JsonLd'
-import { getAccessInfo } from '@/lib/route-access'
 
 export function generateStaticParams() {
   return routes.map(r => ({ slug: r.slug }))
@@ -26,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const title = TITLE_OVERRIDES[slug] ?? `${name} Guide: ${route.totalDistanceKm}km Pilgrimage Route`
   return {
     title,
-    description: route.description.en?.slice(0, 155) ?? `Complete guide to the ${name}: distance, stages, waypoints, and practical info.`,
+    description: `${name}: ${route.totalDistanceKm}km pilgrimage route from ${route.startPoint} to ${route.endPoint}, typically walked in ${route.averageDays} days. Stage-by-stage offline navigation available in Sacred Trails.`,
     alternates: {
       canonical: `https://sacredtrails.evelyn-ai.com/routes/${slug}`,
       languages: {
@@ -46,22 +42,13 @@ const DIFFICULTY_LABELS: Record<string, string> = {
   very_challenging: 'Very Challenging',
 }
 
-const OFFICIAL_LINKS: Record<string, { url: string; label: string }> = {
-  camino: { url: 'https://oficinadelperegrino.com/en/', label: 'Oficina del Peregrino' },
-  kumano: { url: 'https://www.kumano-travel.com/en', label: 'Kumano Travel (Official)' },
-  shikoku: { url: 'https://88shikokuhenro.jp/en/', label: 'Shikoku 88 Official' },
-  saigoku: { url: 'https://www.saikoku33.gr.jp/', label: 'Saigoku 33 Official' },
-}
-
 export default async function RouteDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
   const route = getRouteBySlug(slug)
   if (!route) notFound()
 
-  const waypoints = getStampWaypointsForRoute(slug, 5)
-  const pois = getPOIsForRoute(slug, 4)
+  const name = route.name.en ?? slug
   const relatedRoutes = routes.filter(r => r.system === route.system && r.slug !== slug).slice(0, 3)
-  const official = OFFICIAL_LINKS[route.system]
 
   const breadcrumbLd = {
     '@context': 'https://schema.org',
@@ -69,27 +56,25 @@ export default async function RouteDetailPage({ params }: { params: Promise<{ sl
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://sacredtrails.evelyn-ai.com' },
       { '@type': 'ListItem', position: 2, name: 'Routes', item: 'https://sacredtrails.evelyn-ai.com/routes' },
-      { '@type': 'ListItem', position: 3, name: route.name.en, item: `https://sacredtrails.evelyn-ai.com/routes/${slug}` },
+      { '@type': 'ListItem', position: 3, name, item: `https://sacredtrails.evelyn-ai.com/routes/${slug}` },
     ],
-  } as Record<string, unknown>
+  }
 
   return (
     <>
       <JsonLd data={breadcrumbLd} />
-      <div className="max-w-4xl mx-auto px-4 py-12">
-
+      <div className="max-w-3xl mx-auto px-4 py-12">
         <nav className="text-sm text-stone-400 mb-6">
           <a href="/" className="hover:text-forest">Home</a>{' / '}
           <a href="/routes" className="hover:text-forest">Routes</a>{' / '}
-          <span className="text-stone-600">{route.name.en}</span>
+          <span className="text-stone-600">{name}</span>
         </nav>
 
-        <h1 className="text-4xl font-bold text-ink mb-3">{route.name.en}</h1>
-        {route.name.ja ? (
-          <p className="text-stone-500 text-lg mb-6">{route.name.ja}</p>
-        ) : null}
+        <h1 className="text-4xl font-bold text-ink mb-3">{name}</h1>
+        <p className="text-stone-500 text-lg mb-6">
+          {route.totalDistanceKm}km pilgrimage route in {route.country}
+        </p>
 
-        {/* Stats bar */}
         <div className="flex flex-wrap gap-6 bg-white rounded-2xl p-6 border border-stone-200 mb-8">
           <div>
             <p className="text-xs text-stone-400 uppercase tracking-wide">Distance</p>
@@ -113,82 +98,13 @@ export default async function RouteDetailPage({ params }: { params: Promise<{ sl
           </div>
         </div>
 
-        {route.description.en ? (
-          <section className="mb-10">
-            <h2 className="text-2xl font-bold text-ink mb-4">About the Route</h2>
-            <p className="text-stone-600 leading-relaxed text-base">{route.description.en}</p>
-          </section>
-        ) : null}
-
-        {waypoints.length > 0 ? (
-          <section className="mb-10">
-            <h2 className="text-2xl font-bold text-ink mb-6">Key Waypoints</h2>
-            <div className="space-y-6">
-              {waypoints.map((w, i) => <WaypointCard key={i} waypoint={w} />)}
-            </div>
-          </section>
-        ) : null}
-
-        {pois.length > 0 ? (
-          <section className="mb-10">
-            <h2 className="text-2xl font-bold text-ink mb-4">Points of Interest</h2>
-            <div className="grid grid-cols-2 gap-4">
-              {pois.map((poi, i) => (
-                <div key={i} className="bg-white rounded-xl p-4 border border-stone-200">
-                  <p className="font-semibold text-forest text-sm">{poi.name.en ?? Object.values(poi.name)[0]}</p>
-                  <p className="text-xs text-stone-400 capitalize mt-1">{poi.type.replace(/([A-Z])/g, ' $1').trim()}</p>
-                  {poi.details.en ? (
-                    <p className="text-xs text-stone-500 mt-2">{poi.details.en}</p>
-                  ) : null}
-                </div>
-              ))}
-            </div>
-          </section>
-        ) : null}
-
-        {/* App CTA */}
         <section className="bg-forest text-white rounded-2xl p-8 mb-10 text-center">
-          <h2 className="text-2xl font-bold mb-3">Navigate the {route.name.en} Offline</h2>
-          <p className="text-green-100 mb-6">Download Sacred Trails and walk with full route data — no internet required.</p>
+          <h2 className="text-2xl font-bold mb-3">Navigate the {name} Offline</h2>
+          <p className="text-green-100 mb-6">
+            Stage-by-stage navigation, waypoint history, and lodging — all offline in Sacred Trails.
+          </p>
           <AppStoreBadge className="mx-auto" />
         </section>
-
-        {(() => {
-          const access = getAccessInfo(route.system, 'en')
-          return (
-            <section className="mb-10">
-              <h2 className="text-2xl font-bold text-ink mb-6">{access.heading}</h2>
-              <p className="text-sm text-stone-500 mb-6">
-                <a href={access.officialMap.url} target="_blank" rel="noopener noreferrer" className="text-forest hover:underline">
-                  📍 {access.officialMap.label} →
-                </a>
-              </p>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-white rounded-xl p-5 border border-stone-200">
-                  <h3 className="font-semibold text-forest mb-3">{access.gettingThere.title}</h3>
-                  <ul className="space-y-2 text-sm text-stone-600 leading-relaxed list-disc list-inside">
-                    {access.gettingThere.items.map((item, i) => <li key={i}>{item}</li>)}
-                  </ul>
-                </div>
-                <div className="bg-white rounded-xl p-5 border border-stone-200">
-                  <h3 className="font-semibold text-forest mb-3">🚌 {access.localTransport.title}</h3>
-                  <ul className="space-y-2 text-sm text-stone-600 leading-relaxed list-disc list-inside">
-                    {access.localTransport.items.map((item, i) => <li key={i}>{item}</li>)}
-                  </ul>
-                </div>
-              </div>
-            </section>
-          )
-        })()}
-
-        {official ? (
-          <p className="text-sm text-stone-400 mb-10">
-            Official resource:{' '}
-            <a href={official.url} target="_blank" rel="noopener noreferrer" className="text-forest hover:underline">
-              {official.label}
-            </a>
-          </p>
-        ) : null}
 
         {relatedRoutes.length > 0 ? (
           <section>
