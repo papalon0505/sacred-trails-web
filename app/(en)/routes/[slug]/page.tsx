@@ -150,7 +150,7 @@ export default async function RouteDetailPage({ params }: { params: Promise<{ sl
         <section className="bg-forest text-white rounded-2xl p-8 mb-10 text-center">
           <h2 className="text-2xl font-bold mb-3">Navigate the {route.name.en} Offline</h2>
           <p className="text-green-100 mb-6">Download Sacred Trails and walk with full route data — no internet required.</p>
-          <AppStoreBadge className="mx-auto bg-white text-forest hover:bg-green-50" />
+          <AppStoreBadge className="mx-auto" />
         </section>
 
         {(() => {

@@ -21,7 +21,7 @@ const camino: Record<Locale, GuideContent> = {
     metaDesc: 'Complete guide to the Camino de Santiago. 12 routes from the Francés to the Primitivo. Distances, difficulty, stages, and how to prepare.',
     intro: [
       "The Camino de Santiago — the Way of Saint James — is one of the great pilgrimage journeys of medieval Christian Europe and today one of the most-walked long-distance trails on Earth. Routes converge from across the continent toward a single destination: the Cathedral of Santiago de Compostela in Galicia, where the tomb of the apostle Saint James has drawn pilgrims since the 9th century.",
-      "In 2025, more than 530,000 pilgrims received the Compostela certificate — a record number. The UNESCO World Heritage–listed network of trails is alive with centuries of history, community, and personal transformation.",
+      "In 2024, 499,239 pilgrims received the Compostela certificate — a historic high, per the Archdiocese of Santiago de Compostela's Pilgrim Reception Office. The UNESCO World Heritage–listed network of trails is alive with centuries of history, community, and personal transformation.",
       "What makes the Camino unique is the living culture of the pilgrim community: the shared greeting of Buen Camino, the camaraderie of the albergues, and the multinational fellowship that forms and dissolves with each day's walking.",
     ],
     faq: [
@@ -40,7 +40,7 @@ const camino: Record<Locale, GuideContent> = {
     metaDesc: 'カミーノ・デ・サンティアゴの完全ガイド。フランス人の道からプリミティボまで12ルート。距離・難易度・ステージ・準備方法。',
     intro: [
       "カミーノ・デ・サンティアゴ（聖ヤコブの道）は、中世ヨーロッパにおける偉大な巡礼路の一つであり、今日では世界で最も多く歩かれるロングトレイルの一つです。ヨーロッパ各地から複数のルートがスペイン北西部ガリシアのサンティアゴ・デ・コンポステーラ大聖堂を目指し、ここには9世紀から使徒聖ヤコブの墓があると伝えられています。",
-      "2025年には53万人以上の巡礼者がコンポステーラ認定証を受け取り、過去最多を記録。UNESCO世界遺産にも登録されたこの巡礼ネットワークは、何世紀にもわたる歴史・コミュニティ・自己変革が今なお息づく道です。",
+      "2024年には499,239人の巡礼者がコンポステーラ認定証を受け取り、歴代最多を記録しました（サンティアゴ・デ・コンポステーラ大司教区巡礼事務所発表）。UNESCO世界遺産に登録されたこの巡礼ネットワークは、何世紀にもわたる歴史・コミュニティ・自己変革が今なお息づく道です。",
       "カミーノが他のロングトレイルと一線を画すのは、巡礼者コミュニティの生きた文化です。「ブエン・カミーノ（良き道を）」という挨拶、アルベルゲ（巡礼宿）での交流、毎日形成され解散する多国籍の仲間たち。",
     ],
     faq: [
@@ -59,7 +59,7 @@ const camino: Record<Locale, GuideContent> = {
     metaDesc: '聖雅各之路（Camino de Santiago）完整攻略。法國之路到原始之路 12 條路線，距離、難度、階段、準備方法。',
     intro: [
       "聖雅各之路（Camino de Santiago）是中世紀基督教歐洲最偉大的朝聖之路之一，今日更是全球最多人走的長距離步道。各條路線從歐洲各地匯聚，最終抵達西班牙西北加利西亞的聖地亞哥德孔波斯特拉大教堂——那裡自九世紀起便傳說葬有聖雅各使徒的遺骨。",
-      "2025 年有超過 53 萬名朝聖者取得 Compostela 證書，創下歷史新高。這條被聯合國教科文組織列為世界遺產的朝聖網絡，至今仍承載著數個世紀的歷史、社群與個人轉化。",
+      "2024 年有 499,239 名朝聖者取得 Compostela 證書，創下歷史新高（資料來源：聖地亞哥德孔波斯特拉總主教區朝聖者事務所）。這條被聯合國教科文組織列為世界遺產的朝聖網絡，至今仍承載著數個世紀的歷史、社群與個人轉化。",
       "讓 Camino 有別於其他長程步道的，是朝聖者社群的活文化：一句「Buen Camino（一路順風）」的問候、朝聖者庇護所（albergue）裡的情誼、每天形成又解散的多國籍同伴關係。",
     ],
     faq: [
@@ -78,7 +78,7 @@ const camino: Record<Locale, GuideContent> = {
     metaDesc: 'Guía completa del Camino de Santiago. 12 rutas desde el Francés hasta el Primitivo. Distancias, dificultad, etapas y cómo prepararse.',
     intro: [
       "El Camino de Santiago es una de las grandes peregrinaciones de la Europa cristiana medieval y hoy una de las rutas de larga distancia más caminadas del mundo. Rutas convergen desde toda Europa hacia un único destino: la Catedral de Santiago de Compostela en Galicia, donde la tumba del apóstol Santiago atrae peregrinos desde el siglo IX.",
-      "En 2025, más de 530.000 peregrinos recibieron la Compostela — una cifra récord. La red de caminos declarada Patrimonio de la Humanidad por la UNESCO sigue viva con siglos de historia, comunidad y transformación personal.",
+      "En 2024, 499.239 peregrinos recibieron la Compostela — un máximo histórico, según la Oficina de Acogida al Peregrino de la Archidiócesis de Santiago de Compostela. La red de caminos declarada Patrimonio de la Humanidad por la UNESCO sigue viva con siglos de historia, comunidad y transformación personal.",
       "Lo que hace único al Camino es la cultura viva de la comunidad peregrina: el saludo compartido de Buen Camino, la camaradería de los albergues y la compañía multinacional que se forma y se disuelve cada jornada.",
     ],
     faq: [

@@ -19,6 +19,7 @@ export interface DualPilgrimContent {
   faq: { q: string; a: string }[]
   ctaTitle: string
   ctaDesc: string
+  disclaimer: string
 }
 
 const en: DualPilgrimContent = {
@@ -27,7 +28,7 @@ const en: DualPilgrimContent = {
   title: 'Dual Pilgrim — The World\'s Only UNESCO Pilgrim Credential',
   subtitle: 'Complete both the Camino de Santiago and Kumano Kodo to earn Dual Pilgrim status.',
   intro: [
-    "The Dual Pilgrim programme (Twin Pilgrim / デュアル巡礼者) recognizes pilgrims who have walked both of the world's UNESCO World Heritage pilgrimage routes: the Camino de Santiago in Spain and the Kumano Kodo in Japan. Launched in 2015 by the Tanabe City Kumano Tourism Bureau and the Galician government's Santiago pilgrim office, it remains the only cross-continental pilgrim credential of its kind.",
+    "The Dual Pilgrim programme (Twin Pilgrim / デュアル巡礼者) recognizes pilgrims who have walked both of the world's UNESCO World Heritage pilgrimage routes: the Camino de Santiago in Spain and the Kumano Kodo in Japan. It is a joint initiative of the Tanabe City Kumano Tourism Bureau and the Archdiocese of Santiago de Compostela's Pilgrim Reception Office, and remains the only cross-continental pilgrim credential of its kind.",
     "Becoming a Dual Pilgrim is not about distance — it is about walking both traditions, visiting both cultural worlds, and understanding what humans share across a thousand years of pilgrimage practice. The credential is free. Only those who have completed both routes according to the rules below qualify.",
   ],
   caminoHeading: 'Camino de Santiago — Qualifying Conditions',
@@ -73,6 +74,7 @@ const en: DualPilgrimContent = {
   ],
   ctaTitle: 'Plan Your Dual Pilgrim Journey Offline',
   ctaDesc: 'Sacred Trails covers every Camino route and all 4 Kumano Kodo routes — all offline, in 10 languages.',
+  disclaimer: 'Sacred Trails is an independent travel app and is not affiliated with, endorsed by, or a partner of the Dual Pilgrim programme, the Tanabe City Kumano Tourism Bureau, or the Archdiocese of Santiago de Compostela. Dual Pilgrim registration must be completed in person at the offices listed above. Information on this page is provided for general reference — always verify requirements with the official bodies before travelling.',
 }
 
 const ja: DualPilgrimContent = {
@@ -81,7 +83,7 @@ const ja: DualPilgrimContent = {
   title: 'デュアル巡礼者（Dual Pilgrim）— 世界で唯一の二重巡礼認定',
   subtitle: 'カミーノ・デ・サンティアゴと熊野古道の両方を踏破した者だけに贈られる称号。',
   intro: [
-    'デュアル巡礼者（Dual Pilgrim）プログラムは、世界で唯一UNESCO世界遺産に認定された2つの巡礼路——スペインのカミーノ・デ・サンティアゴと日本の熊野古道——の両方を歩いた巡礼者を讃える国際認定制度です。2015年に田辺市熊野ツーリズムビューローとスペイン・ガリシア州の巡礼事務所が共同で創設し、現在も世界で唯一の「大陸横断型」巡礼者称号として運用されています。',
+    'デュアル巡礼者（Dual Pilgrim）プログラムは、世界で唯一UNESCO世界遺産に認定された2つの巡礼路——スペインのカミーノ・デ・サンティアゴと日本の熊野古道——の両方を歩いた巡礼者を讃える国際認定制度です。田辺市熊野ツーリズムビューローとサンティアゴ・デ・コンポステーラ大司教区巡礼事務所（Oficina del Peregrino）の共同事業として運営されており、現在も世界で唯一の「大陸横断型」巡礼者称号です。',
     'デュアル巡礼者になるのは距離の問題ではなく、東西二つの巡礼文化を実際に足で歩き、千年の巡礼実践が人類に何を語りかけるのかを体感する旅です。認定費用は無料。ただし下記の条件を満たした者のみが対象となります。',
   ],
   caminoHeading: 'カミーノ・デ・サンティアゴの資格条件',
@@ -127,6 +129,7 @@ const ja: DualPilgrimContent = {
   ],
   ctaTitle: 'デュアル巡礼の旅をオフラインで計画',
   ctaDesc: 'Sacred Trailsはカミーノ全ルートと熊野古道4ルート全てに対応。10言語、完全オフライン。',
+  disclaimer: 'Sacred Trailsは独立した旅行アプリであり、デュアル巡礼者プログラム・田辺市熊野ツーリズムビューロー・サンティアゴ・デ・コンポステーラ大司教区とは一切の提携・後援関係にありません。デュアル巡礼者認定の申請は上記の窓口で直接行う必要があります。本ページの情報は一般参考用です。渡航前に必ず公式情報で最新の要件をご確認ください。',
 }
 
 const zhTW: DualPilgrimContent = {
@@ -135,7 +138,7 @@ const zhTW: DualPilgrimContent = {
   title: '雙朝聖者（Dual Pilgrim）— 全世界唯一的雙重朝聖認證',
   subtitle: '完成聖雅各之路與熊野古道才能獲得的跨洲朝聖榮譽。',
   intro: [
-    '雙朝聖者（Dual Pilgrim）認證表彰走完世界上唯二被 UNESCO 列為世界遺產的朝聖路線——西班牙的聖雅各之路（Camino de Santiago）和日本的熊野古道——的朝聖者。由田邊市熊野觀光局與西班牙加利西亞州聖地亞哥朝聖者事務所於 2015 年共同創立，至今仍是全球唯一的跨大陸朝聖認證。',
+    '雙朝聖者（Dual Pilgrim）認證表彰走完世界上唯二被 UNESCO 列為世界遺產的朝聖路線——西班牙的聖雅各之路（Camino de Santiago）和日本的熊野古道——的朝聖者。本計畫由田邊市熊野觀光局與聖地亞哥德孔波斯特拉總主教區朝聖者事務所（Oficina del Peregrino）共同推動，至今仍是全球唯一的跨大陸朝聖認證。',
     '成為雙朝聖者不是比距離，而是親自走過東西方兩種朝聖文化，體驗人類千年朝聖實踐所共通的精神。認證完全免費，但必須符合以下所有條件。',
   ],
   caminoHeading: '聖雅各之路資格條件',
@@ -181,6 +184,7 @@ const zhTW: DualPilgrimContent = {
   ],
   ctaTitle: '離線規劃你的雙朝聖之旅',
   ctaDesc: 'Sacred Trails 收錄所有 Camino 路線和 4 條熊野古道路線，10 國語言、完全離線。',
+  disclaimer: 'Sacred Trails 是獨立開發的旅行應用程式，與雙朝聖者（Dual Pilgrim）計畫、田邊市熊野觀光局、聖地亞哥德孔波斯特拉總主教區均無合作、贊助或官方關係。雙朝聖者認證須親自前往上方所列窗口辦理。本頁資訊僅供一般參考，行前請務必以官方公告為準確認最新規定。',
 }
 
 const es: DualPilgrimContent = {
@@ -189,7 +193,7 @@ const es: DualPilgrimContent = {
   title: 'Dual Pilgrim — La única credencial peregrina UNESCO doble del mundo',
   subtitle: 'Completa tanto el Camino de Santiago como el Kumano Kodo para ser Dual Pilgrim.',
   intro: [
-    "El programa Dual Pilgrim reconoce a los peregrinos que han caminado las dos rutas de peregrinación declaradas Patrimonio de la Humanidad por la UNESCO: el Camino de Santiago en España y el Kumano Kodo en Japón. Creado en 2015 por la Oficina de Turismo de Kumano (Tanabe) y la Oficina del Peregrino de Santiago, sigue siendo la única credencial peregrina intercontinental del mundo.",
+    "El programa Dual Pilgrim reconoce a los peregrinos que han caminado las dos rutas de peregrinación declaradas Patrimonio de la Humanidad por la UNESCO: el Camino de Santiago en España y el Kumano Kodo en Japón. Es una iniciativa conjunta de la Oficina de Turismo de Kumano (Tanabe) y la Oficina de Acogida al Peregrino de la Archidiócesis de Santiago de Compostela, y sigue siendo la única credencial peregrina intercontinental del mundo.",
     "Ser Dual Pilgrim no va de distancia — va de caminar ambas tradiciones, visitar ambos mundos culturales y comprender lo que los seres humanos comparten tras mil años de práctica peregrina. La credencial es gratuita. Solo quienes completan ambas rutas según las reglas siguientes califican.",
   ],
   caminoHeading: 'Camino de Santiago — Condiciones',
@@ -235,6 +239,7 @@ const es: DualPilgrimContent = {
   ],
   ctaTitle: 'Planifica tu viaje Dual Pilgrim offline',
   ctaDesc: 'Sacred Trails cubre todas las rutas del Camino y las 4 rutas del Kumano Kodo — offline y en 10 idiomas.',
+  disclaimer: 'Sacred Trails es una aplicación de viajes independiente y no está afiliada, respaldada ni es socia del programa Dual Pilgrim, la Oficina de Turismo de Kumano (Tanabe) ni la Archidiócesis de Santiago de Compostela. El registro como Dual Pilgrim debe completarse en persona en las oficinas indicadas arriba. La información de esta página se ofrece a título general — verifica siempre los requisitos con los organismos oficiales antes de viajar.',
 }
 
 export const dualPilgrimContent: Record<Locale, DualPilgrimContent> = { en, ja, 'zh-TW': zhTW, es }

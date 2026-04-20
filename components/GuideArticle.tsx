@@ -79,7 +79,7 @@ export function GuideArticle({
         <div className="bg-forest text-white rounded-2xl p-8 text-center">
           <h2 className="text-2xl font-bold mb-3">{content.ctaTitle}</h2>
           <p className="text-green-100 mb-6">{content.ctaDesc}</p>
-          <AppStoreBadge className="mx-auto" />
+          <AppStoreBadge className="mx-auto" locale={locale} />
         </div>
       </article>
     </>

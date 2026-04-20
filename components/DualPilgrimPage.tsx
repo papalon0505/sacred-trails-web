@@ -117,8 +117,12 @@ export function DualPilgrimPage({ locale, content }: { locale: Locale; content: 
         <div className="bg-forest text-white rounded-2xl p-8 text-center">
           <h2 className="text-2xl font-bold mb-3">{content.ctaTitle}</h2>
           <p className="text-green-100 mb-6">{content.ctaDesc}</p>
-          <AppStoreBadge className="mx-auto" />
+          <AppStoreBadge className="mx-auto" locale={locale} />
         </div>
+
+        <p className="text-xs text-stone-400 leading-relaxed mt-10 pt-6 border-t border-stone-200">
+          {content.disclaimer}
+        </p>
       </article>
     </>
   )

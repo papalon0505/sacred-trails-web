@@ -70,7 +70,7 @@ export default async function LocaleHomePage({ params }: { params: Promise<{ loc
           <h1 className="text-4xl md:text-5xl font-bold text-ink leading-tight mb-5">{dict.home.heroTitle}</h1>
           <p className="text-lg text-stone-600 mb-8 leading-relaxed">{dict.home.heroDesc}</p>
           <div className="flex flex-wrap gap-4">
-            <AppStoreBadge />
+            <AppStoreBadge locale={l} />
             <a href={localePath(l, '/routes')} className="inline-flex items-center gap-2 border border-forest text-forest px-5 py-3 rounded-xl text-sm font-medium hover:bg-forest hover:text-white transition-colors">
               {dict.home.browseRoutes}
             </a>
@@ -142,7 +142,7 @@ export default async function LocaleHomePage({ params }: { params: Promise<{ loc
           ))}
         </div>
         <div className="mt-10 text-center">
-          <AppStoreBadge className="mx-auto" />
+          <AppStoreBadge className="mx-auto" locale={l} />
         </div>
       </section>
     </>
