@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next'
 import { routes } from '@/lib/data/routes'
+import { COMPARISON_SLUGS } from '@/lib/comparisons'
 import { ALL_LOCALES, BASE_URL, localePath } from '@/lib/i18n'
 
 const GUIDE_SLUGS = ['camino-de-santiago', 'kumano-kodo', 'shikoku-henro']
@@ -23,5 +24,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   entries.push({ url: `${BASE_URL}/privacy`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.3 })
   for (const g of GUIDE_SLUGS) entries.push(...localizedEntry(`/guide/${g}`, 0.9, 'monthly'))
   for (const r of routes) entries.push(...localizedEntry(`/routes/${r.slug}`, 0.8, 'monthly'))
+  for (const c of COMPARISON_SLUGS) entries.push(...localizedEntry(`/compare/${c}`, 0.85, 'monthly'))
   return entries
 }

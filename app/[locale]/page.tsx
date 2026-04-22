@@ -1,10 +1,28 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import { routes } from '@/lib/data/routes'
+import { waypointsByRoute } from '@/lib/data/waypoints'
 import { RouteCard } from '@/components/RouteCard'
 import { AppStoreBadge } from '@/components/AppStoreBadge'
 import { JsonLd } from '@/components/JsonLd'
-import { getDict, localePath, LOCALIZED, ALL_LOCALES, BASE_URL, type Locale } from '@/lib/i18n'
+import { getDict, localePath, pick, LOCALIZED, ALL_LOCALES, BASE_URL, type Locale } from '@/lib/i18n'
+
+const FEATURED_WAYPOINT_ROUTES = ['camino-frances', 'kumano-nakahechi', 'shikoku-henro']
+
+function pickFeaturedWaypoints(locale: Locale) {
+  const picks: { routeSlug: string; routeName: string; waypointName: string; story: string }[] = []
+  for (const routeSlug of FEATURED_WAYPOINT_ROUTES) {
+    const wps = waypointsByRoute[routeSlug]
+    if (!wps || wps.length === 0) continue
+    const r = routes.find(x => x.slug === routeSlug)
+    const routeName = r ? (pick(r.name, locale) || routeSlug) : routeSlug
+    const w = wps[0]
+    const story = pick(w.stampDescription, locale)
+    const waypointName = pick(w.name, locale)
+    if (story && waypointName) picks.push({ routeSlug, routeName, waypointName, story })
+  }
+  return picks
+}
 
 const SCREENSHOTS = [
   { src: '/screenshots/01-walk-offline.png' },
@@ -37,16 +55,25 @@ export default async function LocaleHomePage({ params }: { params: Promise<{ loc
   const dict = getDict(l)
   const caminoRoutes = routes.filter(r => r.system === 'camino')
   const japanRoutes = routes.filter(r => r.system !== 'camino')
+  const featuredWaypoints = pickFeaturedWaypoints(l)
 
   const appLd = {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
     name: 'Sacred Trails',
     applicationCategory: 'TravelApplication',
-    operatingSystem: 'iOS',
-    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+    applicationSubCategory: 'NavigationApplication',
+    operatingSystem: 'iOS 16.0+',
+    offers: {
+      '@type': 'Offer',
+      price: '2.99',
+      priceCurrency: 'USD',
+      availability: 'https://schema.org/InStock',
+      url: 'https://apps.apple.com/app/id6761192860',
+    },
     description: dict.home.metaDesc,
     url: `${BASE_URL}${localePath(l, '/')}`,
+    featureList: 'Offline navigation, 18 pilgrimage routes, 10 languages, stage-by-stage timeline, waypoints, lodging data, POI database',
   } as Record<string, unknown>
 
   const faqLd = {
@@ -128,6 +155,43 @@ export default async function LocaleHomePage({ params }: { params: Promise<{ loc
           {SCREENSHOTS.map(s => (
             <Image key={s.src} src={s.src} alt="Sacred Trails screenshot" width={220} height={476} className="rounded-2xl shadow-lg flex-shrink-0 snap-start" />
           ))}
+        </div>
+      </section>
+
+      {featuredWaypoints.length > 0 ? (
+        <section className="max-w-5xl mx-auto px-4 py-16">
+          <h2 className="text-3xl font-bold text-ink mb-3">{dict.home.waypointStoriesTitle}</h2>
+          <p className="text-stone-600 leading-relaxed mb-10 max-w-3xl">{dict.home.waypointStoriesSubtitle}</p>
+          <div className="grid md:grid-cols-3 gap-6">
+            {featuredWaypoints.map(fw => (
+              <a
+                key={fw.routeSlug}
+                href={localePath(l, `/routes/${fw.routeSlug}`)}
+                className="bg-parchment rounded-2xl p-6 hover:shadow-md transition-shadow block"
+              >
+                <p className="text-xs text-amber font-semibold uppercase tracking-wide mb-2">{fw.routeName}</p>
+                <h3 className="font-bold text-forest text-lg mb-3">{fw.waypointName}</h3>
+                <p className="text-sm text-stone-700 leading-relaxed">{fw.story}</p>
+              </a>
+            ))}
+          </div>
+          <p className="text-xs text-stone-400 italic mt-6 text-center">{dict.home.waypointStoriesMore}</p>
+        </section>
+      ) : null}
+
+      <section className="bg-parchment py-16">
+        <div className="max-w-3xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-ink mb-6">{dict.home.supportTitle}</h2>
+          <div className="space-y-4 text-stone-700 leading-relaxed mb-8">
+            {dict.home.supportBody.map((p, i) => <p key={i}>{p}</p>)}
+          </div>
+          <a
+            href="https://apps.apple.com/app/id6761192860"
+            className="inline-flex flex-col items-start gap-1 bg-forest text-white px-6 py-4 rounded-xl hover:bg-forest/90 transition-colors"
+          >
+            <span className="font-semibold">{dict.home.supportCtaLabel}</span>
+            <span className="text-green-100 text-xs">{dict.home.supportCtaSubLabel}</span>
+          </a>
         </div>
       </section>
 

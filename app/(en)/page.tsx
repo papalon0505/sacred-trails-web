@@ -1,13 +1,37 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import { routes } from '@/lib/data/routes'
+import { waypointsByRoute } from '@/lib/data/waypoints'
 import { RouteCard } from '@/components/RouteCard'
 import { AppStoreBadge } from '@/components/AppStoreBadge'
 import { JsonLd } from '@/components/JsonLd'
 
+const FEATURED_WAYPOINT_ROUTES = ['camino-frances', 'kumano-nakahechi', 'shikoku-henro']
+
+function pickFeaturedWaypointsEn() {
+  const picks: { routeSlug: string; routeName: string; waypointName: string; story: string }[] = []
+  for (const routeSlug of FEATURED_WAYPOINT_ROUTES) {
+    const wps = waypointsByRoute[routeSlug]
+    if (!wps || wps.length === 0) continue
+    const r = routes.find(x => x.slug === routeSlug)
+    const routeName = r?.name.en ?? routeSlug
+    const w = wps[0]
+    if (w.stampDescription?.en && w.name?.en) {
+      picks.push({ routeSlug, routeName, waypointName: w.name.en, story: w.stampDescription.en })
+    }
+  }
+  return picks
+}
+
+const SUPPORT_BODY = [
+  "Sacred Trails started with a simple frustration: phone-dependent pilgrim apps stop working when you lose signal in the mountains. We wanted something that walked with you, not one that needed constant Wi-Fi to stay useful.",
+  "So we spent months: mapping every stage, writing the story of every waypoint across 10 languages, verifying lodging, stamping practices, and the small practical details that make a difference on a hard afternoon. 18 routes. Thousands of waypoints. No ads, no subscription, no data collection.",
+  "If what we built helps your pilgrimage, the App Store price is how you can support the project. One $2.99 purchase unlocks everything, funds future routes, and tells us this matters. Either way — Buen Camino.",
+]
+
 export const metadata: Metadata = {
-  title: 'Sacred Trails — Camino de Santiago, Kumano Kodo & Shikoku Henro Offline Guide App',
-  description: 'Complete offline guide for 18 sacred pilgrimage trails. Camino de Santiago, Kumano Kodo, Shikoku Henro. Stage navigation, 10 languages, no internet required.',
+  title: 'Sacred Trails — 18 Pilgrimage Routes Offline · Camino · Kumano Kodo · Shikoku Henro · 10 Languages',
+  description: 'Complete offline guide for 18 sacred pilgrimage trails in 10 languages. One $2.99 purchase unlocks Camino de Santiago, Kumano Kodo, Shikoku Henro and Saigoku 33. Stage-by-stage navigation, no subscription, no internet required.',
   alternates: {
     canonical: 'https://sacredtrails.evelyn-ai.com',
     languages: {
@@ -22,23 +46,43 @@ export const metadata: Metadata = {
 const FAQ = [
   {
     q: 'Does Sacred Trails work offline?',
-    a: 'Yes. All route content — waypoints, stages, lodging, and POIs — is bundled in the app. No internet connection required on trail.',
+    a: 'Yes. All route content including waypoints, stages, lodging, and POIs is bundled in the app. No internet connection is required on the trail, and no map tiles need to be downloaded.',
   },
   {
-    q: 'Which routes are included?',
-    a: 'Sacred Trails covers 18 routes: 12 Camino de Santiago routes (Francés, Portugués, del Norte, Primitivo, Vía de la Plata, Inglés, and more), 4 Kumano Kodo routes, the Shikoku 88-Temple Henro, and the Saigoku 33 Kannon Pilgrimage.',
+    q: 'How many pilgrimage routes are included?',
+    a: 'Sacred Trails covers 18 routes: all 12 Camino de Santiago routes (Francés, Portugués, Norte, Primitivo, Inglés, del Sur, Vía de la Plata, Invierno, Sanabrés, Catalán, Levante, Aragonés), 4 Kumano Kodo routes (Nakahechi, Kohechi, Ohechi, Iseji), the Shikoku 88-Temple Henro, and the Saigoku 33 Kannon Pilgrimage.',
   },
   {
-    q: 'How much does the app cost?',
-    a: 'The app is free to download. Individual routes are unlocked for $4.99 each via in-app purchase.',
+    q: 'How much does Sacred Trails cost?',
+    a: 'Sacred Trails is a one-time $2.99 purchase on the App Store. That single price unlocks all 18 routes in all 10 languages. No subscription, no per-route fees, no hidden upgrades.',
   },
   {
-    q: 'What languages are supported?',
-    a: 'Sacred Trails is available in 10 languages: English, Japanese, Spanish, Traditional Chinese, Simplified Chinese, Korean, French, German, Portuguese, and Italian.',
+    q: 'Which languages are supported?',
+    a: 'Sacred Trails is fully localized in 10 languages: English, Japanese, Spanish, Traditional Chinese, Simplified Chinese, Korean, French, German, Portuguese, and Italian. Interface, route descriptions, waypoint names, and POI labels are all translated.',
   },
   {
-    q: 'Is there a map?',
-    a: "Sacred Trails uses a Stage Timeline UX rather than a traditional map. Each route is broken into clearly defined stages with distances, elevations, lodging, and key waypoints — so you always know where you are and what's ahead.",
+    q: 'Do I need a GPS signal or cellular data?',
+    a: 'Neither. The stage timeline does not depend on GPS or network. You read the next stage, landmarks, and lodging from the bundled data even in deep mountain sections with zero signal.',
+  },
+  {
+    q: 'Is there a traditional map view?',
+    a: "Sacred Trails uses a Stage Timeline rather than a scroll-and-pan map. Each route is broken into clearly defined stages with distances, elevations, cumulative mileage, lodging clusters, and key waypoints — the information pilgrims actually use day to day.",
+  },
+  {
+    q: 'Can I walk several routes on a single purchase?',
+    a: 'Yes. The $2.99 price includes every route forever. Many pilgrims walk the Camino Francés one year and the Kumano Kodo the next; Sacred Trails is built for exactly that kind of multi-route pilgrim.',
+  },
+  {
+    q: 'How often is content updated?',
+    a: 'Route data is reviewed regularly and shipped through standard App Store updates. Waypoint corrections, lodging changes, and new POIs are rolled into app updates at no extra cost.',
+  },
+  {
+    q: 'Does it work on iPad?',
+    a: 'Yes. Sacred Trails runs on iPhone and iPad with iOS 16.0 or later. The stage timeline adapts to larger screens with multi-column layouts.',
+  },
+  {
+    q: 'Is there an Android version?',
+    a: 'Sacred Trails is iOS-only at launch. An Android build is on the roadmap and will be announced on this site.',
   },
 ]
 
@@ -68,10 +112,18 @@ const appLdJson = {
   '@type': 'SoftwareApplication',
   name: 'Sacred Trails',
   applicationCategory: 'TravelApplication',
-  operatingSystem: 'iOS',
-  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-  description: 'Offline guide for 18 pilgrimage routes: Camino de Santiago, Kumano Kodo, Shikoku Henro.',
+  applicationSubCategory: 'NavigationApplication',
+  operatingSystem: 'iOS 16.0+',
+  offers: {
+    '@type': 'Offer',
+    price: '2.99',
+    priceCurrency: 'USD',
+    availability: 'https://schema.org/InStock',
+    url: 'https://apps.apple.com/app/id6761192860',
+  },
+  description: 'Offline guide for 18 pilgrimage routes in 10 languages: Camino de Santiago, Kumano Kodo, Shikoku Henro, Saigoku 33 Kannon. One-time $2.99 purchase.',
   url: 'https://sacredtrails.evelyn-ai.com',
+  featureList: 'Offline navigation, 18 pilgrimage routes, 10 languages, stage-by-stage timeline, waypoints, lodging data, POI database',
 } as Record<string, unknown>
 
 const faqLdJson = {
@@ -87,6 +139,7 @@ const faqLdJson = {
 export default function HomePage() {
   const caminoRoutes = routes.filter(r => r.system === 'camino')
   const japanRoutes = routes.filter(r => r.system !== 'camino')
+  const featuredWaypoints = pickFeaturedWaypointsEn()
 
   return (
     <>
@@ -101,8 +154,9 @@ export default function HomePage() {
             Your Offline Guide to the World&apos;s Sacred Trails
           </h1>
           <p className="text-lg text-stone-600 mb-8 leading-relaxed">
-            Walk the Camino de Santiago, Kumano Kodo, or Shikoku Henro with confidence.
-            Stage-by-stage navigation, waypoints, and lodging — no internet required.
+            Eighteen pilgrimage routes, ten languages, and the story behind every waypoint,
+            carefully written and verified. Stage-by-stage offline navigation that works in the
+            mountains, with no internet required.
           </p>
           <div className="flex flex-wrap gap-4">
             <AppStoreBadge />
@@ -180,6 +234,50 @@ export default function HomePage() {
               className="rounded-2xl shadow-lg flex-shrink-0 snap-start"
             />
           ))}
+        </div>
+      </section>
+
+      {/* Waypoint Stories — surfacing the app's rich prose */}
+      {featuredWaypoints.length > 0 ? (
+        <section className="max-w-5xl mx-auto px-4 py-16">
+          <h2 className="text-3xl font-bold text-ink mb-3">Every stop has a story</h2>
+          <p className="text-stone-600 leading-relaxed mb-10 max-w-3xl">
+            We spent months writing the history behind each waypoint. Not just a dot on a timeline, but nine centuries of
+            pilgrims, emperors, and stonecutters who walked the same path. Here&apos;s a taste.
+          </p>
+          <div className="grid md:grid-cols-3 gap-6">
+            {featuredWaypoints.map(fw => (
+              <a
+                key={fw.routeSlug}
+                href={`/routes/${fw.routeSlug}`}
+                className="bg-parchment rounded-2xl p-6 hover:shadow-md transition-shadow block"
+              >
+                <p className="text-xs text-amber font-semibold uppercase tracking-wide mb-2">{fw.routeName}</p>
+                <h3 className="font-bold text-forest text-lg mb-3">{fw.waypointName}</h3>
+                <p className="text-sm text-stone-700 leading-relaxed">{fw.story}</p>
+              </a>
+            ))}
+          </div>
+          <p className="text-xs text-stone-400 italic mt-6 text-center">
+            The full prose for every waypoint lives inside the app.
+          </p>
+        </section>
+      ) : null}
+
+      {/* Support / labor of love positioning */}
+      <section className="bg-parchment py-16">
+        <div className="max-w-3xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-ink mb-6">A quiet labor of love for fellow pilgrims</h2>
+          <div className="space-y-4 text-stone-700 leading-relaxed mb-8">
+            {SUPPORT_BODY.map((p, i) => <p key={i}>{p}</p>)}
+          </div>
+          <a
+            href="https://apps.apple.com/app/id6761192860"
+            className="inline-flex flex-col items-start gap-1 bg-forest text-white px-6 py-4 rounded-xl hover:bg-forest/90 transition-colors"
+          >
+            <span className="font-semibold">Support us · $2.99 on the App Store</span>
+            <span className="text-green-100 text-xs">One-time, all 18 routes, all 10 languages.</span>
+          </a>
         </div>
       </section>
 
