@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import { certifications, certificationsBySystem } from '@/lib/data/certifications'
 import { AppStoreBadge } from '@/components/AppStoreBadge'
 import { JsonLd } from '@/components/JsonLd'
@@ -42,6 +43,16 @@ export default function CertificationsPage() {
           acceptedAnswer: { '@type': 'Answer', text: f.answer },
         })),
       }} />
+
+      <div className="relative w-full h-52 md:h-72 rounded-2xl overflow-hidden mb-10">
+        <Image
+          src="/certifications/hero.jpg"
+          alt="Pilgrim credential stamps — Camino and Japanese temple stamp book"
+          fill
+          className="object-cover"
+          priority
+        />
+      </div>
 
       <h1 className="text-4xl font-bold text-ink mb-3">{t.title}</h1>
       <p className="text-stone-500 mb-12 text-lg max-w-2xl">{t.subtitle}</p>

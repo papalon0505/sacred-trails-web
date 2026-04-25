@@ -198,6 +198,18 @@ export default function HomePage() {
       <JsonLd data={appLdJson} />
       <JsonLd data={faqLdJson} />
 
+      {/* Hero Image */}
+      <div className="relative w-full h-64 md:h-[420px] overflow-hidden">
+        <Image
+          src="/hero.jpg"
+          alt="A pilgrim walking a sacred mountain path at golden hour"
+          fill
+          className="object-cover object-center"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-parchment" />
+      </div>
+
       {/* Hero */}
       <section className="max-w-6xl mx-auto px-4 pt-16 pb-20 flex flex-col md:flex-row items-center gap-12">
         <div className="flex-1">
