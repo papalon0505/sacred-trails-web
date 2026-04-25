@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+import Image from 'next/image'
 import { routes, getRouteBySlug } from '@/lib/data/routes'
 import { waypointsByRoute } from '@/lib/data/waypoints'
 import { poisByRoute } from '@/lib/data/pois'
@@ -104,6 +105,17 @@ export default async function LocaleRouteDetailPage({ params }: { params: Promis
           <a href={localePath(l, '/routes')} className="hover:text-forest">{dict.route.breadcrumbRoutes}</a>{' / '}
           <span className="text-stone-600">{name}</span>
         </nav>
+
+        {/* Route Hero */}
+        <div className="relative w-full h-52 md:h-72 rounded-2xl overflow-hidden mb-8">
+          <Image
+            src={`/routes/${slug}/hero.jpg`}
+            alt={`${name} pilgrimage route`}
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
 
         <h1 className="text-4xl font-bold text-ink mb-3">{name}</h1>
         {route.name.en && route.name.en !== name ? (
