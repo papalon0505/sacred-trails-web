@@ -1,0 +1,131 @@
+# Lodging data sources per route
+# Used by update-lodging.py to fetch and diff albergue data
+# source: gronze  → scrape Gronze.com stage pages
+# source: kumano  → scrape kumano-travel.com
+# source: manual  → no auto-fetch, update manually
+
+routes:
+  camino-frances:
+    source: gronze
+    last_verified: "2026-04-25"
+    gronze_stages:
+      - https://www.gronze.com/etapa/roncesvalles-orreaga/zubiri
+      - https://www.gronze.com/etapa/zubiri/pamplona-iruna
+      - https://www.gronze.com/etapa/logro%C3%B1o/n%C3%A1jera
+      - https://www.gronze.com/etapa/burgos/hornillos-camino
+      - https://www.gronze.com/etapa/mansilla-mulas/le%C3%B3n
+      - https://www.gronze.com/etapa/ponferrada/villafranca-bierzo
+      - https://www.gronze.com/etapa/villafranca-bierzo/cebreiro
+      - https://www.gronze.com/etapa/sarria/portomarin
+
+  camino-portugues:
+    source: gronze
+    last_verified: null
+    gronze_stages:
+      - https://www.gronze.com/etapa/porto/barcelos
+      - https://www.gronze.com/etapa/barcelos/ponte-lima
+      - https://www.gronze.com/etapa/tui/redondela
+      - https://www.gronze.com/etapa/pontevedra/caldas-reis
+      - https://www.gronze.com/etapa/padron/santiago-compostela
+
+  camino-del-norte:
+    source: gronze
+    last_verified: null
+    gronze_stages:
+      - https://www.gronze.com/etapa/irun/san-sebastian-donostia
+      - https://www.gronze.com/etapa/san-sebastian-donostia/zarautz
+      - https://www.gronze.com/etapa/bilbao/pobeña
+      - https://www.gronze.com/etapa/santander/santillana-mar
+      - https://www.gronze.com/etapa/llanes/ribadesella
+      - https://www.gronze.com/etapa/ribadeo/gondan
+
+  camino-primitivo:
+    source: gronze
+    last_verified: null
+    gronze_stages:
+      - https://www.gronze.com/etapa/oviedo/grado
+      - https://www.gronze.com/etapa/grado/salas
+      - https://www.gronze.com/etapa/tineo/borres
+      - https://www.gronze.com/etapa/fonsagrada/cádavo-baleira
+
+  via-de-la-plata:
+    source: gronze
+    last_verified: null
+    gronze_stages:
+      - https://www.gronze.com/etapa/sevilla/guillena
+      - https://www.gronze.com/etapa/m%C3%A9rida/alcuéscar
+      - https://www.gronze.com/etapa/c%C3%A1ceres/casar-c%C3%A1ceres
+      - https://www.gronze.com/etapa/salamanca/calzada-valdunciel
+      - https://www.gronze.com/etapa/zamora/montamarta
+
+  camino-ingles:
+    source: gronze
+    last_verified: null
+    gronze_stages:
+      - https://www.gronze.com/etapa/ferrol/neda
+      - https://www.gronze.com/etapa/neda/pontedeume
+      - https://www.gronze.com/etapa/betanzos/bruma
+      - https://www.gronze.com/etapa/bruma/santiago-compostela
+
+  camino-fisterra:
+    source: gronze
+    last_verified: null
+    gronze_stages:
+      - https://www.gronze.com/etapa/santiago-compostela/negreira
+      - https://www.gronze.com/etapa/negreira/olveiroa
+      - https://www.gronze.com/etapa/olveiroa/fisterra
+
+  camino-invierno:
+    source: gronze
+    last_verified: null
+    gronze_stages:
+      - https://www.gronze.com/etapa/ponferrada/puebla-broll%C3%B3n
+      - https://www.gronze.com/etapa/puebla-brollon/a-laxe
+      - https://www.gronze.com/etapa/monforte-lemos/chantada
+
+  camino-san-salvador:
+    source: gronze
+    last_verified: null
+    gronze_stages:
+      - https://www.gronze.com/etapa/le%C3%B3n/la-robla
+      - https://www.gronze.com/etapa/la-robla/poladura-la-ter
+      - https://www.gronze.com/etapa/pajares/pola-lena
+
+  camino-mozarabe:
+    source: gronze
+    last_verified: null
+    gronze_stages:
+      - https://www.gronze.com/etapa/m%C3%A1laga/c%C3%A1rtama
+      - https://www.gronze.com/etapa/c%C3%B3rdoba/almod%C3%B3var-r%C3%ADo
+      - https://www.gronze.com/etapa/m%C3%A9rida/alcuéscar
+
+  camino-le-puy:
+    source: gronze
+    last_verified: null
+    gronze_stages:
+      - https://www.gronze.com/etapa/le-puy-en-velay/monistrol-dallier
+      - https://www.gronze.com/etapa/figeac/decazeville
+      - https://www.gronze.com/etapa/condom/eauze
+
+  camino-coastal:
+    source: gronze
+    last_verified: null
+    gronze_stages:
+      - https://www.gronze.com/etapa/porto/vila-do-conde
+      - https://www.gronze.com/etapa/viana-castelo/caminha
+      - https://www.gronze.com/etapa/a-guarda/oia
+
+  kumano-nakahechi:
+    source: kumano
+    last_verified: "2026-04-25"
+    kumano_url: https://www.kumano-travel.com/en/search/accommodations?route=nakahechi
+
+  shikoku-henro:
+    source: manual
+    last_verified: null
+    notes: "Use shikoku88.com or henro.jp. No easy scrape target yet."
+
+  saigoku-33:
+    source: manual
+    last_verified: null
+    notes: "Japanese temple lodging — shukubo (temple stays). No central database."

@@ -117,219 +117,35 @@ export const lodgingByRoute: Record<string, LodgingEntry[]> = {
     }
   ],
   "camino-del-norte": [
-    {
-      "name": "Albergue de Peregrinos de Irún",
-      "town": "Irún",
-      "price": 10,
-      "totalBeds": 26,
-      "isMunicipal": true,
-      "website": "https://www.gronze.com/camino-norte/albergues/irun"
-    },
-    {
-      "name": "Albergue Ondarreta - San Sebastián",
-      "town": "San Sebastián",
-      "price": 14,
-      "totalBeds": 40,
-      "isMunicipal": false,
-      "website": "https://www.gronze.com/camino-norte/albergues/donostia-san-sebastian"
-    },
-    {
-      "name": "Albergue de Peregrinos de Zarautz",
-      "town": "Zarautz",
-      "price": 10,
-      "totalBeds": 64,
-      "isMunicipal": true,
-      "website": "https://www.gronze.com/camino-norte/albergues/zarautz"
-    },
-    {
-      "name": "Albergue de Peregrinos de Bilbao",
-      "town": "Bilbao",
-      "price": 12,
-      "totalBeds": 80,
-      "isMunicipal": true,
-      "website": "https://www.gronze.com/camino-norte/albergues/bilbao"
-    },
-    {
-      "name": "Albergue Caborredondo - Santander",
-      "town": "Santander",
-      "price": 12,
-      "totalBeds": 32,
-      "isMunicipal": false,
-      "website": "https://www.gronze.com/camino-norte/albergues/santander"
-    },
-    {
-      "name": "Albergue de Peregrinos de Gijón",
-      "town": "Gijón",
-      "price": 10,
-      "totalBeds": 48,
-      "isMunicipal": true,
-      "website": "https://www.gronze.com/camino-norte/albergues/gijon"
-    },
-    {
-      "name": "Albergue Municipal de Ribadeo",
-      "town": "Ribadeo",
-      "price": 8,
-      "totalBeds": 36,
-      "isMunicipal": true,
-      "website": "https://www.gronze.com/camino-norte/albergues/ribadeo"
-    },
-    {
-      "name": "Albergue de Peregrinos Outeiro - Santiago de Compostela",
-      "town": "Santiago de Compostela",
-      "price": 10,
-      "totalBeds": 32,
-      "isMunicipal": true,
-      "website": "https://www.gronze.com/camino-norte/albergues/santiago-de-compostela"
-    }
-  ],
+      {"name": "Albergue de Peregrinos Jakobi", "town": "Irún", "price": null, "totalBeds": null, "isMunicipal": true, "website": "https://www.gronze.com"},
+      {"name": "Albergue de Peregrinos Santos Mártires", "town": "Santander", "price": 15, "totalBeds": null, "isMunicipal": false, "website": "https://www.gronze.com"},
+      {"name": "Albergue El Convento", "town": "Santillana del Mar", "price": 16, "totalBeds": null, "isMunicipal": false, "website": "https://www.gronze.com"},
+      {"name": "Albergue de Peregrinos Pedro Solís", "town": "Avilés", "price": 10, "totalBeds": null, "isMunicipal": true, "website": "https://www.gronze.com"},
+      {"name": "Albergue de Peregrinos de La Caridad", "town": "La Caridad", "price": 10, "totalBeds": null, "isMunicipal": true, "website": "https://www.gronze.com"},
+      {"name": "Albergue La Xana", "town": "La Caridad", "price": 17, "totalBeds": null, "isMunicipal": false, "website": "https://www.gronze.com"},
+      {"name": "Albergue de Peregrinos de Tol", "town": "Tol", "price": 7, "totalBeds": null, "isMunicipal": true, "website": "https://www.gronze.com"},
+      {"name": "Albergue de Peregrinos de Ribadeo", "town": "Ribadeo", "price": 10, "totalBeds": null, "isMunicipal": true, "website": "https://www.gronze.com"},
+      {"name": "Albergue Viruxe", "town": "Ribadeo", "price": 12, "totalBeds": null, "isMunicipal": false, "website": "https://www.gronze.com"},
+    ],
   "camino-fisterra": [
-    {
-      "name": "Albergue de Peregrinos de Santiago de Compostela (Seminario Menor)",
-      "town": "Santiago de Compostela",
-      "price": 12,
-      "totalBeds": 177,
-      "isMunicipal": true,
-      "website": "https://www.alberguesantiago.com"
-    },
-    {
-      "name": "Albergue Municipal de Negreira",
-      "town": "Negreira",
-      "price": 8,
-      "totalBeds": 22,
-      "isMunicipal": true,
-      "website": "https://www.concellonegreira.gal"
-    },
-    {
-      "name": "Albergue Casa Mingos (Negreira)",
-      "town": "Negreira",
-      "price": 12,
-      "totalBeds": 18,
-      "isMunicipal": false,
-      "website": "https://www.casamingos.com"
-    },
-    {
-      "name": "Albergue de Peregrinos de Santa Mariña",
-      "town": "Santa Mariña",
-      "price": 8,
-      "totalBeds": 14,
-      "isMunicipal": true,
-      "website": ""
-    },
-    {
-      "name": "Albergue Hórreo de Olveiroa",
-      "town": "Olveiroa",
-      "price": 10,
-      "totalBeds": 30,
-      "isMunicipal": false,
-      "website": "https://www.albergueolveiroa.com"
-    },
-    {
-      "name": "Albergue As Pias (Olveiroa)",
-      "town": "Olveiroa",
-      "price": 9,
-      "totalBeds": 20,
-      "isMunicipal": false,
-      "website": ""
-    },
-    {
-      "name": "Albergue Municipal de Cee",
-      "town": "Cee",
-      "price": 8,
-      "totalBeds": 24,
-      "isMunicipal": true,
-      "website": "https://www.concellodecee.es"
-    },
-    {
-      "name": "Albergue Municipal de Fisterra",
-      "town": "Fisterra",
-      "price": 8,
-      "totalBeds": 38,
-      "isMunicipal": true,
-      "website": "https://www.concellodefisterra.es"
-    },
-    {
-      "name": "Albergue Mar de Fora (Fisterra)",
-      "town": "Fisterra",
-      "price": 14,
-      "totalBeds": 22,
-      "isMunicipal": false,
-      "website": "https://www.alberguemardefora.com"
-    },
-    {
-      "name": "Albergue O Camiño dos Faros (Fisterra)",
-      "town": "Fisterra",
-      "price": 13,
-      "totalBeds": 16,
-      "isMunicipal": false,
-      "website": "https://www.caminodosfaros.com"
-    },
-    {
-      "name": "Albergue Municipal de Muxía",
-      "town": "Muxía",
-      "price": 8,
-      "totalBeds": 32,
-      "isMunicipal": true,
-      "website": "https://www.concellomuxia.com"
-    },
-    {
-      "name": "Albergue Muxía Mare",
-      "town": "Muxía",
-      "price": 15,
-      "totalBeds": 8,
-      "isMunicipal": false,
-      "website": "https://www.muxiamare.com"
-    }
-  ],
+      {"name": "Albergue de Peregrinos de Negreira", "town": "Negreira", "price": 10, "totalBeds": null, "isMunicipal": true, "website": "https://www.gronze.com"},
+      {"name": "Albergue El Carmen", "town": "Negreira", "price": 15, "totalBeds": null, "isMunicipal": false, "website": "https://www.gronze.com"},
+      {"name": "Refugio Municipal de Vilaserío", "town": "Vilaserío", "price": null, "totalBeds": null, "isMunicipal": true, "website": "https://www.gronze.com"},
+      {"name": "Albergue de Peregrinos de Olveiroa", "town": "Olveiroa", "price": 10, "totalBeds": null, "isMunicipal": true, "website": "https://www.gronze.com"},
+      {"name": "Albergue Hórreo", "town": "Olveiroa", "price": 17, "totalBeds": null, "isMunicipal": false, "website": "https://www.gronze.com"},
+      {"name": "Albergue de Peregrinos O Conco", "town": "Dumbría", "price": 10, "totalBeds": null, "isMunicipal": true, "website": "https://www.gronze.com"},
+      {"name": "Albergue A Casa da Fonte", "town": "Cee", "price": 16, "totalBeds": null, "isMunicipal": false, "website": "https://www.gronze.com"},
+      {"name": "Albergue de Peregrinos San Roque", "town": "Corcubión", "price": null, "totalBeds": null, "isMunicipal": true, "website": "https://www.gronze.com"},
+    ],
   "camino-ingles": [
-    {
-      "name": "Albergue de Peregrinos de Ferrol",
-      "town": "Ferrol",
-      "price": 8,
-      "totalBeds": 30,
-      "isMunicipal": true,
-      "website": "https://www.xacobeo.gal/en/pilgrimage/pilgrim-hostels/"
-    },
-    {
-      "name": "Albergue Municipal de Pontedeume",
-      "town": "Pontedeume",
-      "price": 8,
-      "totalBeds": 40,
-      "isMunicipal": true,
-      "website": "https://www.xacobeo.gal/en/pilgrimage/pilgrim-hostels/"
-    },
-    {
-      "name": "Albergue Municipal de Betanzos",
-      "town": "Betanzos",
-      "price": 8,
-      "totalBeds": 36,
-      "isMunicipal": true,
-      "website": "https://www.xacobeo.gal/en/pilgrimage/pilgrim-hostels/"
-    },
-    {
-      "name": "Albergue de Bruma",
-      "town": "Bruma",
-      "price": 8,
-      "totalBeds": 22,
-      "isMunicipal": false,
-      "website": "https://www.xacobeo.gal/en/pilgrimage/pilgrim-hostels/"
-    },
-    {
-      "name": "Albergue de Peregrinos de Santiago - Seminario Menor",
-      "town": "Santiago de Compostela",
-      "price": 12,
-      "totalBeds": 177,
-      "isMunicipal": false,
-      "website": "https://www.alberguesantiago.com/"
-    },
-    {
-      "name": "The Last Stamp Hostel - Santiago",
-      "town": "Santiago de Compostela",
-      "price": 18,
-      "totalBeds": 28,
-      "isMunicipal": false,
-      "website": "https://www.thelaststamp.com/"
-    }
-  ],
+      {"name": "Albergue de Peregrinos de Ferrol", "town": "Ferrol", "price": 10, "totalBeds": null, "isMunicipal": true, "website": "https://www.gronze.com"},
+      {"name": "Albergue de Peregrinos de Neda", "town": "Neda", "price": 10, "totalBeds": null, "isMunicipal": true, "website": "https://www.gronze.com"},
+      {"name": "Albergue de Peregrinos de Pontedeume", "town": "Pontedeume", "price": 6, "totalBeds": null, "isMunicipal": true, "website": "https://www.gronze.com"},
+      {"name": "Albergue de Peregrinos de Miño", "town": "Miño", "price": 10, "totalBeds": null, "isMunicipal": true, "website": "https://www.gronze.com"},
+      {"name": "Albergue de Peregrinos de Betanzos", "town": "Betanzos", "price": 10, "totalBeds": null, "isMunicipal": true, "website": "https://www.gronze.com"},
+      {"name": "Albergue de Peregrinos de Presedo", "town": "Presedo", "price": 7, "totalBeds": null, "isMunicipal": true, "website": "https://www.gronze.com"},
+      {"name": "Albergue de Peregrinos Hospital de Bruma", "town": "Hospital de Bruma", "price": 10, "totalBeds": null, "isMunicipal": true, "website": "https://www.gronze.com"},
+    ],
   "camino-invierno": [
     {
       "name": "Albergue de Peregrinos de Ponferrada",
@@ -633,145 +449,28 @@ export const lodgingByRoute: Record<string, LodgingEntry[]> = {
     }
   ],
   "camino-portugues": [
-    {
-      "name": "Albergue de Peregrinos de Lisboa",
-      "town": "Lisbon",
-      "price": 15,
-      "totalBeds": 60,
-      "isMunicipal": false,
-      "website": "https://www.caminoportugues.org/albergues"
-    },
-    {
-      "name": "Albergue de Peregrinos de Coimbra",
-      "town": "Coimbra",
-      "price": 12,
-      "totalBeds": 40,
-      "isMunicipal": true,
-      "website": "https://www.caminoportugues.org/albergues"
-    },
-    {
-      "name": "Albergue Municipal de Porto",
-      "town": "Porto",
-      "price": 14,
-      "totalBeds": 80,
-      "isMunicipal": true,
-      "website": "https://www.alberguesportugal.com/porto"
-    },
-    {
-      "name": "Albergue de Peregrinos de Barcelos",
-      "town": "Barcelos",
-      "price": 8,
-      "totalBeds": 96,
-      "isMunicipal": true,
-      "website": "https://www.caminoportugues.org/albergues"
-    },
-    {
-      "name": "Albergue de Peregrinos de Ponte de Lima",
-      "town": "Ponte de Lima",
-      "price": 8,
-      "totalBeds": 60,
-      "isMunicipal": true,
-      "website": "https://www.caminoportugues.org/albergues"
-    },
-    {
-      "name": "Albergue de Peregrinos de Tui",
-      "town": "Tui",
-      "price": 8,
-      "totalBeds": 50,
-      "isMunicipal": true,
-      "website": "https://www.caminoportugues.org/albergues"
-    },
-    {
-      "name": "Albergue de Peregrinos de Pontevedra",
-      "town": "Pontevedra",
-      "price": 8,
-      "totalBeds": 110,
-      "isMunicipal": true,
-      "website": "https://www.xacobeo.gal/en/pilgrimage/pilgrim-hostels/"
-    },
-    {
-      "name": "Albergue de Peregrinos de Padrón",
-      "town": "Padrón",
-      "price": 8,
-      "totalBeds": 40,
-      "isMunicipal": true,
-      "website": "https://www.xacobeo.gal/en/pilgrimage/pilgrim-hostels/"
-    },
-    {
-      "name": "Albergue de Peregrinos de Santiago - Seminario Menor",
-      "town": "Santiago de Compostela",
-      "price": 12,
-      "totalBeds": 177,
-      "isMunicipal": false,
-      "website": "https://www.alberguesantiago.com/"
-    },
-    {
-      "name": "Albergue Último Sello - Santiago de Compostela",
-      "town": "Santiago de Compostela",
-      "price": 18,
-      "totalBeds": 36,
-      "isMunicipal": false,
-      "website": "https://www.ultimosello.com/"
-    }
-  ],
+      {"name": "Albergue de Peregrinos do Porto", "town": "Porto", "price": 20, "totalBeds": null, "isMunicipal": false, "website": "https://www.gronze.com"},
+      {"name": "Albergue do Mosteiro de Vairão", "town": "Vairão", "price": 10, "totalBeds": null, "isMunicipal": false, "website": "https://www.gronze.com"},
+      {"name": "Albergue Cidade de Barcelos", "town": "Barcelos", "price": null, "totalBeds": 20, "isMunicipal": true, "website": "https://www.gronze.com"},
+      {"name": "Albergue Casa da Recoleta", "town": "Portela de Tamel", "price": 5, "totalBeds": null, "isMunicipal": true, "website": "https://www.gronze.com"},
+      {"name": "Albergue de Peregrinos de Ponte de Lima", "town": "Ponte de Lima", "price": 5, "totalBeds": null, "isMunicipal": true, "website": "https://www.gronze.com"},
+      {"name": "Albergue de Peregrinos de Tui", "town": "Tui", "price": 10, "totalBeds": null, "isMunicipal": true, "website": "https://www.gronze.com"},
+      {"name": "Albergue Convento del Camino", "town": "Tui", "price": 17, "totalBeds": null, "isMunicipal": false, "website": "https://www.gronze.com"},
+      {"name": "Albergue de Peregrinos de O Porriño", "town": "O Porriño", "price": 10, "totalBeds": null, "isMunicipal": true, "website": "https://www.gronze.com"},
+      {"name": "Casa da Torre", "town": "Redondela", "price": 10, "totalBeds": null, "isMunicipal": true, "website": "https://www.gronze.com"},
+      {"name": "Virgen Peregrina", "town": "Pontevedra", "price": 10, "totalBeds": null, "isMunicipal": true, "website": "https://www.gronze.com"},
+    ],
   "camino-primitivo": [
-    {
-      "name": "Albergue de Peregrinos de Oviedo",
-      "town": "Oviedo",
-      "price": 8,
-      "totalBeds": 80,
-      "isMunicipal": true,
-      "website": "https://www.caminodesantiago.gal/albergues"
-    },
-    {
-      "name": "Albergue de Peregrinos de Tineo",
-      "town": "Tineo",
-      "price": 6,
-      "totalBeds": 34,
-      "isMunicipal": true,
-      "website": "https://www.caminodesantiago.gal/albergues"
-    },
-    {
-      "name": "Albergue Municipal de A Fonsagrada",
-      "town": "A Fonsagrada",
-      "price": 6,
-      "totalBeds": 30,
-      "isMunicipal": true,
-      "website": "https://www.caminodesantiago.gal/albergues"
-    },
-    {
-      "name": "Albergue de Peregrinos de Lugo",
-      "town": "Lugo",
-      "price": 8,
-      "totalBeds": 60,
-      "isMunicipal": true,
-      "website": "https://www.xacobeo.gal/en/pilgrimage/pilgrim-hostels/"
-    },
-    {
-      "name": "Casa Rural O Castelo - Lugo",
-      "town": "Lugo",
-      "price": 20,
-      "totalBeds": 12,
-      "isMunicipal": false,
-      "website": "https://www.caminodesantiago.gal/albergues"
-    },
-    {
-      "name": "Albergue Municipal de Palas de Rei",
-      "town": "Palas de Rei",
-      "price": 8,
-      "totalBeds": 60,
-      "isMunicipal": true,
-      "website": "https://www.xacobeo.gal/en/pilgrimage/pilgrim-hostels/"
-    },
-    {
-      "name": "Albergue de Peregrinos de Santiago - Monte do Gozo",
-      "town": "Santiago de Compostela",
-      "price": 10,
-      "totalBeds": 400,
-      "isMunicipal": true,
-      "website": "https://www.montegozo.com/"
-    }
-  ],
+      {"name": "Albergue de Peregrinos de El Salvador", "town": "Oviedo", "price": 9, "totalBeds": null, "isMunicipal": true, "website": "https://www.gronze.com"},
+      {"name": "Albergue de Peregrinos de Escamplero", "town": "Escamplero", "price": 6, "totalBeds": null, "isMunicipal": true, "website": "https://www.gronze.com"},
+      {"name": "Albergue de Peregrinos Villa de Grado", "town": "Grado", "price": null, "totalBeds": null, "isMunicipal": true, "website": "https://www.gronze.com"},
+      {"name": "Mater Christi", "town": "Tineo", "price": 9, "totalBeds": null, "isMunicipal": false, "website": "https://www.gronze.com"},
+      {"name": "Santa María", "town": "Borres", "price": 9, "totalBeds": null, "isMunicipal": false, "website": "https://www.gronze.com"},
+      {"name": "Albergue de Peregrinos Ramón Rodríguez", "town": "A Fonsagrada", "price": 10, "totalBeds": null, "isMunicipal": true, "website": "https://www.gronze.com"},
+      {"name": "Albergue de Peregrinos de O Cádavo", "town": "O Cádavo", "price": 10, "totalBeds": null, "isMunicipal": true, "website": "https://www.gronze.com"},
+      {"name": "Albergue de Peregrinos de Lugo", "town": "Lugo", "price": 10, "totalBeds": null, "isMunicipal": true, "website": "https://www.gronze.com"},
+      {"name": "Hostel Roots and Boots Lugo", "town": "Lugo", "price": 12, "totalBeds": null, "isMunicipal": false, "website": "https://www.gronze.com"},
+    ],
   "camino-san-salvador": [
     {
       "name": "Albergue de Peregrinos de León",
@@ -1059,71 +758,16 @@ export const lodgingByRoute: Record<string, LodgingEntry[]> = {
     }
   ],
   "via-de-la-plata": [
-    {
-      "name": "Albergue de Peregrinos de Sevilla",
-      "town": "Seville",
-      "price": 8,
-      "totalBeds": 40,
-      "isMunicipal": true,
-      "website": "https://www.viaplataalbergues.com/"
-    },
-    {
-      "name": "Albergue de Peregrinos de Zafra",
-      "town": "Zafra",
-      "price": 8,
-      "totalBeds": 30,
-      "isMunicipal": true,
-      "website": "https://www.viaplataalbergues.com/"
-    },
-    {
-      "name": "Albergue de Peregrinos de Mérida",
-      "town": "Mérida",
-      "price": 6,
-      "totalBeds": 64,
-      "isMunicipal": true,
-      "website": "https://www.viaplataalbergues.com/"
-    },
-    {
-      "name": "Albergue de Peregrinos de Cáceres",
-      "town": "Cáceres",
-      "price": 6,
-      "totalBeds": 60,
-      "isMunicipal": true,
-      "website": "https://www.viaplataalbergues.com/"
-    },
-    {
-      "name": "Albergue de Peregrinos de Salamanca",
-      "town": "Salamanca",
-      "price": 6,
-      "totalBeds": 100,
-      "isMunicipal": true,
-      "website": "https://www.viaplataalbergues.com/"
-    },
-    {
-      "name": "Albergue de Peregrinos de Zamora",
-      "town": "Zamora",
-      "price": 6,
-      "totalBeds": 54,
-      "isMunicipal": true,
-      "website": "https://www.viaplataalbergues.com/"
-    },
-    {
-      "name": "Albergue de Peregrinos de Ourense",
-      "town": "Ourense",
-      "price": 8,
-      "totalBeds": 52,
-      "isMunicipal": true,
-      "website": "https://www.xacobeo.gal/en/pilgrimage/pilgrim-hostels/"
-    },
-    {
-      "name": "Albergue de Peregrinos de Santiago - Seminario Menor",
-      "town": "Santiago de Compostela",
-      "price": 12,
-      "totalBeds": 177,
-      "isMunicipal": false,
-      "website": "https://www.alberguesantiago.com/"
-    }
-  ],
+      {"name": "Albergue Municipal de Guillena", "town": "Guillena", "price": 15, "totalBeds": null, "isMunicipal": true, "website": "https://www.gronze.com"},
+      {"name": "Albergue de Peregrinos de Calzadilla de los Barros", "town": "Calzadilla de los Barros", "price": 10, "totalBeds": null, "isMunicipal": true, "website": "https://www.gronze.com"},
+      {"name": "Albergue de Peregrinos de Zafra", "town": "Zafra", "price": 15, "totalBeds": null, "isMunicipal": true, "website": "https://www.gronze.com"},
+      {"name": "Albergue de Peregrinos Molino de Pancaliente", "town": "Mérida", "price": 10, "totalBeds": null, "isMunicipal": true, "website": "https://www.gronze.com"},
+      {"name": "Albergue Municipal Miliario del Verdinal", "town": "Aldea del Cano", "price": 10, "totalBeds": null, "isMunicipal": true, "website": "https://www.gronze.com"},
+      {"name": "Albergue de Peregrinos de Valdesalor", "town": "Valdesalor", "price": 6, "totalBeds": null, "isMunicipal": true, "website": "https://www.gronze.com"},
+      {"name": "Albergue Turístico Las Veletas", "town": "Cáceres", "price": 16, "totalBeds": null, "isMunicipal": false, "website": "https://www.gronze.com"},
+      {"name": "Albergue de Peregrinos de Zamora", "town": "Zamora", "price": null, "totalBeds": null, "isMunicipal": true, "website": "https://www.gronze.com"},
+      {"name": "Albergue Torre de Sabre", "town": "El Cubo del Vino", "price": 19, "totalBeds": null, "isMunicipal": false, "website": "https://www.gronze.com"},
+    ],
   "kumano-nakahechi": [
     {
       "name": "Koguchi Shizen-no-Ie",
