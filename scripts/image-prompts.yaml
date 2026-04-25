@@ -1,0 +1,471 @@
+# Sacred Trails Web — Image Generation Prompts
+# 37 images total: 1 OG + 18 hero + 18 map
+# Generated: 2026-04-23
+#
+# Style anchors:
+#   hero: cinematic travel photography, golden hour, 16:9 (1200×630px)
+#   map:  vintage hand-drawn illustrated map, watercolor on aged parchment, 8:5 (800×500px)
+#
+# Usage:
+#   Hero → OpenAI Images API, model=gpt-image-1, size=1792x1024 (crop to 1200×630)
+#   Map  → OpenAI Images API, model=gpt-image-1, size=1024x1024 (crop to 800×500)
+#   OG   → OpenAI Images API, model=gpt-image-1, size=1792x1024
+#
+# Output paths:
+#   public/og.jpg
+#   public/routes/{slug}/hero.jpg
+#   public/routes/{slug}/map.png
+
+global:
+  hero_style: "bright modern art illustration, bold flat design, vibrant forest green and warm amber color palette, clean geometric shapes, contemporary travel poster aesthetic, high contrast, luminous sky, no people, no text, no watermarks, graphic art style"
+  map_style: "bright modern illustrated map, clean flat design, bold forest green and amber accent colors on cream white background, minimalist linework, geometric terrain shapes, contemporary graphic art, decorative compass rose, no photographs, overhead view"
+  negative: "no watermarks, no text overlays, no logos, no dark moody tones, no film grain, no vintage effects, no photorealism"
+
+# ─────────────────────────────────────────
+# OG IMAGE (1 image)
+# ─────────────────────────────────────────
+og:
+  filename: "public/og.jpg"
+  size: "1792x1024"
+  prompt: >
+    Bright modern art illustration, bold graphic travel poster showing four sacred pilgrimage landscapes
+    in a clean split panorama: (left) Camino Francés crossing the Pyrenees with vibrant green hills and
+    golden sky, (center-left) Kumano Nakahechi ancient cedar forest corridor with luminous amber light
+    filtering through tall trees, (center-right) Camino del Norte coastal cliffs with deep forest green
+    and bright sky, (right) Shikoku Henro mountain path with cherry blossoms in warm amber tones.
+    Bold flat design, forest green and amber color palette, cream white background, contemporary
+    travel poster aesthetic, high contrast, no people, no text, no watermarks, graphic art style.
+
+# ─────────────────────────────────────────
+# ROUTE IMAGES (18 × 2 = 36 images)
+# ─────────────────────────────────────────
+routes:
+
+  # ── CAMINO SYSTEM ──────────────────────
+
+  - slug: camino-frances
+    name: "Camino Francés (French Way)"
+    hero:
+      filename: "public/routes/camino-frances/hero.jpg"
+      size: "1792x1024"
+      prompt: >
+        Cinematic travel photography, golden hour light on the vast Meseta plateau of central Spain,
+        infinite dirt path stretching toward the horizon through sun-bleached wheat fields, dramatic
+        Castilian sky with towering cumulus clouds, warm amber and teal color grade, ancient stone
+        waymarker with yellow scallop shell visible in foreground, 35mm film grain, wide angle, no
+        people, photorealistic, no text, no watermarks.
+
+    map:
+      filename: "public/routes/camino-frances/map.png"
+      size: "1024x1024"
+      prompt: >
+        Vintage hand-drawn illustrated map, aged parchment background, ink linework showing the
+        Camino Francés route from Saint-Jean-Pied-de-Port across the Pyrenees through Pamplona,
+        Burgos, León to Santiago de Compostela. Illustrated landmarks: Pyrenees mountains, Pamplona
+        city walls, Cruz de Ferro iron cross, Cathedral of Burgos, León cathedral, Cathedral of
+        Santiago de Compostela. Soft watercolor terrain washes in green and ochre, decorative
+        compass rose, scallop shell motif border, distance markers in leagues, no photos, flat
+        overhead view.
+
+  - slug: camino-portugues
+    name: "Camino Portugués (Portuguese Way)"
+    hero:
+      filename: "public/routes/camino-portugues/hero.jpg"
+      size: "1792x1024"
+      prompt: >
+        Cinematic travel photography, golden morning light on a cobblestone pilgrim path through the
+        Minho wine region of northern Portugal, ancient granite walls draped with wild roses flanking
+        the trail, vineyard terraces cascading down misty hillsides, warm soft light filtering through
+        eucalyptus and oak, teal and amber color grade, 35mm film grain, wide angle, no people, no
+        text, no watermarks, photorealistic.
+
+    map:
+      filename: "public/routes/camino-portugues/map.png"
+      size: "1024x1024"
+      prompt: >
+        Vintage hand-drawn illustrated map, aged parchment, ink linework showing the Camino Portugués
+        from Lisbon northward through Coimbra, Porto, Barcelos to Santiago de Compostela. Illustrated
+        landmarks: Jerónimos Monastery Lisbon, Coimbra university tower, Porto Ribeira waterfront,
+        Barcelos cock ceramic symbol, Ponte de Lima medieval bridge. Soft watercolor in blue-green
+        and ochre, Atlantic Ocean to the west, decorative compass rose, scallop shell border motifs,
+        flat overhead view.
+
+  - slug: camino-coastal
+    name: "Camino Portugués Coastal"
+    hero:
+      filename: "public/routes/camino-coastal/hero.jpg"
+      size: "1792x1024"
+      prompt: >
+        Cinematic travel photography, dramatic Atlantic coastline of northern Portugal at golden hour,
+        a narrow sandy path runs along clifftops above crashing ocean waves, traditional whitewashed
+        fishing village with terracotta rooftops visible in the distance, windswept sea grass and
+        wildflowers in the foreground, deep blue-green ocean, warm cinematic color grade, 35mm film
+        grain, wide angle, no people, no text, no watermarks, photorealistic.
+
+    map:
+      filename: "public/routes/camino-coastal/map.png"
+      size: "1024x1024"
+      prompt: >
+        Vintage hand-drawn illustrated map, aged parchment, ink linework showing the Camino Portugués
+        Coastal (Via Litoral) hugging the Atlantic shoreline from Porto north through Esposende,
+        Caminha, Baiona to Redondela where it joins the central route to Santiago de Compostela.
+        Illustrated ocean waves along the coast, lighthouse icons, fishing boat illustrations,
+        blue watercolor for Atlantic Ocean, green for coastal terrain, decorative compass rose,
+        scallop shell border, flat overhead view.
+
+  - slug: camino-del-norte
+    name: "Camino del Norte (Northern Way)"
+    hero:
+      filename: "public/routes/camino-del-norte/hero.jpg"
+      size: "1792x1024"
+      prompt: >
+        Cinematic travel photography, rugged Cantabrian coastline of northern Spain, a clifftop
+        pilgrim path cuts through wind-battered emerald green grass above dramatic sea stacks and
+        churning steel-blue Atlantic surf, Basque farmhouses with white walls and red shutters
+        visible on distant headlands, dramatic stormy sky with shafts of golden light breaking
+        through, 35mm film grain, wide angle, no people, no text, no watermarks, photorealistic.
+
+    map:
+      filename: "public/routes/camino-del-norte/map.png"
+      size: "1024x1024"
+      prompt: >
+        Vintage hand-drawn illustrated map, aged parchment, ink linework showing Camino del Norte
+        along the Cantabrian coast from Irun through San Sebastián, Bilbao, Santander, Gijón,
+        Ribadeo to Santiago de Compostela. Illustrated coastal cliffs, Basque txoko buildings,
+        Guggenheim Bilbao silhouette, Covadonga sanctuary in mountains. Atlantic Ocean with illustrated
+        wave patterns to the north, green Cantabrian Mountains to the south, decorative compass rose,
+        scallop shell border, flat overhead view.
+
+  - slug: camino-fisterra
+    name: "Camino Fisterra-Muxía"
+    hero:
+      filename: "public/routes/camino-fisterra/hero.jpg"
+      size: "1792x1024"
+      prompt: >
+        Cinematic travel photography, the lighthouse of Cabo Fisterra at dramatic sunset, the
+        "end of the world" rocky promontory jutting into the infinite Atlantic Ocean, 0.00km
+        stone marker visible in foreground, deep magenta and gold sky reflected on churning waves,
+        rugged Galician granite cliffs with wildflowers, cinematic color grade, 35mm film grain,
+        wide angle, no people, no text, no watermarks, photorealistic.
+
+    map:
+      filename: "public/routes/camino-fisterra/map.png"
+      size: "1024x1024"
+      prompt: >
+        Vintage hand-drawn illustrated map, aged parchment, ink linework showing short coastal route
+        from Santiago de Compostela westward through Negreira, Olveiroa to Cabo Fisterra and Muxía.
+        Illustrated landmarks: Cathedral of Santiago de Compostela at start, Fisterra lighthouse
+        at land's end, Muxía Sanctuary of Virxe da Barca on coastal rocks. Blue Atlantic Ocean,
+        green Galician hills, decorative compass rose, scallop shell and pilgrim boot border
+        motifs, flat overhead view.
+
+  - slug: camino-ingles
+    name: "Camino Inglés (English Way)"
+    hero:
+      filename: "public/routes/camino-ingles/hero.jpg"
+      size: "1792x1024"
+      prompt: >
+        Cinematic travel photography, medieval fortified town of Ferrol in Galicia, Spain, viewed
+        from a quiet pilgrim path through dense eucalyptus and pine forest, soft morning mist
+        filtering through trees creating cathedral-like light shafts, mossy stone walls lining
+        the trail, teal and amber color grade, 35mm film grain, wide angle, no people, no text,
+        no watermarks, photorealistic.
+
+    map:
+      filename: "public/routes/camino-ingles/map.png"
+      size: "1024x1024"
+      prompt: >
+        Vintage hand-drawn illustrated map, aged parchment, ink linework showing the short Camino
+        Inglés from Ferrol and Neda along the coast to Pontedeume then inland to Santiago de
+        Compostela. Illustrated landmarks: Ferrol naval harbor, medieval bridge at Pontedeume,
+        Betanzos old town, Cathedral of Santiago. Blue Galician rias (fjords) with illustrated
+        sailing ships, green forest terrain, decorative compass rose, scallop shell border,
+        flat overhead view.
+
+  - slug: camino-invierno
+    name: "Camino de Invierno (Winter Way)"
+    hero:
+      filename: "public/routes/camino-invierno/hero.jpg"
+      size: "1792x1024"
+      prompt: >
+        Cinematic travel photography, atmospheric winter morning in the Galician interior of Spain,
+        a stone pilgrim path winds through ancient chestnut forest with bare twisted branches
+        creating dramatic silhouettes against a pale silver sky, frost on fallen leaves, mist
+        rising from a valley river below, blue-grey winter light with soft golden accents,
+        35mm film grain, wide angle, no people, no text, no watermarks, photorealistic.
+
+    map:
+      filename: "public/routes/camino-invierno/map.png"
+      size: "1024x1024"
+      prompt: >
+        Vintage hand-drawn illustrated map, aged parchment, ink linework showing the Camino de
+        Invierno from Ponferrada heading south through Quiroga, Monforte de Lemos, Chantada
+        avoiding the high Cebreiro pass into Galicia, reaching Santiago de Compostela. Illustrated
+        chestnut tree motifs, river crossings, mountain ridges. Cool grey-blue watercolor washes
+        suggesting winter atmosphere, decorative compass rose, scallop shell border, flat overhead
+        view.
+
+  - slug: camino-le-puy
+    name: "Via Podiensis (Le Puy Route)"
+    hero:
+      filename: "public/routes/camino-le-puy/hero.jpg"
+      size: "1792x1024"
+      prompt: >
+        Cinematic travel photography, the volcanic highlands of Auvergne, France at golden hour,
+        a medieval stone path crosses open moorland past the silhouette of a Romanesque chapel
+        perched on a volcanic plug, rolling green hills dotted with wildflowers stretching to
+        the horizon under dramatic cumulus clouds, warm amber and sage color grade, 35mm film
+        grain, wide angle, no people, no text, no watermarks, photorealistic.
+
+    map:
+      filename: "public/routes/camino-le-puy/map.png"
+      size: "1024x1024"
+      prompt: >
+        Vintage hand-drawn illustrated map, aged parchment, ink linework showing the Via Podiensis
+        (GR65) from Le Puy-en-Velay through Conques, Figeac, Cahors, Moissac, Aire-sur-l'Adour
+        to Saint-Jean-Pied-de-Port at the Pyrenees. Illustrated landmarks: Le Puy Cathedral on
+        volcanic rock, Conques abbey, Pont Valentré bridge Cahors, Moissac cloister. Soft green
+        and ochre watercolor for French countryside, decorative compass rose, scallop shell
+        border, flat overhead view.
+
+  - slug: camino-mozarabe
+    name: "Vía Mozárabe"
+    hero:
+      filename: "public/routes/camino-mozarabe/hero.jpg"
+      size: "1792x1024"
+      prompt: >
+        Cinematic travel photography, golden hour light over vast Andalusian olive groves stretching
+        to the horizon, a dusty ochre path winds between ancient gnarled olive trees with silver
+        leaves catching the light, whitewashed village with Moorish bell tower visible on a distant
+        hill, deep blue sky, warm amber and terracotta color grade, 35mm film grain, wide angle,
+        no people, no text, no watermarks, photorealistic.
+
+    map:
+      filename: "public/routes/camino-mozarabe/map.png"
+      size: "1024x1024"
+      prompt: >
+        Vintage hand-drawn illustrated map, aged parchment, ink linework showing the Vía Mozárabe
+        from Almería and Granada converging at Mérida, then heading north through Cáceres to
+        join the Via de la Plata at Salamanca or continue directly to Santiago. Illustrated
+        landmarks: Alhambra palace, Córdoba Mezquita, Mérida Roman theater, Salamanca cathedral.
+        Warm ochre and terracotta watercolor for Andalusian landscape, decorative compass rose,
+        Moorish geometric border motifs, flat overhead view.
+
+  - slug: camino-primitivo
+    name: "Camino Primitivo (Original Way)"
+    hero:
+      filename: "public/routes/camino-primitivo/hero.jpg"
+      size: "1792x1024"
+      prompt: >
+        Cinematic travel photography, the ancient Asturian mountain trail at dawn, a rugged stone
+        path climbs through dense Atlantic oak and chestnut forest dripping with moss and lichen,
+        mountain peaks emerging from swirling mist above the tree line, wild ferns and heather
+        lining the trail, cool blue-green tones with warm shaft of sunrise light breaking through,
+        35mm film grain, wide angle, no people, no text, no watermarks, photorealistic.
+
+    map:
+      filename: "public/routes/camino-primitivo/map.png"
+      size: "1024x1024"
+      prompt: >
+        Vintage hand-drawn illustrated map, aged parchment, ink linework showing the Camino
+        Primitivo from Oviedo through Tineo, Grandas de Salime, Lugo to join the Camino Francés
+        at Melide near Santiago de Compostela. Illustrated landmarks: Oviedo Cathedral, Grandas
+        de Salime reservoir, Lugo Roman walls. Deep green and grey watercolor for rugged Asturian
+        mountains and forests, decorative compass rose, scallop shell border, flat overhead view.
+
+  - slug: camino-san-salvador
+    name: "Camino de San Salvador"
+    hero:
+      filename: "public/routes/camino-san-salvador/hero.jpg"
+      size: "1792x1024"
+      prompt: >
+        Cinematic travel photography, the mountain pass connecting León and Oviedo in northern
+        Spain, a stone pilgrim path crosses a high alpine meadow below dramatic limestone
+        Cantabrian peaks, wildflowers in purple and yellow carpet the foreground, snow patches
+        visible on distant summits, dramatic sky with layered clouds, cool mountain light, 35mm
+        film grain, wide angle, no people, no text, no watermarks, photorealistic.
+
+    map:
+      filename: "public/routes/camino-san-salvador/map.png"
+      size: "1024x1024"
+      prompt: >
+        Vintage hand-drawn illustrated map, aged parchment, ink linework showing the short Camino
+        de San Salvador connecting León to Oviedo through the Cantabrian Mountains via Poladura
+        de la Tercia and the mountain pass. Illustrated landmarks: León Cathedral with rose window,
+        mountain cross at summit pass, Oviedo Cathedral San Salvador. Grey-blue mountain watercolor,
+        green valley floors, decorative compass rose, scallop shell border, flat overhead view.
+
+  - slug: via-de-la-plata
+    name: "Vía de la Plata (Silver Route)"
+    hero:
+      filename: "public/routes/via-de-la-plata/hero.jpg"
+      size: "1792x1024"
+      prompt: >
+        Cinematic travel photography, the ancient Roman road through Extremadura, Spain at sunrise,
+        original Roman stone slabs visible on the path surface flanked by wild lavender and cistus
+        shrubs, vast dehesa landscape of cork oak trees and golden grass stretching to distant
+        purple hills, warm morning light casting long shadows, teal and amber color grade, 35mm
+        film grain, wide angle, no people, no text, no watermarks, photorealistic.
+
+    map:
+      filename: "public/routes/via-de-la-plata/map.png"
+      size: "1024x1024"
+      prompt: >
+        Vintage hand-drawn illustrated map, aged parchment, ink linework showing the Vía de la
+        Plata ancient Roman road from Seville north through Mérida, Cáceres, Salamanca, Zamora
+        to Santiago de Compostela. Illustrated landmarks: Seville Giralda tower, Mérida Roman
+        aqueduct, Salamanca Plaza Mayor, Zamora Romanesque cathedral. Warm ochre and burnt sienna
+        watercolor for Extremadura terrain, Roman road symbol (stone slabs), decorative compass
+        rose, scallop shell border, flat overhead view.
+
+  # ── KUMANO SYSTEM ──────────────────────
+
+  - slug: kumano-nakahechi
+    name: "Kumano Nakahechi"
+    hero:
+      filename: "public/routes/kumano-nakahechi/hero.jpg"
+      size: "1792x1024"
+      prompt: >
+        Cinematic travel photography, the ancient Kumano Kodo pilgrimage trail in Wakayama, Japan,
+        a stone-paved path flanked by towering Cryptomeria cedar trees hundreds of years old,
+        their trunks wrapped in thick moss, filtered forest light creating dappled patterns on the
+        stone steps, a small wooden Oji shrine with red torii gate visible ahead, cool jade green
+        tones with golden light shafts, 35mm film grain, wide angle, no people, no text, no
+        watermarks, photorealistic.
+
+    map:
+      filename: "public/routes/kumano-nakahechi/map.png"
+      size: "1024x1024"
+      prompt: >
+        Vintage hand-drawn illustrated map, Japanese washi paper texture background, brush ink
+        linework showing the Kumano Nakahechi route from Tanabe westward through the Kii Peninsula
+        mountains to the three Grand Shrines: Kumano Hongu Taisha, Kumano Hayatama Taisha, Kumano
+        Nachi Taisha. Illustrated: Tanabe harbor, series of Oji shrine symbols along the route,
+        Nachisan waterfall (133m Nachi Falls), torii gates, mountain ridges with cedar trees.
+        Soft green and indigo watercolor, decorative mizuhiki knot border, compass rose in
+        Japanese style, flat overhead view.
+
+  - slug: kumano-kohechi
+    name: "Kumano Kohechi"
+    hero:
+      filename: "public/routes/kumano-kohechi/hero.jpg"
+      size: "1792x1024"
+      prompt: >
+        Cinematic travel photography, misty mountain ridge trail of the Kumano Kohechi route in
+        the Kii Peninsula, Japan, looking down from a high mountain pass through ancient cedar
+        forest into cloud-filled valleys below, stone trail winding steeply downward, Buddhist
+        stone markers with Sanskrit characters moss-covered along the path, ethereal morning
+        mist, jade and silver tones, 35mm film grain, wide angle, no people, no text, no
+        watermarks, photorealistic.
+
+    map:
+      filename: "public/routes/kumano-kohechi/map.png"
+      size: "1024x1024"
+      prompt: >
+        Vintage hand-drawn illustrated map, Japanese washi paper texture, brush ink linework
+        showing the challenging Kumano Kohechi from Koyasan (Mount Koya) descending south through
+        the highest mountain route to Kumano Hongu Taisha. Illustrated: Koyasan Okunoin temple
+        in cedar forest, steep mountain pass symbols, stone Buddhist statues along route, river
+        crossings, Kumano Hongu Taisha grand shrine at end. Deep green and grey mountain watercolor,
+        elevation relief marks, mizuhiki border, Japanese compass rose, flat overhead view.
+
+  - slug: kumano-iseji
+    name: "Kumano Iseji"
+    hero:
+      filename: "public/routes/kumano-iseji/hero.jpg"
+      size: "1792x1024"
+      prompt: >
+        Cinematic travel photography, the Kumano Iseji coastal route in Mie Prefecture, Japan,
+        a stone pilgrimage path curves along dramatic Pacific Ocean cliffs, traditional thatched-roof
+        Oji shrines visible in fishing village coves below, emerald green Pacific water with white
+        surf, pine trees shaped by coastal wind on the clifftop, warm afternoon light, teal and
+        amber color grade, 35mm film grain, wide angle, no people, no text, no watermarks,
+        photorealistic.
+
+    map:
+      filename: "public/routes/kumano-iseji/map.png"
+      size: "1024x1024"
+      prompt: >
+        Vintage hand-drawn illustrated map, Japanese washi paper texture, brush ink linework
+        showing the Kumano Iseji from Ise Grand Shrine (Naiku) southward along the Mie coastline
+        through Owase and Kumano city to Kumano Hongu Taisha. Illustrated: Ise Jingu torii gate
+        and thatched shrine buildings, Pacific Ocean coastal cliffs with illustrated waves, series
+        of coastal Oji shrines, fishing village symbols, Nachi waterfall. Blue Pacific watercolor,
+        green mountain interior, mizuhiki border, Japanese compass rose, flat overhead view.
+
+  - slug: kumano-ohechi
+    name: "Kumano Ohechi"
+    hero:
+      filename: "public/routes/kumano-ohechi/hero.jpg"
+      size: "1792x1024"
+      prompt: >
+        Cinematic travel photography, the rugged Kumano Ohechi coastal route in Wakayama, Japan,
+        a dramatic sea cliff path above the Pacific Ocean, wild coastal vegetation and wind-sculpted
+        pine trees framing a view of the Pacific horizon, traditional stone Buddhist markers
+        along the edge, golden sunset light on ocean waves, warm teal and gold color grade, 35mm
+        film grain, wide angle, no people, no text, no watermarks, photorealistic.
+
+    map:
+      filename: "public/routes/kumano-ohechi/map.png"
+      size: "1024x1024"
+      prompt: >
+        Vintage hand-drawn illustrated map, Japanese washi paper texture, brush ink linework
+        showing the Kumano Ohechi coastal route from Tanabe along the rugged Pacific coastline
+        of the Kii Peninsula, passing through Kushimoto (Cape Shiono, southernmost Honshu point)
+        to Nachi Taisha. Illustrated: Tanabe harbor, Cape Shionomisaki lighthouse, dramatic sea
+        cliffs, Nachi Falls waterfall icon, Nachi Taisha shrine complex in forest. Deep blue
+        Pacific watercolor, rocky coast symbols, mizuhiki border, Japanese compass rose, flat
+        overhead view.
+
+  # ── SHIKOKU ──────────────────────────
+
+  - slug: shikoku-henro
+    name: "Shikoku Henro (88 Temples)"
+    hero:
+      filename: "public/routes/shikoku-henro/hero.jpg"
+      size: "1792x1024"
+      prompt: >
+        Cinematic travel photography, the Shikoku Henro mountain path in Japan, a white-clad
+        pilgrim (ohenro-san) silhouette seen from behind walking away on a stone path through
+        ancient Japanese cedar forest, traditional white jacket (hakui) and conical sedge hat
+        (sugegasa) visible, morning mist and filtered light through towering trees, spring
+        cherry blossom petals drifting across the path, ethereal pale pink and jade tones,
+        35mm film grain, wide angle, photorealistic, no text, no watermarks.
+
+    map:
+      filename: "public/routes/shikoku-henro/map.png"
+      size: "1024x1024"
+      prompt: >
+        Vintage hand-drawn illustrated map, Japanese washi paper texture, brush ink linework
+        showing the Shikoku Henro circuit around Shikoku island visiting all 88 temples
+        clockwise: starting at Ryōzen-ji Temple 1 in Tokushima, through Kochi (Tosa),
+        Ehime (Iyo) and Kagawa (Sanuki). Illustrated landmarks: numbered temple pagodas along
+        the circuit, Cape Muroto lighthouse, Cape Ashizuri, Matsuyama Castle, Dogo Onsen.
+        Island map with four prefectures in different soft watercolor washes, illustrated sea
+        and mountains, mizuhiki border, Japanese compass rose, flat overhead view.
+
+  # ── SAIGOKU ──────────────────────────
+
+  - slug: saigoku-33
+    name: "Saigoku 33 (Kannon Pilgrimage)"
+    hero:
+      filename: "public/routes/saigoku-33/hero.jpg"
+      size: "1792x1024"
+      prompt: >
+        Cinematic travel photography, a mountain temple in the Kansai region of Japan at autumn
+        foliage peak, stone steps rising steeply through blazing red and gold maple trees toward
+        an ancient multi-storey wooden temple pagoda half-hidden by autumn forest, soft mountain
+        mist, monks' lanterns lit along the staircase, warm crimson and gold color grade, 35mm
+        film grain, wide angle, no people, no text, no watermarks, photorealistic.
+
+    map:
+      filename: "public/routes/saigoku-33/map.png"
+      size: "1024x1024"
+      prompt: >
+        Vintage hand-drawn illustrated map, Japanese washi paper texture, brush ink linework
+        showing the Saigoku 33 Kannon Pilgrimage circuit through the Kinki/Kansai region,
+        connecting 33 temples from Seiganto-ji in Wakayama (near Nachi Falls) through Nara,
+        Osaka, Kyoto, to Oku-no-in on Lake Biwa. Illustrated landmarks: numbered temple icons,
+        Nara deer with Horyuji pagoda, Kyoto Kiyomizudera wooden stage, Osaka Shitenno-ji,
+        Lake Biwa. Soft watercolor in four seasonal tones (sakura pink, summer green, autumn
+        red, winter white), mizuhiki border, Japanese compass rose, flat overhead view.
