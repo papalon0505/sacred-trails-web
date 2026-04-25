@@ -205,7 +205,7 @@ export default async function LocaleRouteDetailPage({ params }: { params: Promis
                       <p className="text-xs text-stone-400 mt-0.5">{lodge.town}</p>
                     </div>
                     <div className="text-right flex-shrink-0">
-                      <p className="text-sm font-bold text-ink">{lodge.price != null ? `€${lodge.price}` : dict.route.lodgingLabels.noPrice}</p>
+                      <p className="text-sm font-bold text-ink">{lodge.price != null ? `${lodge.currency === 'JPY' ? '¥' : '€'}${lodge.price.toLocaleString()}` : dict.route.lodgingLabels.noPrice}</p>
                       {lodge.totalBeds != null ? <p className="text-xs text-stone-400">{lodge.totalBeds} {dict.route.lodgingLabels.beds}</p> : null}
                     </div>
                   </div>
@@ -222,11 +222,12 @@ export default async function LocaleRouteDetailPage({ params }: { params: Promis
                 </div>
               ))}
             </div>
-            {(lodgingByRoute[slug] || []).length > lodging.length ? (
-              <p className="text-xs text-stone-400 mt-4 italic">
-                {(lodgingByRoute[slug] || []).length - lodging.length > 0 ? `Showing ${lodging.length} of ${(lodgingByRoute[slug] || []).length}` : ''} · Sacred Trails app has the full list.
-              </p>
-            ) : null}
+            <p className="text-xs text-stone-400 mt-4 italic">
+              {(lodgingByRoute[slug] || []).length > lodging.length
+                ? `Showing ${lodging.length} of ${(lodgingByRoute[slug] || []).length} · `
+                : ''}
+              Prices and availability may change — verify directly with each albergue before your trip.
+            </p>
           </section>
         ) : null}
 

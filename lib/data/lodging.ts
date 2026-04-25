@@ -1,8 +1,12 @@
-// AUTO-GENERATED from app assets/data/sections/*/lodging.json
+// Camino routes: sourced from Gronze.com (gronze.com)
+// Kumano Nakahechi: sourced from Kumano Travel (kumano-travel.com)
+// Other routes: sourced from app bundled data
+// Prices and availability may change — always verify before your trip
 export interface LodgingEntry {
   name: string | Record<string, string>
   town: string
   price: number | null
+  currency?: string
   totalBeds: number | null
   isMunicipal: boolean
   website: string
@@ -1122,479 +1126,142 @@ export const lodgingByRoute: Record<string, LodgingEntry[]> = {
   ],
   "kumano-nakahechi": [
     {
-      "name": {
-        "ja": "霧の郷たかはら",
-        "en": "Kiri no Sato Takahara",
-        "es": "Kiri no Sato Takahara",
-        "zh_TW": "霧の郷たかはら",
-        "ko": "霧の郷たかはら",
-        "fr": "Kiri no Sato Takahara",
-        "de": "Kiri no Sato Takahara",
-        "pt": "Kiri no Sato Takahara",
-        "it": "Kiri no Sato Takahara",
-        "zh_CN": "霧の郷たかはら"
-      },
-      "town": "",
-      "price": null,
-      "totalBeds": 20,
+      "name": "Koguchi Shizen-no-Ie",
+      "town": "Koguchi",
+      "price": 10500,
+      "currency": "JPY",
+      "totalBeds": null,
       "isMunicipal": false,
-      "website": "https://www.kirinosato.com"
+      "website": "https://www.kumano-travel.com/en/accommodations/koguchi-shizen-no-ie"
     },
     {
-      "name": {
-        "ja": "民宿ちかつゆ",
-        "en": "Minshuku Chikatsuyu",
-        "es": "Minshuku Chikatsuyu",
-        "zh_TW": "民宿ちかつゆ",
-        "ko": "民宿ちかつゆ",
-        "fr": "Minshuku Chikatsuyu",
-        "de": "Minshuku Chikatsuyu",
-        "pt": "Minshuku Chikatsuyu",
-        "it": "Minshuku Chikatsuyu",
-        "zh_CN": "民宿ちかつゆ"
-      },
-      "town": "",
-      "price": null,
-      "totalBeds": 15,
+      "name": "Kiri-no-Sato Takahara Lodge",
+      "town": "Takahara",
+      "price": 26400,
+      "currency": "JPY",
+      "totalBeds": null,
       "isMunicipal": false,
-      "website": ""
+      "website": "https://www.kumano-travel.com/en/accommodations/kiri-no-sato-takahara"
     },
     {
-      "name": {
-        "ja": "民宿つるや",
-        "en": "Minshuku Tsuruya",
-        "es": "Minshuku Tsuruya",
-        "zh_TW": "民宿つるや",
-        "ko": "民宿つるや",
-        "fr": "Minshuku Tsuruya",
-        "de": "Minshuku Tsuruya",
-        "pt": "Minshuku Tsuruya",
-        "it": "Minshuku Tsuruya",
-        "zh_CN": "民宿つるや"
-      },
-      "town": "",
-      "price": null,
-      "totalBeds": 10,
+      "name": "Minshuku Chikatsuyu",
+      "town": "Chikatsuyu",
+      "price": 16300,
+      "currency": "JPY",
+      "totalBeds": null,
       "isMunicipal": false,
-      "website": ""
+      "website": "https://www.kumano-travel.com/en/accommodations/minshuku-chikatsuyu"
     },
     {
-      "name": {
-        "ja": "民宿なかの",
-        "en": "Minshuku Nakano",
-        "es": "Minshuku Nakano",
-        "zh_TW": "民宿なかの",
-        "ko": "民宿なかの",
-        "fr": "Minshuku Nakano",
-        "de": "Minshuku Nakano",
-        "pt": "Minshuku Nakano",
-        "it": "Minshuku Nakano",
-        "zh_CN": "民宿なかの"
-      },
-      "town": "",
-      "price": null,
-      "totalBeds": 8,
+      "name": "Minshuku Nakano",
+      "town": "Chikatsuyu",
+      "price": 5500,
+      "currency": "JPY",
+      "totalBeds": null,
       "isMunicipal": false,
-      "website": ""
+      "website": "https://www.kumano-travel.com/en/accommodations/minshuku-nakano"
     },
     {
-      "name": {
-        "ja": "野中の一方杉 民宿まつば",
-        "en": "Minshuku Matsuba Nonaka",
-        "es": "Minshuku Matsuba Nonaka",
-        "zh_TW": "野中の一方杉 民宿まつば",
-        "ko": "野中の一方杉 民宿まつば",
-        "fr": "Minshuku Matsuba Nonaka",
-        "de": "Minshuku Matsuba Nonaka",
-        "pt": "Minshuku Matsuba Nonaka",
-        "it": "Minshuku Matsuba Nonaka",
-        "zh_CN": "野中の一方杉 民宿まつば"
-      },
-      "town": "",
-      "price": null,
-      "totalBeds": 8,
+      "name": "Minshuku Momofuku",
+      "town": "Koguchi",
+      "price": 15800,
+      "currency": "JPY",
+      "totalBeds": null,
       "isMunicipal": false,
-      "website": ""
+      "website": "https://www.kumano-travel.com/en/accommodations/minshuku-momofuku"
     },
     {
-      "name": {
-        "ja": "民宿ささゆり",
-        "en": "Minshuku Sasayuri",
-        "es": "Minshuku Sasayuri",
-        "zh_TW": "民宿ささゆり",
-        "ko": "民宿ささゆり",
-        "fr": "Minshuku Sasayuri",
-        "de": "Minshuku Sasayuri",
-        "pt": "Minshuku Sasayuri",
-        "it": "Minshuku Sasayuri",
-        "zh_CN": "民宿ささゆり"
-      },
-      "town": "",
-      "price": null,
-      "totalBeds": 10,
+      "name": "Mitaki Sanso",
+      "town": "Nachisan",
+      "price": 22500,
+      "currency": "JPY",
+      "totalBeds": null,
       "isMunicipal": false,
-      "website": ""
+      "website": "https://www.kumano-travel.com/en/accommodations/mitaki-sanso"
     },
     {
-      "name": {
-        "ja": "熊野本宮 わたらせ温泉",
-        "en": "Watarase Onsen Hotel Sasayuri",
-        "es": "Watarase Onsen Hotel Sasayuri",
-        "zh_TW": "熊野本宮 わたらせ温泉",
-        "ko": "熊野本宮 わたらせ温泉",
-        "fr": "Watarase Onsen Hotel Sasayuri",
-        "de": "Watarase Onsen Hotel Sasayuri",
-        "pt": "Watarase Onsen Hotel Sasayuri",
-        "it": "Watarase Onsen Hotel Sasayuri",
-        "zh_CN": "熊野本宫 わたらせ温泉"
-      },
-      "town": "",
-      "price": null,
-      "totalBeds": 60,
+      "name": "Ryokan Adumaya",
+      "town": "Yunomine Onsen",
+      "price": 19900,
+      "currency": "JPY",
+      "totalBeds": null,
       "isMunicipal": false,
-      "website": "https://www.watarase-onsen.jp"
+      "website": "https://www.kumano-travel.com/en/accommodations/ryokan-adumaya"
     },
     {
-      "name": {
-        "ja": "湯の峰温泉 あづまや",
-        "en": "Yunomine Onsen Azumaya",
-        "es": "Yunomine Onsen Azumaya",
-        "zh_TW": "湯の峰温泉 あづまや",
-        "ko": "湯の峰温泉 あづまや",
-        "fr": "Yunomine Onsen Azumaya",
-        "de": "Yunomine Onsen Azumaya",
-        "pt": "Yunomine Onsen Azumaya",
-        "it": "Yunomine Onsen Azumaya",
-        "zh_CN": "汤之峰温泉 あづまや"
-      },
-      "town": "",
-      "price": null,
-      "totalBeds": 30,
+      "name": "Minshuku Yamane",
+      "town": "Yunomine Onsen",
+      "price": 13400,
+      "currency": "JPY",
+      "totalBeds": null,
       "isMunicipal": false,
-      "website": "https://www.adumaya.co.jp"
+      "website": "https://www.kumano-travel.com/en/accommodations/minshuku-yamane"
+    }
+  ],
+  "camino-frances": [
+    {
+      "name": "Albergue de Peregrinos de Roncesvalles",
+      "town": "Roncesvalles",
+      "price": 15,
+      "totalBeds": 183,
+      "isMunicipal": true,
+      "website": "https://www.gronze.com/etapa/roncesvalles-orreaga/zubiri"
     },
     {
-      "name": {
-        "ja": "川湯温泉 まつや",
-        "en": "Kawayu Onsen Matsuya",
-        "es": "Kawayu Onsen Matsuya",
-        "zh_TW": "川湯温泉 まつや",
-        "ko": "川湯温泉 まつや",
-        "fr": "Kawayu Onsen Matsuya",
-        "de": "Kawayu Onsen Matsuya",
-        "pt": "Kawayu Onsen Matsuya",
-        "it": "Kawayu Onsen Matsuya",
-        "zh_CN": "川汤温泉 まつや"
-      },
-      "town": "",
-      "price": null,
-      "totalBeds": 25,
-      "isMunicipal": false,
-      "website": ""
+      "name": "Albergue Municipal de Zubiri",
+      "town": "Zubiri",
+      "price": 16,
+      "totalBeds": null,
+      "isMunicipal": true,
+      "website": "https://www.gronze.com/etapa/zubiri/pamplona-iruna"
     },
     {
-      "name": {
-        "ja": "川湯温泉 富士屋",
-        "en": "Kawayu Onsen Fujiya",
-        "es": "Kawayu Onsen Fujiya",
-        "zh_TW": "川湯温泉 富士屋",
-        "ko": "川湯温泉 富士屋",
-        "fr": "Kawayu Onsen Fujiya",
-        "de": "Kawayu Onsen Fujiya",
-        "pt": "Kawayu Onsen Fujiya",
-        "it": "Kawayu Onsen Fujiya",
-        "zh_CN": "川汤温泉 富士屋"
-      },
-      "town": "",
-      "price": null,
-      "totalBeds": 40,
+      "name": "Albergue Jesús y María",
+      "town": "Pamplona",
+      "price": 12,
+      "totalBeds": null,
       "isMunicipal": false,
-      "website": "https://www.fujiya.co.jp"
+      "website": "https://www.gronze.com/etapa/zubiri/pamplona-iruna"
     },
     {
-      "name": {
-        "ja": "J-Hoppers 熊野湯峰",
-        "en": "J-Hoppers Kumano Yunomine",
-        "es": "J-Hoppers Kumano Yunomine",
-        "zh_TW": "J-Hoppers 熊野湯峰",
-        "ko": "J-Hoppers 熊野湯峰",
-        "fr": "J-Hoppers Kumano Yunomine",
-        "de": "J-Hoppers Kumano Yunomine",
-        "pt": "J-Hoppers Kumano Yunomine",
-        "it": "J-Hoppers Kumano Yunomine",
-        "zh_CN": "J-Hoppers 熊野汤峰"
-      },
-      "town": "",
-      "price": null,
-      "totalBeds": 16,
+      "name": "Albergue Casa Paderborn",
+      "town": "Pamplona",
+      "price": 10,
+      "totalBeds": null,
       "isMunicipal": false,
-      "website": "https://j-hoppers.com"
+      "website": "https://www.gronze.com/etapa/zubiri/pamplona-iruna"
     },
     {
-      "name": {
-        "ja": "本宮 B&B cafe ほんぐう",
-        "en": "B&B Cafe Hongu",
-        "es": "B&B Cafe Hongu",
-        "zh_TW": "本宮 B&B cafe ほんぐう",
-        "ko": "本宮 B&B cafe ほんぐう",
-        "fr": "B&B Cafe Hongu",
-        "de": "B&B Cafe Hongu",
-        "pt": "B&B Cafe Hongu",
-        "it": "B&B Cafe Hongu",
-        "zh_CN": "本宫 B&B cafe ほんぐう"
-      },
-      "town": "",
-      "price": null,
-      "totalBeds": 12,
-      "isMunicipal": false,
-      "website": ""
+      "name": "Albergue Casa del Cubo",
+      "town": "Burgos",
+      "price": 10,
+      "totalBeds": null,
+      "isMunicipal": true,
+      "website": "https://www.gronze.com/etapa/burgos/hornillos-camino"
     },
     {
-      "name": {
-        "ja": "民宿 もんぜん",
-        "en": "Minshuku Monzen",
-        "es": "Minshuku Monzen",
-        "zh_TW": "民宿 もんぜん",
-        "ko": "民宿 もんぜん",
-        "fr": "Minshuku Monzen",
-        "de": "Minshuku Monzen",
-        "pt": "Minshuku Monzen",
-        "it": "Minshuku Monzen",
-        "zh_CN": "民宿 もんぜん"
-      },
-      "town": "",
-      "price": null,
-      "totalBeds": 10,
-      "isMunicipal": false,
-      "website": ""
+      "name": "Albergue de Peregrinos de Hornillos del Camino",
+      "town": "Hornillos del Camino",
+      "price": 13,
+      "totalBeds": null,
+      "isMunicipal": true,
+      "website": "https://www.gronze.com/etapa/burgos/hornillos-camino"
     },
     {
-      "name": {
-        "ja": "恵光院",
-        "en": "Eko-in",
-        "es": "Eko-in",
-        "zh_TW": "恵光院",
-        "ko": "恵光院",
-        "fr": "Eko-in",
-        "de": "Eko-in",
-        "pt": "Eko-in",
-        "it": "Eko-in",
-        "zh_CN": "惠光院"
-      },
-      "town": "",
+      "name": "Albergue del Convento de las Carbajalas",
+      "town": "León",
       "price": null,
-      "totalBeds": 50,
-      "isMunicipal": false,
-      "website": "https://www.ekoin.jp"
+      "totalBeds": null,
+      "isMunicipal": true,
+      "website": "https://www.gronze.com/etapa/mansilla-mulas/leon"
     },
     {
-      "name": {
-        "ja": "福智院",
-        "en": "Fukuchi-in",
-        "es": "Fukuchi-in",
-        "zh_TW": "福智院",
-        "ko": "福智院",
-        "fr": "Fukuchi-in",
-        "de": "Fukuchi-in",
-        "pt": "Fukuchi-in",
-        "it": "Fukuchi-in",
-        "zh_CN": "福智院"
-      },
-      "town": "",
-      "price": null,
-      "totalBeds": 60,
-      "isMunicipal": false,
-      "website": "https://www.fukuchiin.com"
-    },
-    {
-      "name": {
-        "ja": "野迫川村周辺 民宿",
-        "en": "Nosegawa Village Area Minshuku",
-        "es": "Minshuku de la zona de Nosegawa",
-        "zh_TW": "野迫川村周辺 民宿",
-        "ko": "野迫川村周辺 民宿",
-        "fr": "Minshuku du village de Nosegawa",
-        "de": "Minshuku im Gebiet Nosegawa",
-        "pt": "Minshuku da vila de Nosegawa",
-        "it": "Minshuku del villaggio di Nosegawa",
-        "zh_CN": "野迫川村周边 民宿"
-      },
-      "town": "",
-      "price": null,
-      "totalBeds": 6,
-      "isMunicipal": false,
-      "website": ""
-    },
-    {
-      "name": {
-        "ja": "ホテル昴",
-        "en": "Hotel Subaru",
-        "es": "Hotel Subaru",
-        "zh_TW": "ホテル昴",
-        "ko": "ホテル昴",
-        "fr": "Hotel Subaru",
-        "de": "Hotel Subaru",
-        "pt": "Hotel Subaru",
-        "it": "Hotel Subaru",
-        "zh_CN": "酒店昴"
-      },
-      "town": "",
-      "price": null,
-      "totalBeds": 80,
-      "isMunicipal": false,
-      "website": "https://www.hotel-subaru.jp"
-    },
-    {
-      "name": {
-        "ja": "民宿十津川",
-        "en": "Minshuku Totsukawa",
-        "es": "Minshuku Totsukawa",
-        "zh_TW": "民宿十津川",
-        "ko": "民宿十津川",
-        "fr": "Minshuku Totsukawa",
-        "de": "Minshuku Totsukawa",
-        "pt": "Minshuku Totsukawa",
-        "it": "Minshuku Totsukawa",
-        "zh_CN": "民宿十津川"
-      },
-      "town": "",
-      "price": null,
-      "totalBeds": 10,
-      "isMunicipal": false,
-      "website": ""
-    },
-    {
-      "name": {
-        "ja": "ホテルシーモア",
-        "en": "Hotel Seamore",
-        "es": "Hotel Seamore",
-        "zh_TW": "ホテルシーモア",
-        "ko": "ホテルシーモア",
-        "fr": "Hotel Seamore",
-        "de": "Hotel Seamore",
-        "pt": "Hotel Seamore",
-        "it": "Hotel Seamore",
-        "zh_CN": "酒店シーモア"
-      },
-      "town": "",
-      "price": null,
-      "totalBeds": 100,
-      "isMunicipal": false,
-      "website": ""
-    },
-    {
-      "name": {
-        "ja": "民宿かめや",
-        "en": "Minshuku Kameya",
-        "es": "Minshuku Kameya",
-        "zh_TW": "民宿かめや",
-        "ko": "民宿かめや",
-        "fr": "Minshuku Kameya",
-        "de": "Minshuku Kameya",
-        "pt": "Minshuku Kameya",
-        "it": "Minshuku Kameya",
-        "zh_CN": "民宿かめや"
-      },
-      "town": "",
-      "price": null,
-      "totalBeds": 8,
-      "isMunicipal": false,
-      "website": ""
-    },
-    {
-      "name": {
-        "ja": "ホテル浦島",
-        "en": "Hotel Urashima",
-        "es": "Hotel Urashima",
-        "zh_TW": "ホテル浦島",
-        "ko": "ホテル浦島",
-        "fr": "Hotel Urashima",
-        "de": "Hotel Urashima",
-        "pt": "Hotel Urashima",
-        "it": "Hotel Urashima",
-        "zh_CN": "酒店浦岛"
-      },
-      "town": "",
-      "price": null,
-      "totalBeds": 200,
-      "isMunicipal": false,
-      "website": ""
-    },
-    {
-      "name": {
-        "ja": "那智周辺の民宿",
-        "en": "Minshuku near Nachi",
-        "es": "Minshuku cerca de Nachi",
-        "zh_TW": "那智周辺の民宿",
-        "ko": "那智周辺の民宿",
-        "fr": "Minshuku près de Nachi",
-        "de": "Minshuku nahe Nachi",
-        "pt": "Minshuku perto de Nachi",
-        "it": "Minshuku vicino a Nachi",
-        "zh_CN": "那智周边的民宿"
-      },
-      "town": "",
-      "price": null,
-      "totalBeds": 10,
-      "isMunicipal": false,
-      "website": ""
-    },
-    {
-      "name": {
-        "ja": "伊勢シティホテル",
-        "en": "Ise City Hotel",
-        "es": "Ise City Hotel",
-        "zh_TW": "伊勢シティホテル",
-        "ko": "伊勢シティホテル",
-        "fr": "Ise City Hotel",
-        "de": "Ise City Hotel",
-        "pt": "Ise City Hotel",
-        "it": "Ise City Hotel",
-        "zh_CN": "伊势城市酒店"
-      },
-      "town": "",
-      "price": null,
-      "totalBeds": 80,
-      "isMunicipal": false,
-      "website": ""
-    },
-    {
-      "name": {
-        "ja": "ビジネスホテル尾鷲",
-        "en": "Business Hotel Owase",
-        "es": "Business Hotel Owase",
-        "zh_TW": "ビジネスホテル尾鷲",
-        "ko": "ビジネスホテル尾鷲",
-        "fr": "Business Hotel Owase",
-        "de": "Business Hotel Owase",
-        "pt": "Business Hotel Owase",
-        "it": "Business Hotel Owase",
-        "zh_CN": "商务酒店尾鹫"
-      },
-      "town": "",
-      "price": null,
-      "totalBeds": 30,
-      "isMunicipal": false,
-      "website": ""
-    },
-    {
-      "name": {
-        "ja": "ホテルなみ",
-        "en": "Hotel Nami",
-        "es": "Hotel Nami",
-        "zh_TW": "ホテルなみ",
-        "ko": "ホテルなみ",
-        "fr": "Hotel Nami",
-        "de": "Hotel Nami",
-        "pt": "Hotel Nami",
-        "it": "Hotel Nami",
-        "zh_CN": "酒店なみ"
-      },
-      "town": "",
-      "price": null,
-      "totalBeds": 25,
-      "isMunicipal": false,
-      "website": ""
+      "name": "Albergue Parroquial San Nicolás de Flüe",
+      "town": "Ponferrada",
+      "price": 10,
+      "totalBeds": null,
+      "isMunicipal": true,
+      "website": "https://www.gronze.com/etapa/ponferrada/villafranca-bierzo"
     }
   ]
 }

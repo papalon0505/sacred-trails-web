@@ -208,7 +208,7 @@ export default async function RouteDetailPage({ params }: { params: Promise<{ sl
                       <p className="text-xs text-stone-400 mt-0.5">{l.town}</p>
                     </div>
                     <div className="text-right flex-shrink-0">
-                      <p className="text-sm font-bold text-ink">{l.price != null ? `€${l.price}` : 'Varies'}</p>
+                      <p className="text-sm font-bold text-ink">{l.price != null ? `${l.currency === 'JPY' ? '¥' : '€'}${l.price.toLocaleString()}` : 'Varies'}</p>
                       {l.totalBeds != null ? <p className="text-xs text-stone-400">{l.totalBeds} beds</p> : null}
                     </div>
                   </div>
@@ -225,11 +225,12 @@ export default async function RouteDetailPage({ params }: { params: Promise<{ sl
                 </div>
               ))}
             </div>
-            {(lodgingByRoute[slug] || []).length > lodging.length ? (
-              <p className="text-xs text-stone-400 mt-4 italic">
-                Showing {lodging.length} of {(lodgingByRoute[slug] || []).length} albergues · Sacred Trails app has the full list.
-              </p>
-            ) : null}
+            <p className="text-xs text-stone-400 mt-4 italic">
+              {(lodgingByRoute[slug] || []).length > lodging.length
+                ? `Showing ${lodging.length} of ${(lodgingByRoute[slug] || []).length} · `
+                : ''}
+              Prices and availability may change — verify directly with each albergue before your trip.
+            </p>
           </section>
         ) : null}
 
