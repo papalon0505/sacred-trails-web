@@ -65,7 +65,8 @@ export interface Dict {
   }
   route: {
     labels: { distance: string; duration: string; difficulty: string; certification: string; startEnd: string }
-    sections: { about: string; waypoints: string; pois: string; related: string; official: string }
+    sections: { about: string; waypoints: string; pois: string; lodging: string; related: string; official: string }
+    lodgingLabels: { beds: string; municipal: string; private: string; noPrice: string }
     ctaTitle: (name: string) => string
     ctaDesc: string
     breadcrumbHome: string
@@ -80,6 +81,33 @@ export interface Dict {
     metaTitle: string
     metaDesc: string
     guides: { slug: 'camino-de-santiago' | 'kumano-kodo' | 'shikoku-henro'; title: string; desc: string; icon: string }[]
+  }
+  certifications: {
+    title: string
+    subtitle: string
+    metaTitle: string
+    metaDesc: string
+    systems: { camino: string; kumano: string; shikoku: string; saigoku: string; achievement: string }
+    minDistance: string
+    stampsRequired: string
+    whereToGet: string
+    officialSite: string
+    appCtaTitle: string
+    appCtaDesc: string
+  }
+  sacredSites: {
+    title: string
+    subtitle: string
+    metaTitle: string
+    metaDesc: string
+    kumanoTitle: string
+    caminoTitle: string
+    highlight: string
+    story: string
+    photoTip: string
+    blessing: string
+    appCtaTitle: string
+    appCtaDesc: string
   }
 }
 
@@ -150,7 +178,8 @@ const en: Dict = {
   },
   route: {
     labels: { distance: 'Distance', duration: 'Duration', difficulty: 'Difficulty', certification: 'Certification', startEnd: 'Start → End' },
-    sections: { about: 'About the Route', waypoints: 'Key Waypoints', pois: 'Points of Interest', related: 'Related Routes', official: 'Official resource' },
+    sections: { about: 'About the Route', waypoints: 'Key Waypoints', pois: 'Points of Interest', lodging: 'Accommodation', related: 'Related Routes', official: 'Official resource' },
+    lodgingLabels: { beds: 'beds', municipal: 'Municipal', private: 'Private', noPrice: 'Varies' },
     ctaTitle: name => `Navigate the ${name} Offline`,
     ctaDesc: 'Download Sacred Trails and walk with full route data — no internet required.',
     breadcrumbHome: 'Home',
@@ -169,6 +198,33 @@ const en: Dict = {
       { slug: 'kumano-kodo', title: 'Kumano Kodo — Complete Guide', desc: '4 ancient routes through the sacred forests of the Kii Peninsula.', icon: '⛩️' },
       { slug: 'shikoku-henro', title: 'Shikoku 88 Temple Pilgrimage — Complete Guide', desc: "1,200km circuit of Shikoku island, following Kōbō Daishi's footsteps.", icon: '🏮' },
     ],
+  },
+  certifications: {
+    title: 'Pilgrimage Certificates',
+    subtitle: 'Every certificate you can earn on the Camino de Santiago, Kumano Kodo, Shikoku Henro, and Saigoku 33 — with official requirements and where to collect them.',
+    metaTitle: 'Pilgrimage Certificates Guide — Compostela, Kumano, Shikoku Henro',
+    metaDesc: 'Complete guide to all pilgrimage certificates: Compostela, Kumano Kodo stamps, Shikoku Henro kanman seal, Dual Pilgrim, and more.',
+    systems: { camino: 'Camino de Santiago', kumano: 'Kumano Kodo', shikoku: 'Shikoku Henro', saigoku: 'Saigoku 33', achievement: 'Special Achievements' },
+    minDistance: 'Minimum distance',
+    stampsRequired: 'Stamp requirement',
+    whereToGet: 'Where to collect',
+    officialSite: 'Official site',
+    appCtaTitle: 'Track Your Certificates in the App',
+    appCtaDesc: 'Sacred Trails tracks your stamp progress on every route — so you always know how close you are to your certificate.',
+  },
+  sacredSites: {
+    title: 'Sacred Sites & Pilgrimage Shrines',
+    subtitle: 'The cathedrals, grand shrines, and holy places that await at the end of every stage — with the stories behind them.',
+    metaTitle: 'Sacred Sites — Camino Cathedrals & Kumano Shrines | Sacred Trails',
+    metaDesc: 'Discover the sacred sites of the Camino de Santiago and Kumano Kodo: cathedrals, grand shrines, and the stories behind every holy place.',
+    kumanoTitle: 'Kumano Grand Shrines (熊野三山)',
+    caminoTitle: 'Camino Cathedrals & Sacred Places',
+    highlight: 'Highlight',
+    story: 'History',
+    photoTip: 'Photo tip',
+    blessing: 'Blessing',
+    appCtaTitle: 'Visit Every Sacred Site with Sacred Trails',
+    appCtaDesc: 'Sacred Trails guides you to every shrine and cathedral on your route — with offline maps, stage details, and cultural context.',
   },
 }
 
@@ -239,7 +295,8 @@ const ja: Dict = {
   },
   route: {
     labels: { distance: '距離', duration: '所要日数', difficulty: '難易度', certification: '認定証', startEnd: '起点 → 終点' },
-    sections: { about: 'ルートについて', waypoints: '主要ウェイポイント', pois: '見どころ', related: '関連ルート', official: '公式情報' },
+    sections: { about: 'ルートについて', waypoints: '主要ウェイポイント', pois: '見どころ', lodging: '宿泊施設', related: '関連ルート', official: '公式情報' },
+    lodgingLabels: { beds: 'ベッド', municipal: '公営', private: '民営', noPrice: '要確認' },
     ctaTitle: name => `${name}をオフラインで歩く`,
     ctaDesc: 'Sacred Trailsをダウンロードすれば、全ルートデータが手元に — Wi-Fi不要。',
     breadcrumbHome: 'ホーム',
@@ -258,6 +315,33 @@ const ja: Dict = {
       { slug: 'kumano-kodo', title: '熊野古道 — 完全ガイド', desc: '紀伊半島の聖なる森を通る4つの古道。', icon: '⛩️' },
       { slug: 'shikoku-henro', title: '四国八十八ヶ所遍路 — 完全ガイド', desc: '弘法大師の足跡を辿る四国一周1,200kmの霊場巡り。', icon: '🏮' },
     ],
+  },
+  certifications: {
+    title: '巡礼認定証ガイド',
+    subtitle: 'カミーノ・デ・サンティアゴ、熊野古道、四国遍路、西国三十三所で取得できるすべての認定証を、公式要件と受け取り場所とともに紹介します。',
+    metaTitle: '巡礼認定証ガイド — コンポステーラ・熊野・四国遍路',
+    metaDesc: '巡礼認定証の完全ガイド：コンポステーラ、熊野古道スタンプ、四国遍路結願印、二つの道の巡礼者など。',
+    systems: { camino: 'カミーノ・デ・サンティアゴ', kumano: '熊野古道', shikoku: '四国遍路', saigoku: '西国三十三所', achievement: '特別達成' },
+    minDistance: '最低距離',
+    stampsRequired: 'スタンプ要件',
+    whereToGet: '受け取り場所',
+    officialSite: '公式サイト',
+    appCtaTitle: 'アプリで認定証の進捗を管理',
+    appCtaDesc: 'Sacred Trailsは各ルートのスタンプ進捗を記録します。認定証まで残りどのくらいか、いつでも確認できます。',
+  },
+  sacredSites: {
+    title: '聖地と巡礼の霊場',
+    subtitle: '各ステージの終わりに待つ大聖堂、熊野三山、そして聖なる場所とその背後にある物語。',
+    metaTitle: '聖地ガイド — カミーノの大聖堂と熊野三山 | Sacred Trails',
+    metaDesc: 'カミーノ・デ・サンティアゴの大聖堂と熊野古道の神社を探訪。すべての聖地の歴史と見どころ。',
+    kumanoTitle: '熊野三山',
+    caminoTitle: 'カミーノの大聖堂と聖地',
+    highlight: '見どころ',
+    story: '歴史',
+    photoTip: '撮影スポット',
+    blessing: 'ご利益',
+    appCtaTitle: 'Sacred Trailsで全ての聖地を訪ねよう',
+    appCtaDesc: 'Sacred Trailsはルート上のすべての神社と大聖堂を、オフラインマップ・ステージ詳細・文化的背景とともに案内します。',
   },
 }
 
@@ -328,7 +412,8 @@ const zhTW: Dict = {
   },
   route: {
     labels: { distance: '距離', duration: '所需天數', difficulty: '難度', certification: '認證', startEnd: '起點 → 終點' },
-    sections: { about: '路線簡介', waypoints: '主要路徑點', pois: '景點', related: '相關路線', official: '官方資源' },
+    sections: { about: '路線簡介', waypoints: '主要路徑點', pois: '景點', lodging: '住宿', related: '相關路線', official: '官方資源' },
+    lodgingLabels: { beds: '張床位', municipal: '公營', private: '私營', noPrice: '價格不定' },
     ctaTitle: name => `離線走${name}`,
     ctaDesc: '下載 Sacred Trails，所有路線資料離線帶著走 — 無需網路。',
     breadcrumbHome: '首頁',
@@ -347,6 +432,33 @@ const zhTW: Dict = {
       { slug: 'kumano-kodo', title: '熊野古道 — 完整攻略', desc: '穿越紀伊半島聖林的 4 條古道。', icon: '⛩️' },
       { slug: 'shikoku-henro', title: '四國八十八所遍路 — 完整攻略', desc: '1,200 公里環島，追隨弘法大師足跡。', icon: '🏮' },
     ],
+  },
+  certifications: {
+    title: '朝聖證書指南',
+    subtitle: '聖雅各之路、熊野古道、四國遍路、西國三十三所可獲得的所有證書——含官方條件與領取地點。',
+    metaTitle: '朝聖證書指南 — 孔波斯特拉、熊野、四國遍路',
+    metaDesc: '完整朝聖證書攻略：孔波斯特拉、熊野古道印章、四國遍路圓滿印、雙朝聖者等。',
+    systems: { camino: '聖雅各之路', kumano: '熊野古道', shikoku: '四國遍路', saigoku: '西國三十三所', achievement: '特殊成就' },
+    minDistance: '最低距離',
+    stampsRequired: '蓋章要求',
+    whereToGet: '領取地點',
+    officialSite: '官方網站',
+    appCtaTitle: '在 App 追蹤你的證書進度',
+    appCtaDesc: 'Sacred Trails 記錄每條路線的印章進度——讓你隨時掌握距離證書還差多少。',
+  },
+  sacredSites: {
+    title: '聖地與朝聖靈場',
+    subtitle: '每個路段終點等待你的大教堂、熊野三社和神聖場所，以及它們背後的故事。',
+    metaTitle: '聖地指南 — 聖雅各之路大教堂與熊野三社 | Sacred Trails',
+    metaDesc: '探訪聖雅各之路的大教堂與熊野古道的神社——每處聖地的歷史故事與文化背景。',
+    kumanoTitle: '熊野三社（熊野三山）',
+    caminoTitle: '聖雅各之路大教堂與聖地',
+    highlight: '亮點',
+    story: '歷史',
+    photoTip: '拍照小貼士',
+    blessing: '祈福',
+    appCtaTitle: '用 Sacred Trails 探訪每一處聖地',
+    appCtaDesc: 'Sacred Trails 帶你前往路線上每一座神社和大教堂——附離線地圖、路段詳情與文化背景。',
   },
 }
 
@@ -417,7 +529,8 @@ const es: Dict = {
   },
   route: {
     labels: { distance: 'Distancia', duration: 'Duración', difficulty: 'Dificultad', certification: 'Certificación', startEnd: 'Inicio → Fin' },
-    sections: { about: 'Sobre la ruta', waypoints: 'Waypoints clave', pois: 'Puntos de interés', related: 'Rutas relacionadas', official: 'Recurso oficial' },
+    sections: { about: 'Sobre la ruta', waypoints: 'Waypoints clave', pois: 'Puntos de interés', lodging: 'Alojamiento', related: 'Rutas relacionadas', official: 'Recurso oficial' },
+    lodgingLabels: { beds: 'camas', municipal: 'Municipal', private: 'Privado', noPrice: 'Variable' },
     ctaTitle: name => `Camina ${name} offline`,
     ctaDesc: 'Descarga Sacred Trails y camina con datos completos — sin internet.',
     breadcrumbHome: 'Inicio',
@@ -436,6 +549,33 @@ const es: Dict = {
       { slug: 'kumano-kodo', title: 'Kumano Kodo — Guía completa', desc: '4 rutas antiguas por los bosques sagrados de la península de Kii.', icon: '⛩️' },
       { slug: 'shikoku-henro', title: 'Peregrinación de los 88 templos de Shikoku — Guía completa', desc: '1.200 km alrededor de Shikoku, siguiendo los pasos de Kōbō Daishi.', icon: '🏮' },
     ],
+  },
+  certifications: {
+    title: 'Guía de certificados de peregrinación',
+    subtitle: 'Todos los certificados del Camino de Santiago, Kumano Kodo, Shikoku Henro y Saigoku 33 — con requisitos oficiales y dónde recogerlos.',
+    metaTitle: 'Certificados de Peregrinación — Compostela, Kumano, Shikoku Henro',
+    metaDesc: 'Guía completa de certificados: Compostela, sellos Kumano Kodo, sello kanman de Shikoku Henro, Doble Peregrino y más.',
+    systems: { camino: 'Camino de Santiago', kumano: 'Kumano Kodo', shikoku: 'Shikoku Henro', saigoku: 'Saigoku 33', achievement: 'Logros especiales' },
+    minDistance: 'Distancia mínima',
+    stampsRequired: 'Requisito de sellos',
+    whereToGet: 'Dónde recogerlo',
+    officialSite: 'Sitio oficial',
+    appCtaTitle: 'Registra tus certificados en la app',
+    appCtaDesc: 'Sacred Trails rastrea tu progreso de sellos en cada ruta — para que siempre sepas cuánto te falta para tu certificado.',
+  },
+  sacredSites: {
+    title: 'Lugares sagrados y santuarios',
+    subtitle: 'Las catedrales, grandes santuarios y lugares sagrados que esperan al final de cada etapa — con las historias detrás de ellos.',
+    metaTitle: 'Lugares sagrados — Catedrales del Camino y Santuarios Kumano | Sacred Trails',
+    metaDesc: 'Descubre los lugares sagrados del Camino de Santiago y el Kumano Kodo: catedrales, grandes santuarios y la historia de cada lugar sagrado.',
+    kumanoTitle: 'Grandes Santuarios Kumano (熊野三山)',
+    caminoTitle: 'Catedrales y lugares sagrados del Camino',
+    highlight: 'Destacado',
+    story: 'Historia',
+    photoTip: 'Consejo fotográfico',
+    blessing: 'Bendición',
+    appCtaTitle: 'Visita cada lugar sagrado con Sacred Trails',
+    appCtaDesc: 'Sacred Trails te guía a cada santuario y catedral de tu ruta — con mapas offline, detalles de etapas y contexto cultural.',
   },
 }
 

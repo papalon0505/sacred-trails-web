@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 import { routes, getRouteBySlug } from '@/lib/data/routes'
 import { waypointsByRoute } from '@/lib/data/waypoints'
 import { poisByRoute } from '@/lib/data/pois'
+import { lodgingByRoute, getLodgingName } from '@/lib/data/lodging'
 import { AppStoreBadge } from '@/components/AppStoreBadge'
 import { JsonLd } from '@/components/JsonLd'
 import { getDict, localePath, pick, LOCALIZED, ALL_LOCALES, BASE_URL, type Locale } from '@/lib/i18n'
@@ -61,6 +62,7 @@ export default async function LocaleRouteDetailPage({ params }: { params: Promis
   const allWaypoints = waypointsByRoute[slug] || []
   const highlightWaypoints = pickHighlights(allWaypoints, 8)
   const pois = (poisByRoute[slug] || []).slice(0, 6)
+  const lodging = (lodgingByRoute[slug] || []).slice(0, 8)
 
   const breadcrumbLd = {
     '@context': 'https://schema.org',
@@ -188,6 +190,43 @@ export default async function LocaleRouteDetailPage({ params }: { params: Promis
                 )
               })}
             </div>
+          </section>
+        ) : null}
+
+        {lodging.length > 0 ? (
+          <section className="mb-12">
+            <h2 className="text-2xl font-bold text-ink mb-4">{dict.route.sections.lodging}</h2>
+            <div className="grid md:grid-cols-2 gap-3">
+              {lodging.map((lodge, i) => (
+                <div key={`lodge-${i}`} className="bg-white rounded-xl p-4 border border-stone-200">
+                  <div className="flex items-start justify-between gap-2">
+                    <div className="min-w-0">
+                      <h3 className="font-semibold text-forest text-sm leading-snug">{getLodgingName(lodge)}</h3>
+                      <p className="text-xs text-stone-400 mt-0.5">{lodge.town}</p>
+                    </div>
+                    <div className="text-right flex-shrink-0">
+                      <p className="text-sm font-bold text-ink">{lodge.price != null ? `€${lodge.price}` : dict.route.lodgingLabels.noPrice}</p>
+                      {lodge.totalBeds != null ? <p className="text-xs text-stone-400">{lodge.totalBeds} {dict.route.lodgingLabels.beds}</p> : null}
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 mt-2">
+                    <span className={`text-xs px-2 py-0.5 rounded-full ${lodge.isMunicipal ? 'bg-green-50 text-green-700' : 'bg-stone-100 text-stone-500'}`}>
+                      {lodge.isMunicipal ? dict.route.lodgingLabels.municipal : dict.route.lodgingLabels.private}
+                    </span>
+                    {lodge.website ? (
+                      <a href={lodge.website} target="_blank" rel="noopener noreferrer" className="text-xs text-forest hover:underline truncate">
+                        Website →
+                      </a>
+                    ) : null}
+                  </div>
+                </div>
+              ))}
+            </div>
+            {(lodgingByRoute[slug] || []).length > lodging.length ? (
+              <p className="text-xs text-stone-400 mt-4 italic">
+                {(lodgingByRoute[slug] || []).length - lodging.length > 0 ? `Showing ${lodging.length} of ${(lodgingByRoute[slug] || []).length}` : ''} · Sacred Trails app has the full list.
+              </p>
+            ) : null}
           </section>
         ) : null}
 
