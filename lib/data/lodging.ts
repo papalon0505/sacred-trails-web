@@ -560,6 +560,7 @@ export const lodgingByRoute: Record<string, LodgingEntry[]> = {
       "price": 9000,
       "totalBeds": 30,
       "isMunicipal": false,
+      "currency": "JPY",
       "website": "https://www.nachisan.or.jp"
     },
     {
@@ -568,6 +569,7 @@ export const lodgingByRoute: Record<string, LodgingEntry[]> = {
       "price": 16000,
       "totalBeds": 500,
       "isMunicipal": false,
+      "currency": "JPY",
       "website": "https://www.hotelurashima.co.jp"
     },
     {
@@ -576,6 +578,7 @@ export const lodgingByRoute: Record<string, LodgingEntry[]> = {
       "price": 10000,
       "totalBeds": 40,
       "isMunicipal": false,
+      "currency": "JPY",
       "website": "https://www.hasedera.or.jp"
     },
     {
@@ -584,6 +587,7 @@ export const lodgingByRoute: Record<string, LodgingEntry[]> = {
       "price": 3500,
       "totalBeds": 20,
       "isMunicipal": false,
+      "currency": "JPY",
       "website": "https://www.guesthouse-nara.com"
     },
     {
@@ -592,6 +596,7 @@ export const lodgingByRoute: Record<string, LodgingEntry[]> = {
       "price": 6500,
       "totalBeds": 50,
       "isMunicipal": false,
+      "currency": "JPY",
       "website": "https://www.hatagoya.co.jp"
     },
     {
@@ -600,6 +605,7 @@ export const lodgingByRoute: Record<string, LodgingEntry[]> = {
       "price": 7500,
       "totalBeds": 25,
       "isMunicipal": true,
+      "currency": "JPY",
       "website": "https://www.nishiyama-ikoi.jp"
     },
     {
@@ -608,6 +614,7 @@ export const lodgingByRoute: Record<string, LodgingEntry[]> = {
       "price": 8500,
       "totalBeds": 20,
       "isMunicipal": false,
+      "currency": "JPY",
       "website": "https://www.nakayamadera.or.jp"
     },
     {
@@ -616,6 +623,7 @@ export const lodgingByRoute: Record<string, LodgingEntry[]> = {
       "price": 5800,
       "totalBeds": 120,
       "isMunicipal": false,
+      "currency": "JPY",
       "website": "https://www.himeji-greenhotel.co.jp"
     },
     {
@@ -624,6 +632,7 @@ export const lodgingByRoute: Record<string, LodgingEntry[]> = {
       "price": 9500,
       "totalBeds": 35,
       "isMunicipal": false,
+      "currency": "JPY",
       "website": "https://www.ohmihachiman-kanko.jp"
     },
     {
@@ -632,6 +641,7 @@ export const lodgingByRoute: Record<string, LodgingEntry[]> = {
       "price": 8000,
       "totalBeds": 18,
       "isMunicipal": false,
+      "currency": "JPY",
       "website": "https://www.tanigumi-fujitaya.jp"
     }
   ],
@@ -642,6 +652,7 @@ export const lodgingByRoute: Record<string, LodgingEntry[]> = {
       "price": 7700,
       "totalBeds": 30,
       "isMunicipal": false,
+      "currency": "JPY",
       "website": "https://www.ryozenji.com/"
     },
     {
@@ -650,6 +661,7 @@ export const lodgingByRoute: Record<string, LodgingEntry[]> = {
       "price": 0,
       "totalBeds": 6,
       "isMunicipal": false,
+      "currency": "JPY",
       "website": ""
     },
     {
@@ -658,6 +670,7 @@ export const lodgingByRoute: Record<string, LodgingEntry[]> = {
       "price": 6600,
       "totalBeds": 15,
       "isMunicipal": false,
+      "currency": "JPY",
       "website": ""
     },
     {
@@ -666,6 +679,7 @@ export const lodgingByRoute: Record<string, LodgingEntry[]> = {
       "price": 8800,
       "totalBeds": 20,
       "isMunicipal": false,
+      "currency": "JPY",
       "website": ""
     },
     {
@@ -674,6 +688,7 @@ export const lodgingByRoute: Record<string, LodgingEntry[]> = {
       "price": 7500,
       "totalBeds": 18,
       "isMunicipal": false,
+      "currency": "JPY",
       "website": ""
     },
     {
@@ -682,6 +697,7 @@ export const lodgingByRoute: Record<string, LodgingEntry[]> = {
       "price": 0,
       "totalBeds": 8,
       "isMunicipal": false,
+      "currency": "JPY",
       "website": ""
     },
     {
@@ -690,6 +706,7 @@ export const lodgingByRoute: Record<string, LodgingEntry[]> = {
       "price": 6500,
       "totalBeds": 12,
       "isMunicipal": false,
+      "currency": "JPY",
       "website": ""
     },
     {
@@ -698,6 +715,7 @@ export const lodgingByRoute: Record<string, LodgingEntry[]> = {
       "price": 8000,
       "totalBeds": 20,
       "isMunicipal": false,
+      "currency": "JPY",
       "website": ""
     },
     {
@@ -706,6 +724,7 @@ export const lodgingByRoute: Record<string, LodgingEntry[]> = {
       "price": 9000,
       "totalBeds": 25,
       "isMunicipal": false,
+      "currency": "JPY",
       "website": ""
     },
     {
@@ -714,6 +733,7 @@ export const lodgingByRoute: Record<string, LodgingEntry[]> = {
       "price": 10000,
       "totalBeds": 40,
       "isMunicipal": false,
+      "currency": "JPY",
       "website": "https://www.dogo-matsunoya.com/"
     },
     {
@@ -722,6 +742,7 @@ export const lodgingByRoute: Record<string, LodgingEntry[]> = {
       "price": 0,
       "totalBeds": 6,
       "isMunicipal": false,
+      "currency": "JPY",
       "website": ""
     },
     {
@@ -730,6 +751,7 @@ export const lodgingByRoute: Record<string, LodgingEntry[]> = {
       "price": 8800,
       "totalBeds": 50,
       "isMunicipal": false,
+      "currency": "JPY",
       "website": "https://www.zentsuji.com/lodging/"
     },
     {
@@ -738,6 +760,7 @@ export const lodgingByRoute: Record<string, LodgingEntry[]> = {
       "price": 7000,
       "totalBeds": 16,
       "isMunicipal": false,
+      "currency": "JPY",
       "website": ""
     },
     {
@@ -746,6 +769,7 @@ export const lodgingByRoute: Record<string, LodgingEntry[]> = {
       "price": 3500,
       "totalBeds": 24,
       "isMunicipal": false,
+      "currency": "JPY",
       "website": ""
     },
     {
@@ -754,6 +778,7 @@ export const lodgingByRoute: Record<string, LodgingEntry[]> = {
       "price": 3000,
       "totalBeds": 20,
       "isMunicipal": false,
+      "currency": "JPY",
       "website": ""
     }
   ],

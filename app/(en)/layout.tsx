@@ -23,15 +23,25 @@ export default function EnLayout({ children }: { children: React.ReactNode }) {
       <main>{children}</main>
       <footer className="bg-stone-800 text-stone-300 py-10 mt-20">
         <div className="max-w-6xl mx-auto px-4 flex flex-col gap-4 text-sm">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p>© 2026 Sacred Trails. All rights reserved.</p>
-            <div className="flex gap-6">
+          <div className="flex flex-col md:flex-row justify-between items-start gap-6">
+            <div>
+              <p className="text-white font-semibold mb-2">🐚 Sacred Trails</p>
+              <p className="text-xs text-stone-500">© 2026 Sacred Trails. All rights reserved.</p>
+            </div>
+            <div className="flex flex-wrap gap-x-6 gap-y-2">
+              <a href="/routes" className="hover:text-white transition-colors">All Routes</a>
+              <a href="/guide" className="hover:text-white transition-colors">Guide</a>
+              <a href="/data-sources" className="hover:text-white transition-colors">Data Sources</a>
+              <a href="/changelog" className="hover:text-white transition-colors">Changelog</a>
               <a href="/privacy" className="hover:text-white transition-colors">Privacy Policy</a>
               <a href="/legal" className="hover:text-white transition-colors">Legal Notice</a>
-              <a href="/routes" className="hover:text-white transition-colors">All Routes</a>
             </div>
           </div>
-          <p className="text-xs text-stone-500 text-center md:text-left">Route content authored by the Sacred Trails team with AI assistance.</p>
+          <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 border-t border-stone-700 pt-4">
+            <p className="text-xs text-stone-500">Route content authored by the Sacred Trails team with AI assistance.</p>
+            <span className="hidden sm:inline text-stone-600">·</span>
+            <a href="/changelog" className="text-xs text-stone-500 hover:text-stone-300 transition-colors">Last updated: April 2026</a>
+          </div>
         </div>
       </footer>
     </div>

@@ -86,6 +86,58 @@ const FAQ = [
   },
 ]
 
+// Real counts from data files (waypoints: 259, lodging: 152, pois: 114)
+const STATS = [
+  { value: '259+', label: 'waypoints' },
+  { value: '152+', label: 'lodging entries' },
+  { value: '114+', label: 'points of interest' },
+  { value: '18', label: 'routes' },
+  { value: '10', label: 'languages' },
+]
+
+const APP_DATA_EXAMPLES = [
+  {
+    type: 'Waypoint',
+    icon: '📍',
+    title: 'Roncesvalles',
+    meta: '25 km from start · 952 m elevation',
+    body: 'Site of the 778 Battle immortalized in Chanson de Roland. The 12th-century Collegiate Church hosts a nightly pilgrim blessing.',
+    badge: 'Camino Francés',
+  },
+  {
+    type: 'Lodging',
+    icon: '🛏️',
+    title: 'Albergue Municipal de Pontevedra',
+    meta: 'Pontevedra · €8 · 112 beds',
+    body: 'Large municipal albergue in the heart of historic Pontevedra. One of the best-value albergues on the Portuguese Way.',
+    badge: 'Municipal',
+  },
+  {
+    type: 'Point of Interest',
+    icon: '💧',
+    title: 'Village Fountain, Olveiroa',
+    meta: 'Type: Fountain · Camino Fisterra',
+    body: 'One of the most important water points on the Camino Fisterra — often the last reliable source before the long descent to the Atlantic coast.',
+    badge: 'Water source',
+  },
+  {
+    type: 'Stamp Story',
+    icon: '📖',
+    title: 'Saint-Jean-Pied-de-Port',
+    meta: 'Camino Francés · Stage 1',
+    body: 'For nine centuries, pilgrims have squeezed through the Porte Saint-Jacques — the last French gate before the Pyrenees. Medieval kings, Franciscan friars, and Charlemagne\'s soldiers all began the same climb from this Navarrese frontier town.',
+    badge: 'Pilgrim stamp',
+  },
+  {
+    type: 'Stats',
+    icon: '📊',
+    title: 'What\'s bundled in the app',
+    meta: 'Verified at April 2026',
+    body: '259 waypoints · 152 lodging entries · 114 points of interest · across 18 routes in 10 languages — all offline.',
+    badge: 'No internet needed',
+  },
+]
+
 const SCREENSHOTS = [
   { src: '/screenshots/01-walk-offline.png', alt: 'Walk offline with full route data' },
   { src: '/screenshots/02-navigate-stages.png', alt: 'Navigate stages on the Camino' },
@@ -177,6 +229,20 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Stats Banner */}
+      <section className="bg-forest text-white py-5">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="flex flex-wrap justify-center gap-x-8 gap-y-3">
+            {STATS.map(s => (
+              <div key={s.label} className="text-center">
+                <span className="font-bold text-xl text-white">{s.value}</span>
+                <span className="text-green-200 text-sm ml-1.5">{s.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Route Systems */}
       <section className="bg-white py-16">
         <div className="max-w-6xl mx-auto px-4">
@@ -233,6 +299,30 @@ export default function HomePage() {
               height={476}
               className="rounded-2xl shadow-lg flex-shrink-0 snap-start"
             />
+          ))}
+        </div>
+      </section>
+
+      {/* What's inside the app */}
+      <section className="max-w-6xl mx-auto px-4 py-16">
+        <h2 className="text-3xl font-bold text-ink mb-3">What&apos;s Inside the App</h2>
+        <p className="text-stone-500 mb-8">Real data from the app — this is what you get offline.</p>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {APP_DATA_EXAMPLES.map(ex => (
+            <div key={ex.type} className="bg-white rounded-2xl p-5 border border-stone-200 flex flex-col gap-3">
+              <div className="flex items-center gap-2">
+                <span className="text-xl">{ex.icon}</span>
+                <span className="text-xs font-semibold text-stone-400 uppercase tracking-wide">{ex.type}</span>
+              </div>
+              <div>
+                <h3 className="font-bold text-forest text-base leading-snug">{ex.title}</h3>
+                <p className="text-xs text-stone-400 mt-0.5">{ex.meta}</p>
+              </div>
+              <p className="text-sm text-stone-600 leading-relaxed flex-1">{ex.body}</p>
+              <span className="self-start text-xs bg-parchment text-stone-500 px-2.5 py-1 rounded-full border border-stone-200">
+                {ex.badge}
+              </span>
+            </div>
           ))}
         </div>
       </section>

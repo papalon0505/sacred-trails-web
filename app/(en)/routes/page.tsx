@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { routes } from '@/lib/data/routes'
 import { RouteCard } from '@/components/RouteCard'
 
@@ -27,7 +28,13 @@ export default function RoutesPage() {
   return (
     <div className="max-w-6xl mx-auto px-4 py-12">
       <h1 className="text-4xl font-bold text-ink mb-3">All Pilgrimage Routes</h1>
-      <p className="text-stone-500 mb-12 text-lg">18 routes across two continents — all available offline in Sacred Trails.</p>
+      <p className="text-stone-500 mb-4 text-lg">18 routes across two continents — all available offline in Sacred Trails.</p>
+      <Link
+        href="/routes/compare"
+        className="inline-flex items-center gap-1.5 text-sm text-forest border border-forest rounded-full px-4 py-1.5 mb-10 hover:bg-forest hover:text-white transition-colors"
+      >
+        ⇄ Compare all routes
+      </Link>
 
       {SYSTEM_GROUPS.map(({ key, label, icon, country }) => {
         const group = routes.filter(r => r.system === key)
