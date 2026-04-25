@@ -5,6 +5,12 @@ import { routes, getRouteBySlug } from '@/lib/data/routes'
 import { waypointsByRoute } from '@/lib/data/waypoints'
 import { poisByRoute } from '@/lib/data/pois'
 import { lodgingByRoute, getLodgingName } from '@/lib/data/lodging'
+import { shikokuSections } from '@/lib/data/shikoku-sections'
+import { saigokuSections } from '@/lib/data/saigoku-sections'
+import { caminoFrancésSections } from '@/lib/data/camino-sections'
+import { kumanoSections } from '@/lib/data/kumano-sections'
+import { routeSafetyBySlug } from '@/lib/data/route-safety'
+import { officialLinksByRoute } from '@/lib/data/official-links'
 import { AppStoreBadge } from '@/components/AppStoreBadge'
 import { JsonLd } from '@/components/JsonLd'
 import { getDict, localePath, pick, LOCALIZED, ALL_LOCALES, BASE_URL, type Locale } from '@/lib/i18n'
@@ -143,7 +149,132 @@ export default async function LocaleRouteDetailPage({ params }: { params: Promis
             <p className="text-xs text-stone-400 uppercase tracking-wide">{dict.route.labels.startEnd}</p>
             <p className="text-sm font-medium text-stone-700">{route.startPoint} → {route.endPoint}</p>
           </div>
+          {route.bestMonths ? (
+            <div>
+              <p className="text-xs text-stone-400 uppercase tracking-wide">Best Months</p>
+              <p className="text-sm font-medium text-stone-700">{route.bestMonths}</p>
+            </div>
+          ) : null}
+          {route.lodgingDensity ? (
+            <div>
+              <p className="text-xs text-stone-400 uppercase tracking-wide">Lodging</p>
+              <p className="text-sm font-medium text-stone-700 capitalize">{route.lodgingDensity}</p>
+            </div>
+          ) : null}
         </div>
+
+        {slug === 'saigoku-33' ? (
+          <section className="mb-12">
+            <h2 className="text-2xl font-bold text-ink mb-4">Seven Prefectures, One Ancient Circuit</h2>
+            <p className="text-stone-600 mb-5 text-sm leading-relaxed">
+              Japan&apos;s oldest pilgrimage (718 CE) spans Wakayama, Osaka, Nara, Kyoto, Hyogo, Shiga, and Gifu — each region with distinct character and temple styles.
+            </p>
+            <div className="grid md:grid-cols-2 gap-4">
+              {saigokuSections.map(s => (
+                <div key={s.id} className="bg-white rounded-xl p-5 border border-stone-200">
+                  <div className="flex items-baseline justify-between mb-1">
+                    <h3 className="font-bold text-forest text-sm">{pick(s.name, l)}</h3>
+                    <span className="text-xs text-stone-400 tabular-nums">Temples {s.templeRange}</span>
+                  </div>
+                  <p className="text-sm text-stone-600 italic mb-3">&ldquo;{pick(s.tagline, l)}&rdquo;</p>
+                  <ul className="space-y-1">
+                    {(s.highlights[l] || s.highlights['en'] || []).map((h: string, i: number) => (
+                      <li key={i} className="text-xs text-stone-500 flex gap-2">
+                        <span className="text-forest flex-shrink-0">·</span>{h}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
+        {slug === 'shikoku-henro' ? (
+          <section className="mb-12">
+            <h2 className="text-2xl font-bold text-ink mb-4">Four Prefectures, Four Dōjō</h2>
+            <p className="text-stone-600 mb-5 text-sm leading-relaxed">
+              The 88-temple circuit is divided into four sections — one per prefecture — each with a distinct character and spiritual theme.
+            </p>
+            <div className="grid md:grid-cols-2 gap-4">
+              {shikokuSections.map(s => (
+                <div key={s.id} className="bg-white rounded-xl p-5 border border-stone-200">
+                  <div className="flex items-baseline justify-between mb-1">
+                    <h3 className="font-bold text-forest">{pick(s.name, l)} ({s.name.ja})</h3>
+                    <span className="text-xs text-stone-400 tabular-nums">Temples {s.templeRange}</span>
+                  </div>
+                  <p className="text-xs text-stone-500 mb-2">{s.prefecture} · Difficulty {'★'.repeat(s.difficulty)}{'☆'.repeat(5 - s.difficulty)}</p>
+                  <p className="text-sm text-stone-600 italic mb-3">&ldquo;{pick(s.tagline, l)}&rdquo;</p>
+                  <ul className="space-y-1">
+                    {(s.highlights[l] || s.highlights['en'] || []).map((h: string, i: number) => (
+                      <li key={i} className="text-xs text-stone-500 flex gap-2">
+                        <span className="text-forest flex-shrink-0">·</span>{h}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
+        {slug === 'camino-frances' ? (
+          <section className="mb-12">
+            <h2 className="text-2xl font-bold text-ink mb-4">Five Regions, One Ancient Road</h2>
+            <p className="text-stone-600 mb-5 text-sm leading-relaxed">
+              The 780km Camino Franc&eacute;s unfolds across five distinct regional characters — from the brutal opening climb over the Pyrenees to the final emotional approach into Santiago.
+            </p>
+            <div className="grid md:grid-cols-2 gap-4">
+              {caminoFrancésSections.map(s => (
+                <div key={s.id} className="bg-white rounded-xl p-5 border border-stone-200">
+                  <div className="flex items-baseline justify-between mb-1">
+                    <h3 className="font-bold text-forest text-sm">{pick(s.name, l)}</h3>
+                    <span className="text-xs text-stone-400 tabular-nums">km {s.kmRange}</span>
+                  </div>
+                  <p className="text-xs text-stone-500 mb-2">{s.region} · Difficulty {'★'.repeat(s.difficulty)}{'☆'.repeat(5 - s.difficulty)}</p>
+                  <p className="text-sm text-stone-600 italic mb-3">&ldquo;{pick(s.tagline, l)}&rdquo;</p>
+                  <ul className="space-y-1">
+                    {(s.highlights[l] || s.highlights['en'] || []).map((h: string, i: number) => (
+                      <li key={i} className="text-xs text-stone-500 flex gap-2">
+                        <span className="text-forest flex-shrink-0">·</span>{h}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
+        {slug === 'kumano-nakahechi' ? (
+          <section className="mb-12">
+            <h2 className="text-2xl font-bold text-ink mb-4">Four Routes into the Sacred Mountains</h2>
+            <p className="text-stone-600 mb-5 text-sm leading-relaxed">
+              The Kumano Kod&#333; is not a single trail but a network of four historic routes, each approaching the Kumano Sanzan from a different direction and with a different character.
+            </p>
+            <div className="grid md:grid-cols-2 gap-4">
+              {kumanoSections.map(s => (
+                <div key={s.id} className="bg-white rounded-xl p-5 border border-stone-200">
+                  <div className="flex items-baseline justify-between mb-1">
+                    <h3 className="font-bold text-forest text-sm">{pick(s.name, l)}</h3>
+                    <span className="text-xs text-stone-400 tabular-nums">{s.distanceKm}km · {s.days} days</span>
+                  </div>
+                  <p className="text-xs text-stone-500 mb-2">
+                    {pick(s.startEnd.start, l)} → {pick(s.startEnd.end, l)} · Difficulty {'★'.repeat(s.difficulty)}{'☆'.repeat(5 - s.difficulty)}
+                  </p>
+                  <p className="text-sm text-stone-600 italic mb-3">&ldquo;{pick(s.tagline, l)}&rdquo;</p>
+                  <ul className="space-y-1">
+                    {(s.highlights[l] || s.highlights['en'] || []).map((h: string, i: number) => (
+                      <li key={i} className="text-xs text-stone-500 flex gap-2">
+                        <span className="text-forest flex-shrink-0">·</span>{h}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </section>
+        ) : null}
 
         {paragraphs.length > 0 ? (
           <section className="mb-12">
@@ -243,11 +374,91 @@ export default async function LocaleRouteDetailPage({ params }: { params: Promis
           </section>
         ) : null}
 
+        {routeSafetyBySlug[slug] ? (() => {
+          const safety = routeSafetyBySlug[slug]
+          return (
+            <section className="mb-10">
+              <div className="bg-amber-50 border border-amber-200 rounded-2xl p-6">
+                <h2 className="text-xl font-bold text-amber-900 mb-4 flex items-center gap-2">
+                  <span>⚠️</span> Before You Go
+                </h2>
+                <div className="grid sm:grid-cols-2 gap-4 mb-4">
+                  <div>
+                    <p className="text-xs font-semibold text-amber-700 uppercase tracking-wide mb-1">Best avoid</p>
+                    <p className="text-sm text-amber-900">{safety.bestAvoid}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold text-amber-700 uppercase tracking-wide mb-1">Weather risk</p>
+                    <p className="text-sm text-amber-900">{safety.weatherRisk}</p>
+                  </div>
+                  {safety.signalWarning && (
+                    <div>
+                      <p className="text-xs font-semibold text-amber-700 uppercase tracking-wide mb-1">Mobile signal</p>
+                      <p className="text-sm text-amber-900">{safety.signalWarning}</p>
+                    </div>
+                  )}
+                  {safety.cashRequired && (
+                    <div>
+                      <p className="text-xs font-semibold text-amber-700 uppercase tracking-wide mb-1">Cash</p>
+                      <p className="text-sm text-amber-900">{safety.cashRequired}</p>
+                    </div>
+                  )}
+                </div>
+                {safety.difficultyNote && (
+                  <div className="mb-4">
+                    <p className="text-xs font-semibold text-amber-700 uppercase tracking-wide mb-1">Note</p>
+                    <p className="text-sm text-amber-900">{safety.difficultyNote}</p>
+                  </div>
+                )}
+                <div>
+                  <p className="text-xs font-semibold text-amber-700 uppercase tracking-wide mb-2">Recommended to carry</p>
+                  <div className="flex flex-wrap gap-2">
+                    {safety.mustCarry.map((item, i) => (
+                      <span key={i} className="text-xs bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full border border-amber-200">
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </section>
+          )
+        })() : null}
+
         <section className="bg-forest text-white rounded-2xl p-8 mb-10 text-center">
           <h2 className="text-2xl font-bold mb-3">{dict.route.ctaTitle(name)}</h2>
           <p className="text-green-100 mb-6">{dict.route.ctaDesc}</p>
           <AppStoreBadge className="mx-auto" locale={l} />
         </section>
+
+        {officialLinksByRoute[slug] ? (() => {
+          const links = officialLinksByRoute[slug]
+          const socials = [
+            { label: 'Website', href: links.website, icon: '🌐' },
+            links.instagram && { label: 'Instagram', href: links.instagram, icon: '📷' },
+            links.facebook && { label: 'Facebook', href: links.facebook, icon: 'f' },
+            links.twitter && { label: 'X / Twitter', href: links.twitter, icon: '𝕏' },
+            links.youtube && { label: 'YouTube', href: links.youtube, icon: '▶' },
+          ].filter(Boolean) as { label: string; href: string; icon: string }[]
+          return (
+            <section className="mb-10">
+              <h2 className="text-lg font-semibold text-ink mb-3">Official Resources</h2>
+              <div className="flex flex-wrap gap-2">
+                {socials.map(s => (
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-stone-200 text-xs text-stone-600 hover:border-forest hover:text-forest transition-colors bg-white"
+                  >
+                    <span>{s.icon}</span>{s.label}
+                  </a>
+                ))}
+              </div>
+            </section>
+          )
+        })() : null}
 
         {relatedRoutes.length > 0 ? (
           <section>
