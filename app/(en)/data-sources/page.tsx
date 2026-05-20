@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Data Sources & Verification — Sacred Trails',
@@ -12,22 +13,27 @@ const SOURCES = [
   {
     icon: '🏛️',
     title: 'Official Pilgrimage Associations',
-    body: 'Route geometry, stage definitions, and waypoint sequences are derived from official association publications: the Pilgrim Reception Office (Oficina del Peregrino) in Santiago for Camino routes; the Kumano Hongu Taisha and Wakayama tourism bureau for Kumano Kodo; and the Shikoku Pilgrimage Executive Committee for the 88-temple circuit.',
+    body: 'Route geometry, stage definitions, and waypoint sequences are derived from official association publications: the Pilgrim Reception Office (Oficina del Peregrino) in Santiago for Camino routes; the Kumano Hongu Taisha and Wakayama tourism bureau for Kumano Kodo; the Shikoku Pilgrimage Executive Committee for the 88-temple circuit; and official Saigoku 33 temple and Japan Heritage sources for Saigoku materials.',
   },
   {
     icon: '🏠',
-    title: 'Gronze.com — Camino Lodging',
-    body: 'Albergue names, prices, bed counts, and municipal status for all 12 Camino de Santiago routes are sourced from Gronze.com, the most comprehensive Spanish-language pilgrim infrastructure database. Prices reflect published rates at the time of our last quarterly review.',
+    title: 'Gronze.com — Camino Lodging Review Source',
+    body: 'Camino lodging names, prices, bed counts, and municipal status are reviewed against Gronze.com stage pages. Prices reflect the bundled dataset at the time of the last successful review and should be confirmed directly before travel.',
   },
   {
     icon: '⛩️',
     title: 'Kumano Travel — Kumano Kodo Lodging',
-    body: 'Lodging data for the Nakahechi, Kohechi, Ohechi, and Iseji routes is sourced from kumano-travel.com, the official Kumano Kodo reservation and information platform operated by the Nachikatsura town cooperative.',
+    body: 'Configured Kumano lodging data currently covers the Nakahechi route and is reviewed against Kumano Travel, the official Kumano Kodo reservation and information platform. Kohechi, Ohechi, and Iseji lodging require manual verification before publication.',
   },
   {
     icon: '🏮',
     title: '88Shikokuhenro.jp — Temple Information',
     body: 'Temple details, visiting hours, stamp (nōkyō) practices, and lodging (shukubō) information for the Shikoku 88-temple Henro are sourced from 88shikokuhenro.jp, cross-referenced against the official Shikoku Pilgrimage Executive Committee materials.',
+  },
+  {
+    icon: '🌸',
+    title: 'Saigoku 33 & Japan Heritage',
+    body: 'Saigoku temple identity, completion practice, and heritage status are reviewed against the official Saigoku 33 association site, the Japan Heritage Saigoku portal, and the Agency for Cultural Affairs Japan Heritage story. External digital stamp campaigns are treated as time-limited travel promotions, not replacements for the physical nōkyōchō.',
   },
   {
     icon: '✅',
@@ -40,6 +46,7 @@ const UPDATE_FREQ = [
   { category: 'Lodging prices', freq: 'Quarterly review', note: 'Actual rates may vary — always confirm directly with the albergue or guesthouse before your trip.' },
   { category: 'Route waypoints & distances', freq: 'Annual review', note: 'Updated when associations publish revised stage maps or significant trail reroutes are confirmed.' },
   { category: 'Temple information (Shikoku)', freq: 'When major changes are reported', note: 'Temple closures, reconstruction, and visiting-hour changes are applied as they are confirmed.' },
+  { category: 'External digital stamp campaigns', freq: 'Before each app release while active', note: 'WESTER and similar campaigns are checked as temporary advisory content, not as permanent pilgrimage certification data.' },
   { category: 'Points of interest', freq: 'Rolling updates', note: 'New fountains, pharmacies, and facilities are added through app updates at no extra cost.' },
 ]
 
@@ -50,13 +57,14 @@ const VERIFY_ITEMS = [
   'Trail closures after storms — mountain sections of Primitivo, Norte, and Kohechi can be affected by seasonal damage',
   'Cash requirements — many small villages and temple lodgings in Japan do not accept cards',
   'Pilgrim credential requirements — some newer routes may require specific stamp office registration',
+  'Digital stamp campaign dates — external campaign apps may change periods, prize rules, or eligible temples without changing official pilgrimage completion rules',
 ]
 
 export default function DataSourcesPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 py-12">
       <nav className="text-sm text-stone-400 mb-6">
-        <a href="/" className="hover:text-forest">Home</a>{' / '}
+        <Link href="/" className="hover:text-forest">Home</Link>{' / '}
         <span className="text-stone-600">Data Sources</span>
       </nav>
 
@@ -160,7 +168,7 @@ export default function DataSourcesPage() {
       </section>
 
       <div className="mt-10 text-center">
-        <a href="/changelog" className="text-sm text-forest hover:underline">View the update log →</a>
+        <Link href="/changelog" className="text-sm text-forest hover:underline">View the update log →</Link>
       </div>
     </div>
   )

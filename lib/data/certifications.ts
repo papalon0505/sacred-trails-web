@@ -87,7 +87,7 @@ export const certifications: CertificationData[] = [
   {
     id: 'kumano_option5', icon: '🌊', system: 'kumano',
     name: { en: 'Kumano Certificate (5) Ohechi', ja: '熊野古道踏破証明書（⑤）大辺路', 'zh-TW': '熊野古道完走證書（⑤）大邊路', es: 'Certificado Kumano (5) Ohechi' },
-    description: { en: 'Walk the Ohechi coastal route and visit all 3 Grand Shrines.', ja: '大辺路を歩き、熊野三山を参拝。', 'zh-TW': '走大邊路並參拜熊野三山。', es: 'Caminar la ruta costera Ohechi y visitar los 3 Grandes Santuarios.' },
+    description: { en: 'Collect stamps at Ogigahama Mizugori Site, Tokei-jinja, at least two Ohechi sites, and all three Kumano Grand Shrines.', ja: '扇ヶ浜潮垢離場、鬪雞神社、大辺路の2か所以上、熊野三山すべてのスタンプを集める。', 'zh-TW': '收集扇濱潮垢離場、鬪雞神社、至少兩處大邊路地點，以及熊野三山全部印章。', es: 'Recoger sellos en Ogigahama Mizugori, Tokei-jinja, al menos dos sitios de Ohechi y los tres Grandes Santuarios de Kumano.' },
     stampsNote: {},
     minDistanceKm: null,
     whereToGet: { en: 'Kumano Hongu Heritage Center or Tanabe Tourist Information Center', ja: '熊野本宮ヘリテージセンター又は田辺市観光センター', 'zh-TW': '熊野本宮遺產中心或田邊市觀光案内所', es: 'Centro de Patrimonio Kumano Hongu o Centro de Información Turística de Tanabe' },
@@ -99,8 +99,8 @@ export const certifications: CertificationData[] = [
     description: { en: 'Collect all 41 stamps along the Nakahechi trail. Issued by Wakayama Prefecture Governor.', ja: '中辺路沿い全41スタンプを集める。和歌山県知事発行。', 'zh-TW': '收集中邊路沿線全部41個印章。由和歌山縣知事頒發。', es: 'Recoger los 41 sellos del sendero Nakahechi. Emitido por el Gobernador de Wakayama.' },
     stampsNote: {},
     minDistanceKm: null,
-    whereToGet: { en: 'Tanabe Tourist Information Center (submit completed stamp book)', ja: '田辺市観光センター（完成したスタンプ帳を提出）', 'zh-TW': '田邊市觀光案内所（提交完成的印章簿）', es: 'Centro de Información Turística de Tanabe (entregar libro de sellos completo)' },
-    officialUrl: 'https://www.tb-kumano.jp/en/kumano-kodo/stamps-and-credentials/',
+    whereToGet: { en: 'Listed tourist information centers such as Kumano Kodo Kan, Kumano Hongu Heritage Center, Shingu TIC, or Nachi-Katsuura TIC; not Tanabe Tourist Information Center.', ja: '熊野古道館、熊野本宮館、新宮市観光案内所、那智勝浦観光案内所など指定窓口。田辺市観光センターでは不可。', 'zh-TW': '指定觀光案內所，例如熊野古道館、熊野本宮館、新宮市觀光案內所或那智勝浦觀光案內所；不可在田邊市觀光案內所認證。', es: 'Centros de información listados, como Kumano Kodo Kan, Kumano Hongu Heritage Center, Shingu TIC o Nachi-Katsuura TIC; no el Centro de Información Turística de Tanabe.' },
+    officialUrl: 'https://www.tb-kumano.jp/en/2024/03/08/12591/',
   },
   {
     id: 'super_complete', icon: '🌟', system: 'kumano',
@@ -108,8 +108,8 @@ export const certifications: CertificationData[] = [
     description: { en: 'Complete all 4 Wakayama stamp books (78 stamps total). The ultimate Kumano Kodo achievement.', ja: '和歌山県の4冊全スタンプ帳を完成（全78スタンプ）。熊野古道の究極の達成。', 'zh-TW': '完成和歌山縣全部4本印章簿（共78個印章）。熊野古道的終極成就。', es: 'Completar los 4 libros de sellos de Wakayama (78 sellos en total). El logro definitivo del Kumano Kodo.' },
     stampsNote: {},
     minDistanceKm: null,
-    whereToGet: { en: 'Tanabe Tourist Information Center (submit all 4 completed stamp books)', ja: '田辺市観光センター（4冊全てのスタンプ帳を提出）', 'zh-TW': '田邊市觀光案内所（提交全部4本完成的印章簿）', es: 'Centro de Información Turística de Tanabe (entregar los 4 libros completos)' },
-    officialUrl: 'https://www.tb-kumano.jp/en/kumano-kodo/stamps-and-credentials/',
+    whereToGet: { en: 'Listed tourist information centers for verification; Koyasan, Ohechi, and Kii-ji sections must be verified directly with Wakayama Prefecture. Not Tanabe Tourist Information Center.', ja: '指定観光案内所で確認。高野山・大辺路・紀伊路区間は和歌山県で直接確認が必要。田辺市観光センターでは不可。', 'zh-TW': '於指定觀光案內所確認；高野山、大邊路與紀伊路區段須直接由和歌山縣確認。不可在田邊市觀光案內所認證。', es: 'Centros de información listados para verificación; las secciones Koyasan, Ohechi y Kii-ji deben verificarse directamente con la Prefectura de Wakayama. No en Tanabe TIC.' },
+    officialUrl: 'https://www.tb-kumano.jp/en/2024/03/08/12591/',
   },
   {
     id: 'dual_pilgrim', icon: '🌏', system: 'achievement',
@@ -117,8 +117,8 @@ export const certifications: CertificationData[] = [
     description: { en: 'The ultimate achievement: completed both World Heritage pilgrimage routes — Camino de Santiago and Kumano Kodo.', ja: '究極の達成：世界遺産の二つの巡礼路（サンティアゴ巡礼路と熊野古道）を両方完歩。', 'zh-TW': '終極成就：完成兩條世界遺產朝聖路線——聖雅各之路和熊野古道。', es: 'El logro máximo: completar ambas rutas de peregrinación Patrimonio Mundial — Camino de Santiago y Kumano Kodo.' },
     stampsNote: {},
     minDistanceKm: null,
-    whereToGet: { en: 'Tanabe City Kumano Tourism Bureau (Kumano Hongu Heritage Center)', ja: '田辺市熊野ツーリズムビューロー（熊野本宮ヘリテージセンター）', 'zh-TW': '田邊市熊野觀光局（熊野本宮遺產中心）', es: 'Oficina de Turismo Kumano de la ciudad de Tanabe' },
-    officialUrl: 'https://www.tb-kumano.jp/kumano-kodo/dual-pilgrim/',
+    whereToGet: { en: 'Designated registration sites in Tanabe City or Turismo de Santiago Information Center in Santiago de Compostela', ja: '田辺市内の指定登録窓口、またはサンティアゴ・デ・コンポステーラのTurismo de Santiago案内所', 'zh-TW': '田邊市指定登記處，或聖地亞哥德孔波斯特拉的 Turismo de Santiago 旅遊資訊中心', es: 'Puntos de registro designados en Tanabe o Centro de Información Turismo de Santiago en Santiago de Compostela' },
+    officialUrl: 'https://www.tb-kumano.jp/en/kumano-kodo/dual-pilgrim/',
   },
   {
     id: 'shikoku_henro_complete', icon: '🏮', system: 'shikoku',
@@ -135,7 +135,7 @@ export const certifications: CertificationData[] = [
     description: { en: 'Complete all 33 Kannon temple halls of the Saigoku Kannon Pilgrimage, the oldest Buddhist pilgrimage in Japan.', ja: '西国三十三所観音霊場を全て巡礼。日本最古の仏教巡礼。', 'zh-TW': '完成西國三十三所觀音靈場全部33所，日本最古老的佛教巡禮。', es: 'Completar los 33 templos Kannon de la Peregrinación Kannon de Saigoku, la peregrinación budista más antigua de Japón.' },
     stampsNote: {},
     minDistanceKm: null,
-    whereToGet: { en: 'Nachi Taisha (temple 1) or Huganji Temple (temple 33) — present your completed nōkyōchō', ja: '那智大社（第一番）または華厳寺（第三十三番）で満願印を受ける（納経帳持参）', 'zh-TW': '那智大社（第一番）或華嚴寺（第三十三番），出示完成的納經帳', es: 'Nachi Taisha (primer templo) o templo Huganji (último) — presentar el nōkyōchō completo' },
+    whereToGet: { en: 'Seiganto-ji (temple 1) or Kegon-ji (temple 33) — present your completed nōkyōchō', ja: '青岸渡寺（第一番）または華厳寺（第三十三番）で満願印を受ける（納経帳持参）', 'zh-TW': '青岸渡寺（第一番）或華嚴寺（第三十三番），出示完成的納經帳', es: 'Seiganto-ji (templo 1) o Kegon-ji (templo 33) — presentar el nōkyōchō completo' },
     officialUrl: 'https://www.saikoku33.gr.jp/',
   },
 ]
