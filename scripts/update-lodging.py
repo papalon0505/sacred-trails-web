@@ -227,7 +227,13 @@ def print_diff_report(diffs: list[dict]):
     print("=" * 60)
 
     has_changes = False
+    has_failures = False
     for d in diffs:
+        if d.get("fetch_failed"):
+            has_failures = True
+            print(f"\n⚠ {d['route']} — no data fetched; freshness could not be verified")
+            continue
+
         if not (d["added"] or d["removed"] or d["price_changes"]):
             print(f"\n✓ {d['route']} — no changes ({d['current_total']} entries)")
             continue
@@ -253,7 +259,9 @@ def print_diff_report(diffs: list[dict]):
                 new = f"€{c['new']}"
                 print(f"    · {c['name']}: {old} → {new}")
 
-    if not has_changes:
+    if has_failures:
+        print("\n⚠ Some routes could not be fetched. Fix source URLs/parsers before applying lodging updates.")
+    elif not has_changes:
         print("\n✓ All routes up to date — no changes detected.")
     else:
         print("\nRun with --apply to write changes.")
@@ -338,6 +346,16 @@ def main():
 
         if not fetched:
             print(f"  WARN: no data fetched for {slug}")
+            current = current_data.get(slug, [])
+            diffs.append({
+                "route": slug,
+                "added": [],
+                "removed": [],
+                "price_changes": [],
+                "fetched_total": 0,
+                "current_total": len(current),
+                "fetch_failed": True,
+            })
             continue
 
         fetched_by_route[slug] = fetched

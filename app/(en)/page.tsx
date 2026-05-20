@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
 import { routes } from '@/lib/data/routes'
 import { waypointsByRoute } from '@/lib/data/waypoints'
 import { RouteCard } from '@/components/RouteCard'
@@ -50,7 +51,7 @@ const FAQ = [
   },
   {
     q: 'How many pilgrimage routes are included?',
-    a: 'Sacred Trails covers 18 routes: all 12 Camino de Santiago routes (Francés, Portugués, Norte, Primitivo, Inglés, del Sur, Vía de la Plata, Invierno, Sanabrés, Catalán, Levante, Aragonés), 4 Kumano Kodo routes (Nakahechi, Kohechi, Ohechi, Iseji), the Shikoku 88-Temple Henro, and the Saigoku 33 Kannon Pilgrimage.',
+    a: 'Sacred Trails covers 18 routes: 12 Camino routes (Francés, Portugués, Portugués Coastal, Norte, Primitivo, Inglés, Vía de la Plata, Invierno, Fisterra-Muxía, Le Puy, Mozárabe, San Salvador), 4 Kumano Kodo routes (Nakahechi, Kohechi, Ohechi, Iseji), the Shikoku 88-Temple Henro, and the Saigoku 33 Kannon Pilgrimage.',
   },
   {
     q: 'How much does Sacred Trails cost?',
@@ -224,9 +225,9 @@ export default function HomePage() {
           </p>
           <div className="flex flex-wrap gap-4">
             <AppStoreBadge />
-            <a href="/routes" className="inline-flex items-center gap-2 border border-forest text-forest px-5 py-3 rounded-xl text-sm font-medium hover:bg-forest hover:text-white transition-colors">
+            <Link href="/routes" className="inline-flex items-center gap-2 border border-forest text-forest px-5 py-3 rounded-xl text-sm font-medium hover:bg-forest hover:text-white transition-colors">
               Browse Routes →
-            </a>
+            </Link>
           </div>
         </div>
         <div className="flex-1 flex justify-center">
