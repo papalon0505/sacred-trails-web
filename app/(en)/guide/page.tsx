@@ -20,6 +20,12 @@ const GUIDES = [
   { slug: 'shikoku-henro', title: 'Shikoku 88 Temple Pilgrimage — Complete Guide', desc: "1,200km circuit of Shikoku island, following in Kōbō Daishi's footsteps.", icon: '🏮' },
 ]
 
+const ARTICLES = [
+  { slug: 'camino-packing-list', title: 'Camino de Santiago Packing List 2026', desc: 'What to bring, what to leave behind, and how to keep your pack under 8kg.' },
+  { slug: 'camino-cost', title: 'How Much Does the Camino Cost in 2026?', desc: 'A realistic budget breakdown: €25/day budget to €80/day comfort.' },
+  { slug: 'first-pilgrimage', title: 'Your First Pilgrimage: How to Choose', desc: 'Camino, Kumano Kodo, or Shikoku — which pilgrimage is right for you?' },
+]
+
 export default function GuidePage() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-12">
@@ -32,6 +38,18 @@ export default function GuidePage() {
             <div className="text-3xl mb-3">{g.icon}</div>
             <h2 className="font-bold text-forest mb-2">{g.title}</h2>
             <p className="text-sm text-stone-500">{g.desc}</p>
+          </a>
+        ))}
+      </div>
+
+      <h2 className="text-2xl font-bold text-ink mt-16 mb-3">Planning & Preparation</h2>
+      <p className="text-stone-500 mb-8">Practical guides for gear, budget, and getting started.</p>
+      <div className="grid md:grid-cols-3 gap-6">
+        {ARTICLES.map(a => (
+          <a key={a.slug} href={`/guide/${a.slug}`}
+            className="bg-white rounded-2xl p-6 border border-stone-200 hover:border-forest hover:shadow-md transition-all">
+            <h3 className="font-bold text-forest mb-2">{a.title}</h3>
+            <p className="text-sm text-stone-500">{a.desc}</p>
           </a>
         ))}
       </div>
