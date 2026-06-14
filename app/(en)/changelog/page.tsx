@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Update Log — Sacred Trails',
@@ -15,6 +16,26 @@ interface ChangeEntry {
 }
 
 const CHANGELOG: ChangeEntry[] = [
+  {
+    date: '2026-06-14',
+    label: 'App v1.3.6 · App Store',
+    items: [
+      'Route Pack model: choose Camino Essentials, Camino Complete, Japan Pilgrimage, or All Routes Lifetime — pay only for the routes you walk',
+      'Founding User protection: existing users keep full access to all routes they had before the update',
+      'Expanded Camino lodging catalog with additional verified entries',
+      'App and device name unified to "Sacred Trails" across all 10 languages',
+    ],
+  },
+  {
+    date: '2026-06-14',
+    label: 'Web · SEO',
+    items: [
+      'Published Camino de Santiago Packing List 2026 guide',
+      'Published Camino de Santiago Cost 2026 budget breakdown',
+      'Published First Pilgrimage guide with Camino, Kumano Kodo, and Shikoku comparison',
+      'Added Planning & Preparation section to the guide index',
+    ],
+  },
   {
     date: '2026-04-25',
     label: 'Data & Web',
@@ -88,13 +109,13 @@ export default function ChangelogPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 py-12">
       <nav className="text-sm text-stone-400 mb-6">
-        <a href="/" className="hover:text-forest">Home</a>{' / '}
+        <Link href="/" className="hover:text-forest">Home</Link>{' / '}
         <span className="text-stone-600">Changelog</span>
       </nav>
 
       <div className="flex items-baseline justify-between flex-wrap gap-2 mb-3">
         <h1 className="text-4xl font-bold text-ink">Update Log</h1>
-        <span className="text-sm text-stone-400 font-medium">Last updated: April 2026</span>
+        <span className="text-sm text-stone-400 font-medium">Last updated: June 2026</span>
       </div>
       <p className="text-stone-600 text-lg mb-10 leading-relaxed">
         A record of data updates, route additions, and app changes. Existing users receive all data updates free through standard App Store updates.
@@ -128,8 +149,8 @@ export default function ChangelogPage() {
       </div>
 
       <div className="mt-12 pt-8 border-t border-stone-200 flex flex-wrap gap-4 text-sm">
-        <a href="/data-sources" className="text-forest hover:underline">Data sources & verification →</a>
-        <a href="/routes" className="text-forest hover:underline">Browse all 18 routes →</a>
+        <Link href="/data-sources" className="text-forest hover:underline">Data sources & verification →</Link>
+        <Link href="/routes" className="text-forest hover:underline">Browse all 18 routes →</Link>
       </div>
     </div>
   )
