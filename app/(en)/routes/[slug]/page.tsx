@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
+import Link from 'next/link'
 import { routes, getRouteBySlug } from '@/lib/data/routes'
 import { waypointsByRoute } from '@/lib/data/waypoints'
 import { poisByRoute } from '@/lib/data/pois'
@@ -13,6 +14,8 @@ import { officialLinksByRoute } from '@/lib/data/official-links'
 import { AppStoreBadge } from '@/components/AppStoreBadge'
 import { JsonLd } from '@/components/JsonLd'
 import { routeSafetyBySlug } from '@/lib/data/route-safety'
+import { buildPlanningSnapshot, buildRouteDecisionGuide, buildRouteMarkerHints, formatPlanningValue, getAverageDailyKm, getLodgingDisclosure, getScopedRouteWaypoints, summarizeLodgingForItinerary, summarizeLodgingByTown } from '@/lib/route-planning'
+import { RouteItineraryPlanner } from '@/components/RouteItineraryPlanner'
 
 export function generateStaticParams() {
   return routes.map(r => ({ slug: r.slug }))
@@ -77,10 +80,45 @@ export default async function RouteDetailPage({ params }: { params: Promise<{ sl
   const description = route.description.en ?? ''
   const paragraphs = description ? description.split(/\n{2,}/).filter(Boolean) : []
   const relatedRoutes = routes.filter(r => r.system === route.system && r.slug !== slug).slice(0, 3)
-  const allWaypoints = waypointsByRoute[slug] || []
+  const allWaypoints = getScopedRouteWaypoints(route, waypointsByRoute[slug] || [])
   const highlightWaypoints = pickHighlights(allWaypoints, 8)
   const pois = (poisByRoute[slug] || []).slice(0, 6)
-  const lodging = (lodgingByRoute[slug] || []).slice(0, 8)
+  const allLodging = lodgingByRoute[slug] || []
+  const lodging = allLodging.slice(0, 8)
+  const lodgingTownSummaries = summarizeLodgingByTown(allLodging).slice(0, 8)
+  const itineraryLodgingTownSummaries = summarizeLodgingForItinerary(allLodging, allWaypoints)
+  const routeMarkerHints = buildRouteMarkerHints(route, allWaypoints)
+  const lodgingDisclosure = getLodgingDisclosure(route)
+  const averageDailyKm = getAverageDailyKm(route)
+  const countryLabel = route.country === 'ES' ? 'Spain' : route.country === 'PT+ES' ? 'Portugal and Spain' : route.country
+  const certificationLabel = route.certificationType === 'compostela' ? 'Compostela' : route.certificationType
+  const certificationMinimum = route.certificationType === 'compostela' ? '100km walking' : undefined
+  const planningSnapshot = buildPlanningSnapshot(route, {
+    distance: 'Distance',
+    typicalDuration: 'Typical duration',
+    averageDay: 'Average day',
+    difficulty: 'Difficulty',
+    bestMonths: 'Best months',
+    certificationMinimum: 'Certificate minimum',
+    lodgingDensity: 'Lodging density',
+    resupply: 'Resupply',
+    access: 'Access',
+    daysUnit: 'days',
+    perDayUnit: 'km/day',
+    difficultyValue: DIFFICULTY_LABELS[route.difficulty] ?? formatPlanningValue(route.difficulty),
+    certificationMinimumValue: certificationMinimum,
+    transportAccess: route.transportAccess?.en,
+  })
+  const decisionGuide = buildRouteDecisionGuide(route, {
+    bestFor: 'Best for',
+    timeCommitment: 'Time commitment',
+    lodgingAndResupply: 'Lodging and resupply',
+    offlineUse: 'Why use Sacred Trails',
+    bestForFallback: 'Route planning',
+    timeCommitmentValue: (days, dailyKm) => `${days} walking days at about ${dailyKm}km/day`,
+    lodgingResupplyValue: (lodging, resupply) => `${formatPlanningValue(lodging)} lodging · ${formatPlanningValue(resupply)} resupply`,
+    offlineUseValue: 'Offline stages, waypoint stories, lodging notes, and route context stay available when mobile signal drops.',
+  })
 
   const breadcrumbLd = {
     '@context': 'https://schema.org',
@@ -106,8 +144,7 @@ export default async function RouteDetailPage({ params }: { params: Promise<{ sl
     })),
     offers: {
       '@type': 'Offer',
-      price: '2.99',
-      priceCurrency: 'USD',
+      availability: 'https://schema.org/InStock',
       url: 'https://apps.apple.com/app/id6761192860',
     },
   } as Record<string, unknown>
@@ -118,8 +155,8 @@ export default async function RouteDetailPage({ params }: { params: Promise<{ sl
       <JsonLd data={touristTripLd} />
       <div className="max-w-3xl mx-auto px-4 py-12">
         <nav className="text-sm text-stone-400 mb-6">
-          <a href="/" className="hover:text-forest">Home</a>{' / '}
-          <a href="/routes" className="hover:text-forest">Routes</a>{' / '}
+          <Link href="/" className="hover:text-forest">Home</Link>{' / '}
+          <Link href="/routes" className="hover:text-forest">Routes</Link>{' / '}
           <span className="text-stone-600">{name}</span>
         </nav>
 
@@ -129,6 +166,7 @@ export default async function RouteDetailPage({ params }: { params: Promise<{ sl
             src={`/routes/${slug}/hero.jpg`}
             alt={`${name} pilgrimage route`}
             fill
+            sizes="(min-width: 768px) 768px, calc(100vw - 32px)"
             className="object-cover"
             priority
           />
@@ -136,7 +174,7 @@ export default async function RouteDetailPage({ params }: { params: Promise<{ sl
 
         <h1 className="text-4xl font-bold text-ink mb-3">{name}</h1>
         <p className="text-stone-500 text-lg mb-6">
-          {route.totalDistanceKm}km pilgrimage route in {route.country}
+          {route.totalDistanceKm}km pilgrimage route in {countryLabel}
         </p>
 
         <div className="flex flex-wrap gap-6 bg-white rounded-2xl p-6 border border-stone-200 mb-8">
@@ -154,7 +192,7 @@ export default async function RouteDetailPage({ params }: { params: Promise<{ sl
           </div>
           <div>
             <p className="text-xs text-stone-400 uppercase tracking-wide">Certification</p>
-            <p className="text-xl font-bold text-forest capitalize">{route.certificationType}</p>
+            <p className="text-xl font-bold text-forest">{certificationLabel}</p>
           </div>
           <div>
             <p className="text-xs text-stone-400 uppercase tracking-wide">Start → End</p>
@@ -162,11 +200,63 @@ export default async function RouteDetailPage({ params }: { params: Promise<{ sl
           </div>
         </div>
 
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold text-ink mb-4">Planning Snapshot</h2>
+          <div className="bg-white rounded-2xl p-6 border border-stone-200">
+            <div className="grid sm:grid-cols-2 gap-4">
+              {planningSnapshot.map(item => (
+                <div key={item.label}>
+                  <p className="text-xs text-stone-400 uppercase tracking-wide">{item.label}</p>
+                  <p className="text-sm font-medium text-stone-700">{item.value}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold text-ink mb-4">Is this route a good fit?</h2>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {decisionGuide.map(item => (
+              <div key={item.label} className="bg-white rounded-xl p-5 border border-stone-200">
+                <p className="text-xs text-stone-400 uppercase tracking-wide mb-2">{item.label}</p>
+                <p className="text-sm text-stone-700 leading-relaxed">{item.value}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <RouteItineraryPlanner
+          route={route}
+          lodgingTownSummaries={itineraryLodgingTownSummaries}
+          routeMarkerHints={routeMarkerHints}
+          labels={{
+            title: 'Rough Distance Planner',
+            intro: `Use this as a rough distance sketch before detailed planning: ${route.averageDays} walking days across ${route.totalDistanceKm}km, averaging about ${averageDailyKm}km per day. Adjust for real stages, terrain, rest days, weather, opening seasons, and lodging availability before booking.`,
+            walkingDays: 'Walking days',
+            restDays: 'Rest days',
+            dailyTarget: 'Daily target',
+            averageWalkingDay: 'Average walking day',
+            routeStyle: 'Route style',
+            dayLabel: 'Day',
+            walkLabel: 'Walk',
+            restLabel: 'Rest',
+            distanceLabel: 'Distance',
+            cumulativeLabel: 'Total',
+            lodgingHintLabel: 'Route / lodging reference',
+            noLodgingHint: 'Verify lodging directly',
+            lodgingStayLabel: 'listed stays',
+            totalDaysLabel: 'Total days',
+            routeStyleValue: `${formatPlanningValue(route.lodgingDensity)} lodging · ${formatPlanningValue(route.resupplyDifficulty)} resupply`,
+            lodgingHintNote: 'Distances are averaged. Route markers use the nearest ordered waypoint to each rough segment; lodging references are supporting town data, not recommended overnight stops or confirmed availability.',
+          }}
+        />
+
         {slug === 'saigoku-33' ? (
           <section className="mb-12">
             <h2 className="text-2xl font-bold text-ink mb-4">Seven Prefectures, One Ancient Circuit</h2>
             <p className="text-stone-600 mb-5 text-sm leading-relaxed">
-              Japan's oldest pilgrimage (718 CE) spans Wakayama, Osaka, Nara, Kyoto, Hyogo, Shiga, and Gifu — each region with distinct character and temple styles.
+              Japan&apos;s oldest pilgrimage (718 CE) spans Wakayama, Osaka, Nara, Kyoto, Hyogo, Shiga, and Gifu — each region with distinct character and temple styles.
             </p>
             <div className="grid md:grid-cols-2 gap-4">
               {saigokuSections.map(s => (
@@ -175,7 +265,7 @@ export default async function RouteDetailPage({ params }: { params: Promise<{ sl
                     <h3 className="font-bold text-forest text-sm">{s.name.en}</h3>
                     <span className="text-xs text-stone-400 tabular-nums">Temples {s.templeRange}</span>
                   </div>
-                  <p className="text-sm text-stone-600 italic mb-3">"{s.tagline.en}"</p>
+                  <p className="text-sm text-stone-600 italic mb-3">&ldquo;{s.tagline.en}&rdquo;</p>
                   <ul className="space-y-1">
                     {s.highlights.en.map((h, i) => (
                       <li key={i} className="text-xs text-stone-500 flex gap-2">
@@ -203,7 +293,7 @@ export default async function RouteDetailPage({ params }: { params: Promise<{ sl
                     <span className="text-xs text-stone-400 tabular-nums">Temples {s.templeRange}</span>
                   </div>
                   <p className="text-xs text-stone-500 mb-2">{s.prefecture} · Difficulty {'★'.repeat(s.difficulty)}{'☆'.repeat(5 - s.difficulty)}</p>
-                  <p className="text-sm text-stone-600 italic mb-3">"{s.tagline.en}"</p>
+                  <p className="text-sm text-stone-600 italic mb-3">&ldquo;{s.tagline.en}&rdquo;</p>
                   <ul className="space-y-1">
                     {s.highlights.en.map((h, i) => (
                       <li key={i} className="text-xs text-stone-500 flex gap-2">
@@ -231,7 +321,7 @@ export default async function RouteDetailPage({ params }: { params: Promise<{ sl
                     <span className="text-xs text-stone-400 tabular-nums">km {s.kmRange}</span>
                   </div>
                   <p className="text-xs text-stone-500 mb-2">{s.region} · Difficulty {'★'.repeat(s.difficulty)}{'☆'.repeat(5 - s.difficulty)}</p>
-                  <p className="text-sm text-stone-600 italic mb-3">"{s.tagline.en}"</p>
+                  <p className="text-sm text-stone-600 italic mb-3">&ldquo;{s.tagline.en}&rdquo;</p>
                   <ul className="space-y-1">
                     {s.highlights.en.map((h, i) => (
                       <li key={i} className="text-xs text-stone-500 flex gap-2">
@@ -261,7 +351,7 @@ export default async function RouteDetailPage({ params }: { params: Promise<{ sl
                   <p className="text-xs text-stone-500 mb-2">
                     {s.startEnd.start.en} → {s.startEnd.end.en} · Difficulty {'★'.repeat(s.difficulty)}{'☆'.repeat(5 - s.difficulty)}
                   </p>
-                  <p className="text-sm text-stone-600 italic mb-3">"{s.tagline.en}"</p>
+                  <p className="text-sm text-stone-600 italic mb-3">&ldquo;{s.tagline.en}&rdquo;</p>
                   <ul className="space-y-1">
                     {s.highlights.en.map((h, i) => (
                       <li key={i} className="text-xs text-stone-500 flex gap-2">
@@ -327,9 +417,30 @@ export default async function RouteDetailPage({ params }: { params: Promise<{ sl
           </section>
         ) : null}
 
-        {lodging.length > 0 ? (
+        {allLodging.length > 0 ? (
           <section className="mb-12">
             <h2 className="text-2xl font-bold text-ink mb-4">Accommodation</h2>
+            {lodgingTownSummaries.length > 0 ? (
+              <div className="bg-stone-50 rounded-2xl p-5 border border-stone-200 mb-5">
+                <div className="flex items-baseline justify-between gap-3 mb-3">
+                  <h3 className="font-semibold text-ink">Town lodging summary</h3>
+                  <span className="text-xs text-stone-400">{allLodging.length} listed stays</span>
+                </div>
+                <div className="grid sm:grid-cols-2 gap-3">
+                  {lodgingTownSummaries.map(town => (
+                    <div key={town.town} className="bg-white rounded-xl p-3 border border-stone-200">
+                      <div className="flex items-baseline justify-between gap-2">
+                        <p className="font-semibold text-forest text-sm">{town.town}</p>
+                        <p className="text-xs text-stone-400">{town.count} {town.count === 1 ? 'stay' : 'stays'}</p>
+                      </div>
+                      <p className="text-xs text-stone-500 mt-1">
+                        Rates vary; record your own price notes.
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ) : null}
             <div className="grid md:grid-cols-2 gap-3">
               {lodging.map((l, i) => (
                 <div key={`lodge-${i}`} className="bg-white rounded-xl p-4 border border-stone-200">
@@ -339,7 +450,7 @@ export default async function RouteDetailPage({ params }: { params: Promise<{ sl
                       <p className="text-xs text-stone-400 mt-0.5">{l.town}</p>
                     </div>
                     <div className="text-right flex-shrink-0">
-                      <p className="text-sm font-bold text-ink">{l.price != null ? `${l.currency === 'JPY' ? '¥' : '€'}${l.price.toLocaleString()}` : 'Varies'}</p>
+                      <p className="text-sm font-bold text-ink">Rate varies</p>
                       {l.totalBeds != null ? <p className="text-xs text-stone-400">{l.totalBeds} beds</p> : null}
                     </div>
                   </div>
@@ -347,6 +458,11 @@ export default async function RouteDetailPage({ params }: { params: Promise<{ sl
                     <span className={`text-xs px-2 py-0.5 rounded-full ${l.isMunicipal ? 'bg-green-50 text-green-700' : 'bg-stone-100 text-stone-500'}`}>
                       {l.isMunicipal ? 'Municipal' : 'Private'}
                     </span>
+                    {l.status === 'temporarily_closed' ? (
+                      <span className="text-xs px-2 py-0.5 rounded-full bg-amber-50 text-amber-700">
+                        Temporarily closed
+                      </span>
+                    ) : null}
                     {l.website ? (
                       <a href={l.website} target="_blank" rel="noopener noreferrer" className="text-xs text-forest hover:underline truncate">
                         Website →
@@ -356,11 +472,16 @@ export default async function RouteDetailPage({ params }: { params: Promise<{ sl
                 </div>
               ))}
             </div>
+            <div className="bg-white rounded-xl p-4 border border-stone-200 mt-5">
+              <p className="text-xs font-semibold text-stone-500 uppercase tracking-wide mb-1">{lodgingDisclosure.sourceLabel}</p>
+              <p className="text-sm font-semibold text-ink mb-1">{lodgingDisclosure.confidenceLabel}</p>
+              <p className="text-xs text-stone-500 leading-relaxed">{lodgingDisclosure.description}</p>
+            </div>
             <p className="text-xs text-stone-400 mt-4 italic">
-              {(lodgingByRoute[slug] || []).length > lodging.length
-                ? `Showing ${lodging.length} of ${(lodgingByRoute[slug] || []).length} · `
+              {allLodging.length > lodging.length
+                ? `Showing ${lodging.length} of ${allLodging.length} · `
                 : ''}
-              Prices and availability may change — verify directly with each albergue before your trip.
+              Rates vary; use your own price notes and verify availability directly before your trip.
             </p>
           </section>
         ) : null}
@@ -419,9 +540,31 @@ export default async function RouteDetailPage({ params }: { params: Promise<{ sl
         <section className="bg-forest text-white rounded-2xl p-8 mb-10 text-center">
           <h2 className="text-2xl font-bold mb-3">Navigate the {name} Offline</h2>
           <p className="text-green-100 mb-6">
-            Stage-by-stage navigation, full waypoint history, and lodging data — all offline in Sacred Trails. One $2.99 purchase unlocks all 18 routes.
+            Stage-by-stage navigation, waypoint history, and lodging data — all offline in Sacred Trails. Free to download with route packs for the trails you walk.
           </p>
           <AppStoreBadge className="mx-auto" />
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-lg font-semibold text-ink mb-3">Planning Guides</h2>
+          <div className="flex flex-wrap gap-2">
+            {route.system === 'camino' && (
+              <>
+                <Link href="/guide/camino-packing-list" className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-stone-200 text-xs text-stone-600 hover:border-forest hover:text-forest transition-colors bg-white">
+                  🎒 Packing List 2026
+                </Link>
+                <Link href="/guide/camino-cost" className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-stone-200 text-xs text-stone-600 hover:border-forest hover:text-forest transition-colors bg-white">
+                  💰 Cost Breakdown
+                </Link>
+              </>
+            )}
+            <Link href="/guide/first-pilgrimage" className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-stone-200 text-xs text-stone-600 hover:border-forest hover:text-forest transition-colors bg-white">
+              🧭 First Pilgrimage Guide
+            </Link>
+            <Link href={`/guide/${route.system === 'camino' ? 'camino-de-santiago' : route.system === 'kumano' ? 'kumano-kodo' : route.system === 'shikoku' ? 'shikoku-henro' : 'camino-de-santiago'}`} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-stone-200 text-xs text-stone-600 hover:border-forest hover:text-forest transition-colors bg-white">
+              📖 Complete Guide
+            </Link>
+          </div>
         </section>
 
         {officialLinksByRoute[slug] ? (() => {
@@ -458,10 +601,10 @@ export default async function RouteDetailPage({ params }: { params: Promise<{ sl
             <h2 className="text-2xl font-bold text-ink mb-5">Related Routes</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {relatedRoutes.map(r => (
-                <a key={r.slug} href={`/routes/${r.slug}`} className="bg-white rounded-xl p-4 border border-stone-200 hover:border-forest transition-colors">
+                <Link key={r.slug} href={`/routes/${r.slug}`} className="bg-white rounded-xl p-4 border border-stone-200 hover:border-forest transition-colors">
                   <p className="font-semibold text-forest text-sm">{r.name.en}</p>
                   <p className="text-xs text-stone-400 mt-1">{r.totalDistanceKm}km · {r.averageDays} days</p>
-                </a>
+                </Link>
               ))}
             </div>
           </section>
