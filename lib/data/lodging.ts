@@ -10,6 +10,7 @@ export interface LodgingEntry {
   totalBeds: number | null
   isMunicipal: boolean
   website: string
+  status?: string
 }
 
 export function getLodgingName(entry: LodgingEntry): string {
