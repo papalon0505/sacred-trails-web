@@ -15,7 +15,18 @@ export interface ArticleContent {
   ctaDesc: string
 }
 
-export type ArticleSlug = 'camino-packing-list' | 'camino-cost' | 'first-pilgrimage'
+export const ARTICLE_SLUGS = [
+  'camino-packing-list',
+  'camino-cost',
+  'first-pilgrimage',
+  'camino-routes-compared',
+  'kumano-kodo-nakahechi-itinerary',
+  'shikoku-henro-planning',
+  'dual-pilgrim-certificate',
+  'saigoku-33-kannon-pilgrimage',
+] as const
+
+export type ArticleSlug = typeof ARTICLE_SLUGS[number]
 
 const caminoPackingList: ArticleContent = {
   title: 'Camino de Santiago Packing List 2026',
@@ -340,10 +351,312 @@ const firstPilgrimage: ArticleContent = {
   ctaDesc: 'Sacred Trails covers the Camino de Santiago, Kumano Kodo, and Shikoku Henro. Offline navigation, stage data, and lodging — everything you need for your first (or next) pilgrimage.',
 }
 
+const caminoRoutesCompared: ArticleContent = {
+  title: 'Camino Routes Compared: Which Way Should You Walk?',
+  subtitle: 'A practical route-choice guide for the Francés, Portugués, Norte, Primitivo, Inglés, Fisterra, and quieter alternatives',
+  metaTitle: 'Camino Routes Compared 2026 — Francés, Portugués, Norte & More',
+  metaDesc: 'Compare major Camino de Santiago routes by distance, difficulty, social atmosphere, lodging density, seasons, and certificate planning.',
+  sections: [
+    {
+      heading: 'Start With the Kind of Pilgrimage You Want',
+      paragraphs: [
+        'Most first-time pilgrims ask which Camino route is best. A better question is what kind of pilgrimage you want: social or quiet, coastal or inland, short or immersive, forgiving or physically demanding.',
+        'All recognized Camino routes share the same final destination of Santiago de Compostela, but the daily experience varies sharply. The Camino Francés has the deepest infrastructure and the largest pilgrim community. The Portugués is shorter and easier to fit into a two-week trip. The Norte and Primitivo feel wilder and more physical. The Inglés and Fisterra-Muxía are compact routes for limited time.',
+      ],
+    },
+    {
+      heading: 'Best First Camino: Francés or Portugués',
+      paragraphs: [
+        'The Camino Francés remains the safest recommendation for a first long Camino if you have four to five weeks. It has frequent albergues, visible waymarks, many cafés, and a steady stream of other pilgrims. This reduces planning risk and makes it easier to adjust your pace.',
+        'The Camino Portugués from Porto is the better first choice when time is shorter. The Central route is direct and social; the Coastal route gives more sea views but needs more careful stage planning in places. Both are easier than the Norte or Primitivo for most new walkers.',
+      ],
+      list: [
+        'Choose the Francés if you want the classic social Camino and can walk roughly a month.',
+        'Choose the Portugués if you have 10-14 walking days and want strong infrastructure.',
+        'Choose the Inglés if you need a one-week qualifying route from Ferrol.',
+      ],
+    },
+    {
+      heading: 'Best Quiet Camino: Norte, Primitivo, Invierno',
+      paragraphs: [
+        'The Camino del Norte is beautiful but more demanding than many first-timers expect. Coastal weather, repeated elevation changes, and longer gaps between pilgrim services make it better for walkers who already know their feet and pack.',
+        'The Primitivo is shorter than the Norte but has serious climbs and exposed mountain sections. The Invierno is quieter still and can suit repeat pilgrims who want fewer crowds after completing one of the main routes.',
+      ],
+      list: [
+        'Choose the Norte for coast, food, and solitude with stronger legs.',
+        'Choose the Primitivo for a shorter but steeper historical route.',
+        'Choose the Invierno if you have prior Camino experience and want a lower-crowd route.',
+      ],
+    },
+    {
+      heading: 'Certificate Planning',
+      paragraphs: [
+        'The Compostela is tied to walking at least the final 100 km to Santiago, with stamps collected in a pilgrim credential. This means route choice and starting point are separate decisions: you can walk a whole route, or only the qualifying final section if time is limited.',
+        'Do not rely on a blog post for current certificate rules. Before departure, verify the latest requirements with the Pilgrim Reception Office and check where you can obtain a credential at your starting point.',
+      ],
+    },
+    {
+      heading: 'A Simple Decision Matrix',
+      paragraphs: [
+        'Use this route-choice shorthand before you start booking beds. It is intentionally conservative: first pilgrims usually benefit from easier logistics more than from theoretical scenery.',
+      ],
+      list: [
+        'One week: Camino Inglés, or the final 100 km from Sarria if you want the Francés atmosphere.',
+        'Two weeks: Camino Portugués from Porto, Central for simplicity or Coastal for ocean days.',
+        'One month: Camino Francés from Saint-Jean-Pied-de-Port or Roncesvalles.',
+        'Experienced walker: Norte, Primitivo, Invierno, San Salvador, or Via de la Plata.',
+      ],
+    },
+  ],
+  faq: [
+    { q: 'Which Camino route has the most accommodation?', a: 'The Camino Francés has the deepest pilgrim infrastructure, especially between Saint-Jean-Pied-de-Port, Pamplona, Burgos, León, Sarria, and Santiago. The Portugués is also strong, but quieter routes need more advance planning.' },
+    { q: 'Which route is least crowded?', a: 'The Invierno, San Salvador, Mozárabe, and Le Puy routes are generally quieter than the Francés and Portugués. Crowds change by season, holiday periods, and starting point.' },
+    { q: 'Can I change Camino routes midway?', a: 'Sometimes, yes, but it depends on transport and geography. Many pilgrims adjust starting points, rest days, or final sections rather than switching whole route families.' },
+    { q: 'Does Sacred Trails replace official route information?', a: 'No. Sacred Trails is an offline planning and navigation companion. Use official sources for certificate rules, temporary closures, transport strikes, and current opening hours.' },
+  ],
+  ctaTitle: 'Compare Camino Routes Offline',
+  ctaDesc: 'Sacred Trails includes 12 Camino routes with stage data, waypoints, lodging references, and offline navigation for route choice and day-by-day walking.',
+}
+
+const kumanoNakahechiItinerary: ArticleContent = {
+  title: 'Kumano Kodo Nakahechi Itinerary: 3 to 5 Day Planning Guide',
+  subtitle: 'How to plan the classic forest pilgrimage from Takijiri-oji toward Kumano Hongu Taisha',
+  metaTitle: 'Kumano Kodo Nakahechi Itinerary 2026 — 3 to 5 Day Planning Guide',
+  metaDesc: 'Plan the Kumano Kodo Nakahechi route with practical stage options, lodging cautions, bus notes, weather planning, and official source checks.',
+  sections: [
+    {
+      heading: 'Why the Nakahechi Is the Usual First Kumano Route',
+      paragraphs: [
+        'The Nakahechi is the most approachable introduction to the Kumano Kodo because it combines deep history, preserved forest paths, frequent cultural landmarks, and better visitor infrastructure than the more remote Kohechi or Ohechi routes.',
+        'Approachable does not mean easy. The route has repeated climbs, stone steps, humid forest, and limited lodging capacity in small villages. A good Nakahechi plan starts with accommodation availability, then works backward to walking stages.',
+      ],
+    },
+    {
+      heading: 'Three-Day, Four-Day, and Five-Day Rhythms',
+      paragraphs: [
+        'A three-day plan is possible for strong walkers who are comfortable with longer mountain days. It can feel rushed if you want shrine time, onsen stops, and slower forest walking.',
+        'A four-day plan is the most balanced for many visitors. It gives space for Takahara, Chikatsuyu or Tsugizakura, and the final approach to Kumano Hongu Taisha without turning every day into a race.',
+        'A five-day plan is best for first-time Japan hikers, photographers, older walkers, or anyone pairing the route with nearby hot-spring villages such as Yunomine Onsen or Kawayu Onsen.',
+      ],
+      list: [
+        '3 days: experienced hikers, light packs, limited shrine time.',
+        '4 days: balanced classic rhythm for most prepared walkers.',
+        '5 days: slower pace, better cultural stops, more weather buffer.',
+      ],
+    },
+    {
+      heading: 'Book Lodging Before You Lock the Route',
+      paragraphs: [
+        'Nakahechi villages are small. Lodging often includes dinner and breakfast, and some properties cannot handle last-minute changes the way Camino albergues can. Treat lodging as part of the route infrastructure, not an afterthought.',
+        'Use official booking channels and confirm meal needs, check-in time, luggage transfer rules, and cancellation terms. If a desired village is full, adjust your walking plan rather than forcing a stage that ends with no practical place to sleep.',
+      ],
+    },
+    {
+      heading: 'Bus Use Is Normal, But Plan It Carefully',
+      paragraphs: [
+        'Using buses to reach trailheads, return from Hongu, or connect on poor-weather days is normal on the Kumano Kodo. The risk is assuming rural bus frequency is the same as a large Japanese city. It is not.',
+        'Before walking, save the relevant timetable offline and check whether the service runs on your travel date. Build a plan for the last bus of the day, not the bus you hope to catch if everything goes perfectly.',
+      ],
+    },
+    {
+      heading: 'Weather and Trail Conditions',
+      paragraphs: [
+        'Spring and autumn are usually the easiest seasons to recommend. Summer heat and humidity make climbs more demanding, while winter can bring cold rain, icy steps, shorter daylight, and more limited service windows.',
+        'After heavy rain, stone paths and roots can become slippery. If a section has official closure or warning notices, follow them. The pilgrimage is not improved by ignoring local safety guidance.',
+      ],
+    },
+  ],
+  faq: [
+    { q: 'Is the Nakahechi suitable for beginners?', a: 'Yes for prepared beginners, especially on a four- or five-day plan. It is not a flat sightseeing walk; train with hills and stairs before departure.' },
+    { q: 'Do I need to carry a tent?', a: 'No. Most visitors use guesthouses, ryokan, or minshuku. Wild camping is not the normal planning model for the Nakahechi.' },
+    { q: 'Can I use luggage transfer?', a: 'Often yes, but rules depend on provider, lodging, and route segment. Confirm directly when booking rather than assuming it is available every day.' },
+    { q: 'Where should I verify current route notices?', a: 'Check Tanabe City Kumano Tourism Bureau, Kumano Travel, your lodging provider, and local visitor centers before departure.' },
+  ],
+  ctaTitle: 'Walk Kumano With Offline Stages',
+  ctaDesc: 'Sacred Trails includes Kumano Kodo routes, offline waypoints, route notes, and multilingual stage references for forest walking without signal.',
+}
+
+const shikokuHenroPlanning: ArticleContent = {
+  title: 'Shikoku Henro Planning Guide: Walking the 88 Temple Circuit',
+  subtitle: 'How to prepare for 1,200 km of temples, road walking, lodging, etiquette, and section pilgrimage',
+  metaTitle: 'Shikoku Henro Planning Guide 2026 — 88 Temple Pilgrimage',
+  metaDesc: 'Plan the Shikoku 88 temple pilgrimage with walking duration, section options, etiquette, lodging, resupply, and official source guidance.',
+  sections: [
+    {
+      heading: 'The Shikoku Henro Is a Circuit, Not a Single Trail',
+      paragraphs: [
+        'The Shikoku Henro links 88 Buddhist temples around Shikoku. Unlike the Camino, it is not one continuous footpath designed mainly for modern walkers. Pilgrims move through city streets, rural roads, coastal roads, mountain approaches, temple stairs, and occasional trail sections.',
+        'This matters for planning. Foot care, road awareness, language preparation, and lodging research are just as important as hiking fitness.',
+      ],
+    },
+    {
+      heading: 'Full Walk or Section Henro',
+      paragraphs: [
+        'A full walking circuit is usually planned as a multi-week commitment. Many walkers use a 45-60 day range, with pace depending on weather, rest days, temple time, and whether they carry camping gear.',
+        'Section walking is also normal. Some pilgrims complete one prefecture at a time, return over multiple years, or mix walking with train and bus connections. This can make the pilgrimage more realistic for travelers with limited vacation time.',
+      ],
+      list: [
+        'Full walking henro: best for deep immersion and continuity.',
+        'Prefecture sections: easier to fit into repeat Japan trips.',
+        'Temple clusters: useful for cultural travelers who cannot walk the whole circuit.',
+      ],
+    },
+    {
+      heading: 'Temple Etiquette and Daily Rhythm',
+      paragraphs: [
+        'The basic rhythm is arrival, purification, bell or main-hall practice where appropriate, sutra or quiet prayer, Daishi hall, stamp office, and departure. Visitors who are not Buddhist can still participate respectfully by moving quietly and following posted rules.',
+        'Carry cash for temple stamps and small purchases. Stamp office hours can vary, so avoid building a schedule that arrives at every temple just before closing.',
+      ],
+    },
+    {
+      heading: 'Lodging and Resupply',
+      paragraphs: [
+        'Shikoku has minshuku, business hotels, temple lodgings, guesthouses, campgrounds, and occasional free or donation-based pilgrim hospitality. Availability changes by area, day, and season.',
+        'Do not assume you can always improvise at the end of a long day. Rural sections may have long distances between beds and shops. Plan water, food, and backup transport before mountain approaches or sparsely served coastal stretches.',
+      ],
+    },
+    {
+      heading: 'Language and Navigation',
+      paragraphs: [
+        'Many signs are in Japanese, and local hospitality often happens in Japanese. A translation app, saved lodging names, offline maps, and printed backup notes can prevent small misunderstandings from becoming major delays.',
+        'Sacred Trails is useful here because route and temple data remain available without signal. Still, use official sources and local updates for closures, disaster recovery, and temporary detours.',
+      ],
+    },
+  ],
+  faq: [
+    { q: 'How long does walking the Shikoku Henro take?', a: 'Many walkers plan around 45-60 days for the full circuit, but pace varies by fitness, weather, rest days, route choices, and lodging availability.' },
+    { q: 'Can I do the Shikoku Henro without speaking Japanese?', a: 'Yes, but preparation matters. Save lodging names, temple names, transport options, and emergency phrases offline before walking.' },
+    { q: 'Is the Shikoku Henro harder than the Camino?', a: 'For many foreign walkers, yes. Road walking, language barriers, fewer pilgrim-specific beds, and longer logistics gaps make it more demanding.' },
+    { q: 'Do I need to visit temples in order?', a: 'Traditional walkers often follow temple order, but reverse order and section approaches exist. Check official and temple guidance for your intended style.' },
+  ],
+  ctaTitle: 'Carry the 88 Temples Offline',
+  ctaDesc: 'Sacred Trails keeps Shikoku temple notes, route stages, and waypoints available offline in multiple languages.',
+}
+
+const dualPilgrimCertificate: ArticleContent = {
+  title: 'Dual Pilgrim Certificate Guide: Camino de Santiago + Kumano Kodo',
+  subtitle: 'How to plan, document, and verify the two UNESCO pilgrimage traditions',
+  metaTitle: 'Dual Pilgrim Certificate Guide 2026 — Camino and Kumano Kodo',
+  metaDesc: 'Learn how the Dual Pilgrim certificate works, what to document, how to combine Camino and Kumano routes, and where to verify current requirements.',
+  sections: [
+    {
+      heading: 'What Dual Pilgrim Means',
+      paragraphs: [
+        'Dual Pilgrim recognition connects two living pilgrimage traditions: the Camino de Santiago in Europe and the Kumano Kodo in Japan. It is not a race or a premium badge; it is a way to honor walking both cultural landscapes with care.',
+        'The practical work is documentation. You need to understand what counts on each side, carry the right credential or stamp book, and keep records clear enough for official confirmation.',
+      ],
+    },
+    {
+      heading: 'Camino Side: Credential and Compostela Logic',
+      paragraphs: [
+        'For the Camino, most pilgrims think in terms of the Compostela: walking at least the required final distance into Santiago while collecting stamps in a pilgrim credential. Rules can evolve, and special cases exist, so verify the current requirement before choosing a short route or final section.',
+        'Keep your credential clean, stamped, and readable. If your plan includes cycling, multiple route fragments, or an unusual starting point, confirm the rule directly with official Camino sources before assuming it qualifies.',
+      ],
+    },
+    {
+      heading: 'Kumano Side: Route, Stamp, and Office Workflow',
+      paragraphs: [
+        'For Kumano, qualifying options and stamp requirements should be checked with Tanabe City Kumano Tourism Bureau or official Kumano resources before departure. The most common visitor path is based around the Nakahechi, but do not rely on a general article for current administrative details.',
+        'Plan where you will receive stamps, where you will stay, and where you will submit or confirm records. Rural timing matters: visitor offices, lodging, and transport windows may not match a last-minute schedule.',
+      ],
+    },
+    {
+      heading: 'Which Order Should You Walk?',
+      paragraphs: [
+        'Many pilgrims walk the Camino first because it is more forgiving logistically and gives a strong introduction to credential habits. Others walk Kumano first because it fits a Japan trip and requires fewer walking days.',
+        'There is no spiritually correct order. The better order is the one that lets you prepare properly, walk respectfully, and verify documents without rushing.',
+      ],
+      list: [
+        'Camino first: better for beginners and long-distance walking confidence.',
+        'Kumano first: better if Japan travel dates are fixed and you want a shorter pilgrimage first.',
+        'Same year: possible, but leave recovery and planning time between routes.',
+      ],
+    },
+    {
+      heading: 'Document Checklist',
+      paragraphs: [
+        'Before the first day, prepare more than you think you need. A missing stamp can be hard to reconstruct after leaving a village.',
+      ],
+      list: [
+        'Camino pilgrim credential and passport.',
+        'Kumano stamp booklet or official record method for your chosen route.',
+        'Photos of key stamps and documents backed up online.',
+        'Official office locations and opening hours saved offline.',
+        'Route plan with dates, lodging names, and transport backups.',
+      ],
+    },
+  ],
+  faq: [
+    { q: 'Do I have to walk the Camino and Kumano in the same year?', a: 'No. The value is completing and documenting both traditions. Check current official guidance for record submission and recognition details.' },
+    { q: 'Which Kumano route is best for Dual Pilgrim planning?', a: 'The Nakahechi is the most common visitor route because it has the strongest support infrastructure. Confirm qualifying options with official Kumano sources before booking.' },
+    { q: 'Can I use Sacred Trails as proof?', a: 'No. Sacred Trails helps you plan and navigate offline. Official credentials, stamps, and office verification are what matter for recognition.' },
+    { q: 'Should I carry paper documents?', a: 'Yes. Digital backups are useful, but paper credentials and stamp records remain central to pilgrimage documentation.' },
+  ],
+  ctaTitle: 'Plan Both Pilgrimages in One App',
+  ctaDesc: 'Sacred Trails includes Camino and Kumano route data offline, helping you prepare each side of a Dual Pilgrim journey.',
+}
+
+const saigokuKannonPilgrimage: ArticleContent = {
+  title: 'Saigoku 33 Kannon Pilgrimage Guide',
+  subtitle: 'How to understand and plan Japan’s 33-temple Kannon pilgrimage across the Kansai region',
+  metaTitle: 'Saigoku 33 Kannon Pilgrimage Guide 2026',
+  metaDesc: 'Plan the Saigoku 33 Kannon pilgrimage with temple overview, multi-trip strategy, transport planning, stamp books, and official source checks.',
+  sections: [
+    {
+      heading: 'A Pilgrimage Built Around Temples, Not Daily Stages',
+      paragraphs: [
+        'The Saigoku 33 Kannon Pilgrimage links 33 temples associated with Kannon across western Japan. Unlike a single long-distance trail, it is often approached as a series of temple visits connected by train, bus, local walking, and occasional mountain approaches.',
+        'That structure makes it flexible, but also easy to underestimate. A good Saigoku plan needs temple order, transport connections, stamp timing, and realistic buffers for rural access.',
+      ],
+    },
+    {
+      heading: 'Who This Pilgrimage Is Best For',
+      paragraphs: [
+        'Saigoku suits travelers who want sacred architecture, regional culture, and a multi-stop Japan pilgrimage without committing to a 45-day walking circuit. It also suits repeat Japan visitors who can complete temples over several trips.',
+        'It is less suitable if you want a continuous footpath like the Camino. Some temple approaches are walkable and atmospheric, but the overall route is transport-assisted for many modern pilgrims.',
+      ],
+    },
+    {
+      heading: 'Planning by Region',
+      paragraphs: [
+        'Instead of trying to force all 33 temples into one linear march, group temples by access region. Kansai rail hubs can make some temple clusters efficient, while mountain temples require more careful bus and daylight planning.',
+        'Check the official temple association site for temple names and sequence, then build a transport plan around actual train and bus options. Keep the plan conservative: a missed rural bus can erase an afternoon.',
+      ],
+    },
+    {
+      heading: 'Stamp Books and Temple Time',
+      paragraphs: [
+        'As with many Japanese pilgrimages, the record of worship is part of the practice. If collecting goshuin or pilgrimage stamps, confirm the correct office location, hours, etiquette, and cash needs before arrival.',
+        'Leave enough time for the temple itself. Treating each stop as only a stamp transaction misses the point of a Kannon pilgrimage and often creates avoidable schedule pressure.',
+      ],
+    },
+    {
+      heading: 'How Sacred Trails Helps',
+      paragraphs: [
+        'Sacred Trails includes Saigoku route data as an offline reference layer, which is useful when moving between temple areas without reliable signal. Use it for orientation, waypoint context, and route awareness.',
+        'For current transport, temple office hours, special closures, and seasonal access, always verify with official temple or regional sources close to your travel date.',
+      ],
+    },
+  ],
+  faq: [
+    { q: 'Can I walk the entire Saigoku 33 pilgrimage?', a: 'Some dedicated pilgrims walk large portions, but many modern pilgrims use trains and buses between temple areas. Plan based on your time, fitness, and transport comfort.' },
+    { q: 'How long does Saigoku 33 take?', a: 'It depends on style. A transport-assisted trip can be broken into clusters, while a more traditional walking approach takes much longer. Temple access and rural transport are the limiting factors.' },
+    { q: 'Do I need Japanese?', a: 'You can visit without fluency, but temple names, transport signs, and etiquette are easier with saved Japanese text, offline translation, and printed notes.' },
+    { q: 'Is this a beginner-friendly Japan pilgrimage?', a: 'Yes if you are comfortable with Japanese transport. It is logistically different from the Kumano Kodo and less physically continuous than Shikoku.' },
+  ],
+  ctaTitle: 'Keep Saigoku Temple Notes Offline',
+  ctaDesc: 'Sacred Trails includes Saigoku 33 Kannon route references, temple context, and multilingual offline data for regional pilgrimage planning.',
+}
+
 const articles: Record<ArticleSlug, ArticleContent> = {
   'camino-packing-list': caminoPackingList,
   'camino-cost': caminoCost,
   'first-pilgrimage': firstPilgrimage,
+  'camino-routes-compared': caminoRoutesCompared,
+  'kumano-kodo-nakahechi-itinerary': kumanoNakahechiItinerary,
+  'shikoku-henro-planning': shikokuHenroPlanning,
+  'dual-pilgrim-certificate': dualPilgrimCertificate,
+  'saigoku-33-kannon-pilgrimage': saigokuKannonPilgrimage,
 }
 
 export function getArticleContent(slug: ArticleSlug): ArticleContent {
@@ -351,5 +664,5 @@ export function getArticleContent(slug: ArticleSlug): ArticleContent {
 }
 
 export function getAllArticleSlugs(): ArticleSlug[] {
-  return Object.keys(articles) as ArticleSlug[]
+  return [...ARTICLE_SLUGS]
 }

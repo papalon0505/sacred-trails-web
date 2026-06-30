@@ -2,9 +2,10 @@ import type { MetadataRoute } from 'next'
 import { routes } from '@/lib/data/routes'
 import { COMPARISON_SLUGS } from '@/lib/comparisons'
 import { ALL_LOCALES, BASE_URL, localePath } from '@/lib/i18n'
+import { getAllArticleSlugs } from '@/lib/article-content'
 
 const GUIDE_SLUGS = ['camino-de-santiago', 'kumano-kodo', 'shikoku-henro']
-const ARTICLE_SLUGS = ['camino-packing-list', 'camino-cost', 'first-pilgrimage']
+const ARTICLE_SLUGS = getAllArticleSlugs()
 
 function localizedEntry(path: string, priority: number, changeFrequency: 'weekly' | 'monthly'): MetadataRoute.Sitemap {
   return ALL_LOCALES.map(locale => ({

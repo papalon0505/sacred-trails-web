@@ -22,5 +22,5 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function CaminoGuide({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
   const l = locale as Locale
-  return <GuideArticle locale={l} content={getGuideContent(SLUG, l)} />
+  return <GuideArticle locale={l} content={getGuideContent(SLUG, l)} slug={SLUG} />
 }

@@ -18,5 +18,5 @@ export const metadata: Metadata = {
 }
 
 export default function ShikokuGuideEn() {
-  return <GuideArticle locale="en" content={getGuideContent('shikoku-henro', 'en')} />
+  return <GuideArticle locale="en" content={getGuideContent('shikoku-henro', 'en')} slug="shikoku-henro" />
 }

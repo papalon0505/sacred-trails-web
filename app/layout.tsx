@@ -21,19 +21,26 @@ export const metadata: Metadata = {
     type: 'website',
     title: 'Sacred Trails — 18 Pilgrimage Routes, Offline Guide App',
     description: 'Complete offline guide for Camino de Santiago, Kumano Kodo, Shikoku Henro and 15 more sacred routes. One purchase, 10 languages, no internet required.',
-    images: [{ url: '/og.jpg', width: 1200, height: 630, alt: 'Sacred Trails pilgrimage guide app' }],
+    images: [{ url: '/og-multilingual.jpg', width: 1200, height: 630, alt: 'Sacred Trails multilingual pilgrimage guide app' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Sacred Trails — 18 Pilgrimage Routes, Offline Guide App',
     description: 'Complete offline guide for Camino de Santiago, Kumano Kodo, Shikoku Henro and more. One purchase, 10 languages.',
-    images: ['/og.jpg'],
+    images: ['/og-multilingual.jpg'],
   },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html className={inter.className}>
+      <head>
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1146347245386603"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body className="bg-parchment text-ink min-h-screen">{children}</body>
     </html>
   )

@@ -1,7 +1,9 @@
 import { AppStoreBadge } from '@/components/AppStoreBadge'
+import { EditorialReviewPanel } from '@/components/EditorialReviewPanel'
 import { JsonLd } from '@/components/JsonLd'
 import { localePath, BASE_URL, type Locale } from '@/lib/i18n'
 import type { ArticleContent } from '@/lib/article-content'
+import { getArticleEditorialReview } from '@/lib/editorial-content'
 
 export function ArticlePage({
   locale,
@@ -12,6 +14,7 @@ export function ArticlePage({
   content: ArticleContent
   slug: string
 }) {
+  const editorialReview = getArticleEditorialReview(slug)
   const faqLd = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
@@ -35,7 +38,7 @@ export function ArticlePage({
       url: BASE_URL,
     },
     datePublished: '2026-06-14',
-    dateModified: '2026-06-14',
+    dateModified: editorialReview?.lastReviewed ?? '2026-06-14',
   } as Record<string, unknown>
 
   return (
@@ -51,6 +54,7 @@ export function ArticlePage({
 
         <h1 className="text-4xl font-bold text-ink mb-4">{content.title}</h1>
         <p className="text-stone-500 text-lg mb-10">{content.subtitle}</p>
+        <EditorialReviewPanel review={editorialReview} />
 
         {content.sections.map((section, i) => (
           <section key={i} className="mb-10">
