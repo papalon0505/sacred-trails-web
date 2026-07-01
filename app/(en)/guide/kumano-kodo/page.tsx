@@ -18,5 +18,5 @@ export const metadata: Metadata = {
 }
 
 export default function KumanoGuideEn() {
-  return <GuideArticle locale="en" content={getGuideContent('kumano-kodo', 'en')} />
+  return <GuideArticle locale="en" content={getGuideContent('kumano-kodo', 'en')} slug="kumano-kodo" />
 }

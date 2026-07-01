@@ -18,5 +18,5 @@ export const metadata: Metadata = {
 }
 
 export default function CaminoGuideEn() {
-  return <GuideArticle locale="en" content={getGuideContent('camino-de-santiago', 'en')} />
+  return <GuideArticle locale="en" content={getGuideContent('camino-de-santiago', 'en')} slug="camino-de-santiago" />
 }

@@ -1,17 +1,21 @@
 import { AppStoreBadge } from '@/components/AppStoreBadge'
+import { EditorialReviewPanel } from '@/components/EditorialReviewPanel'
 import { JsonLd } from '@/components/JsonLd'
 import { getDict, localePath, type Locale } from '@/lib/i18n'
-import type { GuideContent } from '@/lib/guide-content'
+import type { GuideContent, GuideSlug } from '@/lib/guide-content'
+import { getGuideEditorialReview } from '@/lib/editorial-content'
 
 export function GuideArticle({
   locale,
   content,
+  slug,
 }: {
   locale: Locale
   content: GuideContent
-  slug?: string
+  slug?: GuideSlug
 }) {
   const dict = getDict(locale)
+  const editorialReview = getGuideEditorialReview(slug)
 
   const faqLd = {
     '@context': 'https://schema.org',
@@ -29,6 +33,7 @@ export function GuideArticle({
     headline: content.title,
     description: content.metaDesc,
     inLanguage: locale,
+    dateModified: editorialReview?.lastReviewed,
   } as Record<string, unknown>
 
   return (
@@ -44,6 +49,7 @@ export function GuideArticle({
 
         <h1 className="text-4xl font-bold text-ink mb-4">{content.title}</h1>
         <p className="text-stone-500 text-lg mb-10">{content.subtitle}</p>
+        <EditorialReviewPanel review={editorialReview} />
 
         <section className="mb-10 space-y-4">
           {content.intro.map((para, i) => (

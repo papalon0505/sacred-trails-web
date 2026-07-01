@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { getDict, localePath, LOCALIZED, ALL_LOCALES, BASE_URL, type Locale } from '@/lib/i18n'
+import { RouteSystemIcon, routeSystemFromLegacyIcon } from '@/components/SiteIcon'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
@@ -28,7 +29,7 @@ export default async function LocaleGuideIndex({ params }: { params: Promise<{ l
         {dict.guideIndex.guides.map(g => (
           <a key={g.slug} href={localePath(l, `/guide/${g.slug}`)}
             className="bg-white rounded-2xl p-6 border border-stone-200 hover:border-forest hover:shadow-md transition-all">
-            <div className="text-3xl mb-3">{g.icon}</div>
+            <RouteSystemIcon system={routeSystemFromLegacyIcon(g.icon)} size="md" tone="parchment" className="mb-3" label={g.title} />
             <h2 className="font-bold text-forest mb-2">{g.title}</h2>
             <p className="text-sm text-stone-500">{g.desc}</p>
           </a>
